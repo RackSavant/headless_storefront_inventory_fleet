@@ -1,0 +1,13 @@
+{
+  "store_name": "Rack & Sole",
+  "protect_inventory_roles": true,
+  "protect_min_items": 3,
+  "inventory_boost": 0.05,
+  "slow_mover_days": 90,
+  "bundle_discounts": {
+    "2": 10,
+    "3": 15
+  },
+  "slow_mover_extra_pct": 5,
+  "min_margin_pct": 20
+}

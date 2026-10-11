@@ -1,0 +1,9 @@
+{"products":[
+ {"id":101,"title":"Relaxed Linen Shirt","handle":"relaxed-linen-shirt","vendor":"Partner Co","product_type":"Shirts","tags":["mens","summer"],
+  "options":[{"name":"Color","values":["White","Sky Blue"]},{"name":"Size","values":["S","M"]}],
+  "variants":[{"price":"68.00","available":true,"option1":"White"},{"price":"72.00","available":true,"option1":"Sky Blue"}],
+  "images":[{"src":"https://cdn.example/linen.jpg"}]},
+ {"id":102,"title":"Pleated Wide Leg Trouser","handle":"pleated-wide-leg","vendor":"Partner Co","product_type":"Pants","tags":"womens, tailoring",
+  "options":[{"name":"Size","values":["4","6"]}],"variants":[{"price":"110.00","available":true}],"images":[]},
+ {"id":103,"title":"Sold Out Thing","handle":"x","product_type":"Hats","variants":[{"price":"10.00","available":false}]}
+]}

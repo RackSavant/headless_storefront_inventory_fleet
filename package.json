@@ -1,0 +1,41 @@
+{
+  "name": "racksavant-store",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "catalog:sample": "tsx scripts/generate-sample-catalog.ts",
+    "catalog:shopify": "tsx scripts/import-shopify.ts",
+    "catalog:csv": "tsx scripts/import-csv.ts",
+    "inventory:import": "tsx scripts/import-inventory.ts",
+    "reco:demo": "tsx scripts/reco-demo.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
+    "@sparkjsdev/spark": "^2.3.1",
+    "mongodb": "^6.21.0",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "three": "^0.185.1",
+    "zod": "^4.6.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.185.4",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
+  }
+}
