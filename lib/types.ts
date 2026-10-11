@@ -38,8 +38,21 @@ export interface Product {
   price_cents: number;
   currency: "USD";
   image_url?: string;
-  /** Optional GLB; the store falls back to a procedural model when absent. */
+  /** Required attribution for openly licensed photos (see scripts/fetch-photos.ts). */
+  image_credit?: {
+    openverse_id?: string;
+    text: string;
+    creator?: string | null;
+    license: string;
+    license_url?: string | null;
+    source_url?: string | null;
+  };
+  /** Optional GLB or FBX; the store falls back to a procedural model when absent. */
   model_url?: string;
+  /** Texture to use for the model (when the file's own texture path is missing or too large). */
+  model_texture_url?: string;
+  /** Yaw so the model's toe/front faces +z like the procedural ones. */
+  model_rotation_y?: number;
 
   // inventory-only
   sku?: string;
@@ -152,4 +165,33 @@ export interface StoreEvent {
   reason?: string;
   value_cents?: number;
   ts: string;
+}
+
+/** Pair-score weights. Evolvable by the harness (lib/harness). */
+export interface Weights {
+  color: number;
+  style: number;
+  formality: number;
+  season: number;
+}
+
+/** A stylist pairing rule as data: `a`/`b` are regex sources matched against subtypes. */
+export interface RuleSpec {
+  id: string;
+  a: string;
+  b: string;
+  bonus: number;
+  reason: string;
+  origin: "seed" | "agent" | "human";
+}
+
+/** Store features the policy can switch on and off. */
+export const ENGINE_TOOLS = ["partner_catalog", "bundle_discounts", "slow_mover_push", "llm_copy"] as const;
+export type EngineTool = (typeof ENGINE_TOOLS)[number];
+
+/** Everything about scoring and store features that a policy controls. */
+export interface ScoringPolicy {
+  weights: Weights;
+  rules: RuleSpec[];
+  tools?: Partial<Record<EngineTool, boolean>>;
 }

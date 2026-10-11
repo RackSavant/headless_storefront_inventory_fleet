@@ -5,7 +5,7 @@
  * reaching into the external catalog only for slots the store can't cover.
  */
 import { colorFamily } from "@/lib/color";
-import { genderCompatible, pairScore } from "@/lib/reco/compat";
+import { genderCompatible, pairScore, SEED_SCORING } from "@/lib/reco/compat";
 import { inventoryBoost, merchNote, priceBundle } from "@/lib/reco/merch";
 import { profileScore } from "@/lib/reco/profile";
 import type {
@@ -14,6 +14,7 @@ import type {
   LookItem,
   Product,
   Role,
+  ScoringPolicy,
   ShopperContext,
   ShopperProfile,
   StoreConfig,
@@ -39,7 +40,11 @@ export interface BuildLooksInput {
   context?: ShopperContext;
   count?: number;
   now?: Date;
+  /** Weights, stylist rules and feature switches from the active policy (lib/harness). Defaults to the seed. */
+  scoring?: ScoringPolicy;
 }
+
+const toolOn = (input: BuildLooksInput, tool: keyof NonNullable<ScoringPolicy["tools"]>) => input.scoring?.tools?.[tool] !== false;
 
 interface Beam {
   items: Product[];
@@ -80,12 +85,18 @@ function effectiveGender(anchors: Product[], ctx: ShopperContext): Gender | unde
 
 // Beam search re-scores the same pairs thousands of times; ids are stable within a request.
 let pairCache = new Map<string, number>();
+let scoring: ScoringPolicy = SEED_SCORING;
+
+function beginRequest(input: BuildLooksInput) {
+  pairCache = new Map();
+  scoring = input.scoring ?? SEED_SCORING;
+}
 
 function pair(a: Product, b: Product): number {
   const key = a.id < b.id ? `${a.id}|${b.id}` : `${b.id}|${a.id}`;
   let v = pairCache.get(key);
   if (v === undefined) {
-    v = pairScore(a, b).total;
+    v = pairScore(a, b, scoring).total;
     pairCache.set(key, v);
   }
   return v;
@@ -118,11 +129,13 @@ export function slotPool(
   gender: Gender | undefined,
   cfg: StoreConfig,
   profile?: ShopperProfile | null,
+  allowPartners = true,
 ): Product[] {
   const taken = new Set(current.map((p) => p.id));
   const eligible = catalog.filter(
     (p) =>
       p.role === role &&
+      (allowPartners || p.source === "inventory") &&
       !taken.has(p.id) &&
       inStock(p) &&
       (!gender || genderCompatible(p.gender, gender)) &&
@@ -133,6 +146,12 @@ export function slotPool(
   return eligible;
 }
 
+/** Stock-pressure boost when slow_mover_push is on; a flat in-store preference otherwise. */
+function boostFor(p: Product, input: BuildLooksInput, now: Date): number {
+  if (p.source !== "inventory") return 0;
+  return toolOn(input, "slow_mover_push") ? inventoryBoost(p, input.config, now) : input.config.inventory_boost;
+}
+
 function scoreLook(items: Product[], anchors: Set<string>, input: BuildLooksInput, now: Date): number {
   const ctx = input.context ?? {};
   const { mean: compat, worst } = pairStats(items);
@@ -140,7 +159,7 @@ function scoreLook(items: Product[], anchors: Set<string>, input: BuildLooksInpu
   const pers = items.reduce((s, p) => s + profileScore(input.profile ?? null, p), 0) / items.length;
   const boost = items
     .filter((p) => !anchors.has(p.id))
-    .reduce((s, p) => s + inventoryBoost(p, input.config, now), 0);
+    .reduce((s, p) => s + boostFor(p, input, now), 0);
   let budget = 0;
   if (ctx.budget_cents) {
     const total = items.reduce((s, p) => s + p.price_cents, 0);
@@ -169,7 +188,7 @@ function searchTemplate(
   for (const slot of slots) {
     const next: Beam[] = [];
     for (const beam of beams) {
-      const pool = slotPool(slot.role, beam.items, input.catalog, gender, input.config, input.profile);
+      const pool = slotPool(slot.role, beam.items, input.catalog, gender, input.config, input.profile, toolOn(input, "partner_catalog"));
       const ranked = pool
         .filter((p) => !slot.optional || beam.items.reduce((s, x) => s + pair(p, x), 0) / beam.items.length >= OPTIONAL_MIN_COMPAT)
         .map((p) => ({ p, s: scoreLook([...beam.items, p], anchorIds, input, now) }))
@@ -248,7 +267,7 @@ function lookTitle(items: Product[], ctx: ShopperContext): string {
 /** Explain an item mainly against the shopper's pick, then against its best partner in the look. */
 function itemReasons(p: Product, others: Product[], anchors: Set<string>): string[] {
   const scored = others
-    .map((o) => ({ o, s: pairScore(p, o) }))
+    .map((o) => ({ o, s: pairScore(p, o, scoring) }))
     .sort((a, b) => Number(anchors.has(b.o.id)) - Number(anchors.has(a.o.id)) || b.s.total - a.s.total);
   const out: string[] = [];
   for (const { s } of scored.slice(0, 2)) for (const r of s.reasons) if (!out.includes(r)) out.push(r);
@@ -266,7 +285,7 @@ function blurb(items: Product[], anchors: Product[]): string {
 }
 
 export function buildLooks(input: BuildLooksInput): Look[] {
-  pairCache = new Map();
+  beginRequest(input);
   const now = input.now ?? new Date();
   const ctx = input.context ?? {};
   const count = input.count ?? 3;
@@ -299,7 +318,7 @@ export function buildLooks(input: BuildLooksInput): Look[] {
       score: Math.round(b.score * 100) / 100,
       compat: Math.round(pairStats(items).mean * 100) / 100,
       blurb: blurb(items, input.anchors),
-      bundle: priceBundle(items, input.config, now),
+      bundle: toolOn(input, "bundle_discounts") ? priceBundle(items, input.config, now) : null,
       external_total_cents: items.filter((p) => p.source === "external").reduce((s, p) => s + p.price_cents, 0),
     };
   });
@@ -311,20 +330,21 @@ export function buildLooks(input: BuildLooksInput): Look[] {
  * occasion, plus any bag / accessory that goes with it.
  */
 export function buildInventoryBundles(input: BuildLooksInput) {
+  beginRequest(input);
   const now = input.now ?? new Date();
   const anchor = input.anchors[0];
-  if (!anchor) return [];
+  if (!anchor || !toolOn(input, "bundle_discounts")) return [];
   const inv = input.catalog.filter(
     (p) => p.source === "inventory" && (p.quantity ?? 0) > 0 && p.id !== anchor.id && genderCompatible(p.gender, anchor.gender),
   );
   const scored = inv
     .map((p) => {
-      const pair = pairScore(anchor, p);
+      const pair = pairScore(anchor, p, scoring);
       const sameRole = p.role === anchor.role;
       // Same-role partner should be different (other occasion), not a near-duplicate.
       const contrast = sameRole ? Math.min(1, Math.abs(p.formality - anchor.formality) / 2) : 1;
       const compat = sameRole ? 0.5 * pair.color + 0.5 * pair.style : pair.total;
-      const s = (sameRole ? 0.6 * contrast + 0.4 * compat : compat) + inventoryBoost(p, input.config, now);
+      const s = (sameRole ? 0.6 * contrast + 0.4 * compat : compat) + boostFor(p, input, now);
       return { p, s, sameRole };
     })
     .filter((x) => !x.sameRole || x.s > 0.55)

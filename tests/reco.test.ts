@@ -16,14 +16,14 @@ describe("pair compatibility", () => {
   it("prefers jeans over joggers for chelsea boots", () => {
     const boots = one("inv_leather-chelsea-boots");
     expect(pairScore(boots, one("ext_slim-jean_indigo-denim")).total).toBeGreaterThan(
-      pairScore(boots, one("ext_jogger_heather-grey")).total,
+      pairScore(boots, one("ext_jogger_navy")).total,
     );
   });
   it("penalizes dress shoes with athletic wear", () => {
-    expect(pairScore(one("inv_cap-toe-oxfords"), one("ext_jogger_black")).total).toBeLessThan(0.4);
+    expect(pairScore(one("inv_cap-toe-oxfords"), one("ext_jogger_navy")).total).toBeLessThan(0.4);
   });
   it("never pairs across gendered items", () => {
-    expect(pairScore(one("inv_cap-toe-oxfords"), one("ext_slip-dress_black")).total).toBe(0);
+    expect(pairScore(one("inv_cap-toe-oxfords"), one("ext_slip-dress_cobalt")).total).toBe(0);
   });
   it("treats neutrals as safe and same-wash denim as weak", () => {
     expect(colorHarmony({ name: "navy", hex: "#1f2a44" }, { name: "crimson", hex: "#b3202a" }).score).toBeGreaterThan(0.8);

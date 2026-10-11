@@ -19,6 +19,7 @@ export default function LookCard({
   onAddItem,
   onShopPartner,
   onInspect,
+  onTryOnMe,
 }: {
   look: Look;
   onTryOn: (look: Look) => void;
@@ -26,6 +27,7 @@ export default function LookCard({
   onAddItem: (p: Product) => void;
   onShopPartner: (p: Product, look: Look) => void;
   onInspect: (p: Product) => void;
+  onTryOnMe?: (look: Look) => void;
 }) {
   const inStore = look.items.filter((i) => i.product.source === "inventory");
   return (
@@ -70,6 +72,11 @@ export default function LookCard({
         <button onClick={() => onTryOn(look)} className="rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-stone-700">
           Try this look
         </button>
+        {onTryOnMe && (
+          <button onClick={() => onTryOnMe(look)} className="rounded-lg border border-stone-300 px-3 py-1.5 text-xs font-medium hover:bg-stone-50">
+            On me
+          </button>
+        )}
         {look.bundle ? (
           <button onClick={() => onAddBundle(look)} className="rounded-lg bg-orange-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-orange-800">
             Add {look.bundle.product_ids.length} in-store pieces · {usd(look.bundle.price_cents)}{" "}

@@ -1,3 +1,6 @@
+"use client";
+
+import { useProductShot } from "@/components/store3d/shots";
 import type { Product } from "@/lib/types";
 
 /** Product thumbnail without photos: a role silhouette filled with the item's color. */
@@ -11,8 +14,21 @@ const PATHS: Record<Product["role"], string> = {
   accessory: "M24 10 A12 12 0 1 1 23.9 10 Z M24 15 A7 7 0 1 0 24.1 15 Z",
 };
 
+/** Product image: real photo if the product has one, else a studio render of its 3D model. */
 export default function Swatch({ product, size = 44 }: { product: Product; size?: number }) {
   const light = isLight(product.color.hex);
+  const shot = useProductShot(product, "hero", 256);
+  if (shot)
+    return (
+      <div
+        className="shrink-0 overflow-hidden rounded-lg border border-stone-200 bg-gradient-to-b from-white to-stone-100"
+        style={{ width: size, height: size }}
+        title={product.title}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={shot} alt={product.title} className="h-full w-full object-contain" draggable={false} />
+      </div>
+    );
   return (
     <div
       className="flex shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-stone-50"

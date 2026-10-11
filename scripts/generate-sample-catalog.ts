@@ -7,7 +7,7 @@
  * External items carry no brand and link to a shopping search for the item,
  * so nothing here pretends to be a real retailer's listing.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { Gender, Product, Role, Season, Style } from "../lib/types";
 
@@ -166,7 +166,32 @@ const inventory: Product[] = INVENTORY.map((b, i) => ({
   sizes: b.sizes,
 }));
 
+// Real 3D asset for the demo stiletto (from the spatialintelligence repo); others use procedural models.
+const stiletto = inventory.find((p) => p.id === "inv_nude-crisscross-stilettos");
+if (stiletto) {
+  stiletto.model_url = "/models/nude-crisscross-stiletto/stiletto.fbx";
+  stiletto.model_texture_url = "/models/nude-crisscross-stiletto/texture.jpg";
+}
+
 const out = path.join(process.cwd(), "data");
+const force = process.argv.includes("--force");
+const read = (f: string): Product[] => {
+  try {
+    return JSON.parse(readFileSync(path.join(out, f), "utf8"));
+  } catch {
+    return [];
+  }
+};
+
+// Keep curated photos on regeneration: inventory photos carry over by id, and the
+// partner catalog (rebuilt around real photos) is only replaced with --force.
+const prevInv = new Map(read("inventory.json").map((p) => [p.id, p]));
+for (const p of inventory) {
+  const prev = prevInv.get(p.id);
+  if (prev?.image_url) Object.assign(p, { image_url: prev.image_url, image_credit: prev.image_credit });
+}
 writeFileSync(path.join(out, "inventory.json"), JSON.stringify(inventory, null, 2) + "\n");
-writeFileSync(path.join(out, "external-catalog.json"), JSON.stringify(external, null, 2) + "\n");
-console.log(`inventory: ${inventory.length} items, external catalog: ${external.length} items`);
+const curated = read("external-catalog.json").some((p) => p.image_url);
+if (curated && !force) console.log("external-catalog.json has curated photos; left as is (pass --force to regenerate it)");
+else writeFileSync(path.join(out, "external-catalog.json"), JSON.stringify(external, null, 2) + "\n");
+console.log(`inventory: ${inventory.length} items, external catalog: ${curated && !force ? "kept" : external.length + " items"}`);

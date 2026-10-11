@@ -1,8 +1,11 @@
 /**
- * Optional Claude layer. Every function returns null when ANTHROPIC_API_KEY is
- * unset or the call fails, and callers fall back to the deterministic engine —
+ * Optional Claude layer. Every function returns null when there are no Claude
+ * credentials (API key or `ant auth login` OAuth profile) or the call fails, and callers fall back to the deterministic engine —
  * recommendations themselves never depend on the model.
  */
+import { readdirSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
@@ -10,14 +13,35 @@ import { SEASONS, STYLES, type Look, type ShopperContext } from "@/lib/types";
 
 const MODEL = process.env.ANTHROPIC_MODEL || "claude-opus-5-5";
 
+/**
+ * Claude credentials, in the SDK's own resolution order: ANTHROPIC_API_KEY,
+ * ANTHROPIC_AUTH_TOKEN, or an OAuth profile from `ant auth login` (stored under
+ * ~/.config/anthropic/credentials/). A bare `new Anthropic()` picks up whichever
+ * exists, so OAuth sessions work with no API key at all.
+ */
+export function claudeAuthSource(): "api_key" | "auth_token" | "oauth_profile" | null {
+  if (process.env.ANTHROPIC_API_KEY) return "api_key";
+  if (process.env.ANTHROPIC_AUTH_TOKEN) return "auth_token";
+  const dir =
+    process.env.ANTHROPIC_CONFIG_DIR ||
+    (process.platform === "win32" ? path.join(process.env.APPDATA ?? "", "Anthropic") : path.join(os.homedir(), ".config", "anthropic"));
+  try {
+    const creds = readdirSync(path.join(dir, "credentials")).filter((f) => f.endsWith(".json"));
+    if (creds.length) return "oauth_profile";
+  } catch {
+    // no profile directory
+  }
+  return null;
+}
+
 let client: Anthropic | null = null;
 function getClient(): Anthropic | null {
-  if (!process.env.ANTHROPIC_API_KEY) return null;
+  if (!claudeAuthSource()) return null;
   client ??= new Anthropic();
   return client;
 }
 
-export const llmEnabled = () => !!process.env.ANTHROPIC_API_KEY;
+export const llmEnabled = () => claudeAuthSource() !== null;
 
 const OccasionSchema = z.object({
   occasion: z.string().describe("Short label, e.g. 'Beach wedding' or 'First date'"),

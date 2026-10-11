@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { allProducts, getProducts, loadCatalog } from "@/lib/catalog";
+import { allProducts, getProducts } from "@/lib/catalog";
+import { activePolicy } from "@/lib/harness/evolve";
+import { resolveScoring } from "@/lib/harness/policy";
 import { currentSeason, parseOccasion } from "@/lib/intent";
 import { llmLookBlurbs, llmParseOccasion } from "@/lib/llm";
 import { publicLook, publicProduct } from "@/lib/public";
@@ -46,13 +48,16 @@ export async function POST(req: Request) {
 
   const store = getStore();
   const profile = body.shopper_id ? await store.getProfile(body.shopper_id) : null;
-  const { config } = loadCatalog();
+  // The store runs on whatever policy the harness has promoted, adapted to this shopper's segment.
+  const policy = activePolicy();
+  const config = policy.config;
+  const scoring = resolveScoring(policy, context);
   const catalog = allProducts();
 
-  const looks = buildLooks({ anchors, catalog, config, profile, context, count: body.count ?? 3 });
-  const bundles = anchors.length === 1 ? buildInventoryBundles({ anchors, catalog, config, profile, context }) : [];
+  const looks = buildLooks({ anchors, catalog, config, profile, context, scoring, count: body.count ?? 3 });
+  const bundles = anchors.length === 1 ? buildInventoryBundles({ anchors, catalog, config, profile, context, scoring }) : [];
 
-  if (body.polish) {
+  if (body.polish && policy.tools.llm_copy) {
     const blurbs = await llmLookBlurbs(looks, context);
     blurbs?.forEach((b, i) => (looks[i].blurb = b));
   }
@@ -67,6 +72,7 @@ export async function POST(req: Request) {
   }
 
   return NextResponse.json({
+    policy_version: policy.version,
     context,
     parsed_by: parsedBy,
     looks: looks.map(publicLook),

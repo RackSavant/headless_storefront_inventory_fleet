@@ -35,7 +35,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_leather-chelsea-boots.jpg",
+    "image_credit": {
+      "openverse_id": "36a9990c-9961-4bdf-abc2-ae9abe8b0002",
+      "text": "\"Chelsea boot, brown suede\" by Reinthal is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/.",
+      "creator": "Reinthal",
+      "license": "BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source_url": "https://commons.wikimedia.org/w/index.php?curid=52591386"
+    }
   },
   {
     "id": "inv_cherry-red-combat-boots",
@@ -72,7 +81,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_cherry-red-combat-boots.jpg",
+    "image_credit": {
+      "openverse_id": "e31f96ea-0846-4dd7-a58d-287f747aff40",
+      "text": "\"New Solovair yellow stitch 8 eye cherry red boots\" by zcopley is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+      "creator": "zcopley",
+      "license": "BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source_url": "https://www.flickr.com/photos/22823034@N00/6872831898"
+    }
   },
   {
     "id": "inv_white-leather-court-sneakers",
@@ -111,7 +129,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_white-leather-court-sneakers.jpg",
+    "image_credit": {
+      "openverse_id": "9ee9a035-332d-4831-a822-0c0d16318a87",
+      "text": "\"White Sneakers - Coach\" by ajay_suresh is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "ajay_suresh",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/83136374@N05/49688016318"
+    }
   },
   {
     "id": "inv_retro-suede-trainers",
@@ -149,7 +176,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_retro-suede-trainers.jpg",
+    "image_credit": {
+      "openverse_id": "dff82de4-696b-45d5-a896-fe9bf21b0804",
+      "text": "\"Closeup blue suede sneaker\" by Markus Spiske is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
+      "creator": "Markus Spiske",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://www.rawpixel.com/image/593227/one-blue-shoe"
+    }
   },
   {
     "id": "inv_performance-running-shoes",
@@ -186,7 +222,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_performance-running-shoes.jpg",
+    "image_credit": {
+      "openverse_id": "856ef47b-ab7d-445d-9c67-818f64e1d043",
+      "text": "\"My hideous running shoes\" by minorissues is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "minorissues",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/63051956@N00/3769610224"
+    }
   },
   {
     "id": "inv_penny-loafers",
@@ -225,7 +270,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_penny-loafers.jpg",
+    "image_credit": {
+      "openverse_id": "cf63bbc0-8f56-4dc8-82d1-7853bf4a0a99",
+      "text": "\"Tassel Loafers by Barker Black\" by Menswear Market is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "Menswear Market",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/85546319@N04/11091794534"
+    }
   },
   {
     "id": "inv_suede-tassel-loafers",
@@ -260,42 +314,16 @@
       "10",
       "11",
       "12"
-    ]
-  },
-  {
-    "id": "inv_nude-crisscross-stilettos",
-    "source": "inventory",
-    "sku": "RS-008",
-    "title": "Nude Crisscross Stilettos",
-    "role": "shoes",
-    "subtype": "stiletto",
-    "gender": "women",
-    "color": {
-      "name": "nude",
-      "hex": "#d8b49a"
-    },
-    "styles": [
-      "formal",
-      "romantic"
     ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 15000,
-    "cost_cents": 5500,
-    "currency": "USD",
-    "quantity": 5,
-    "received_at": "2026-06-01T00:00:00.000Z",
-    "sizes": [
-      "6",
-      "7",
-      "8",
-      "9",
-      "10"
-    ]
+    "image_url": "/photos/inv_suede-tassel-loafers.jpg",
+    "image_credit": {
+      "openverse_id": "0cf0b61a-fa62-4fef-a4fc-2a19d4b40bb8",
+      "text": "\"Alden Loafer\" by Menswear Market is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "Menswear Market",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/85546319@N04/8395867752"
+    }
   },
   {
     "id": "inv_black-pointed-pumps",
@@ -332,7 +360,16 @@
       "8",
       "9",
       "10"
-    ]
+    ],
+    "image_url": "/photos/inv_black-pointed-pumps.jpg",
+    "image_credit": {
+      "openverse_id": "db5348a2-ae99-42dc-90cc-96d0fee82c3a",
+      "text": "\"Everyday pumps\" by Kekka is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "Kekka",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/62344799@N00/2959543764"
+    }
   },
   {
     "id": "inv_strappy-block-heel-sandals",
@@ -366,7 +403,16 @@
       "8",
       "9",
       "10"
-    ]
+    ],
+    "image_url": "/photos/inv_strappy-block-heel-sandals.jpg",
+    "image_credit": {
+      "openverse_id": "77e28976-82a7-4fa9-b6cf-35cba7befd91",
+      "text": "\"Left gold heeled sandal with ankle strap\" by Unidentified is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
+      "creator": "Unidentified",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://nmaahc.si.edu/object/nmaahc_2007.3.707"
+    }
   },
   {
     "id": "inv_leather-slides",
@@ -403,7 +449,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_leather-slides.jpg",
+    "image_credit": {
+      "openverse_id": "e02e8fee-89de-4cc9-9b30-7b079a700ed4",
+      "text": "\"Our luxury handcut leather sandals are available now. Get yours in time for the heat wave. Happy Friday! #Pandora #vivobarefoot @vivobarefoot.goteborg\" by VIVOBAREFOOT is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+      "creator": "VIVOBAREFOOT",
+      "license": "BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source_url": "https://www.flickr.com/photos/54922093@N06/17969879162"
+    }
   },
   {
     "id": "inv_cap-toe-oxfords",
@@ -439,7 +494,15 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_cap-toe-oxfords.jpg",
+    "image_credit": {
+      "openverse_id": "73662e1a-9840-4668-bdbd-3ab18f5775ad",
+      "text": "\"Black oxford shoes wooden background\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://www.rawpixel.com/image/3283589/free-photo-image-shoe-apparel-cc0"
+    }
   },
   {
     "id": "inv_brown-derby-shoes",
@@ -474,7 +537,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_brown-derby-shoes.jpg",
+    "image_credit": {
+      "openverse_id": "709ac0dc-34fd-448a-8e59-684bb70b2000",
+      "text": "\"Detailed view of a brown leather Derby shoe showing open lacing system\" by Shoescoo is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/.",
+      "creator": "Shoescoo",
+      "license": "BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source_url": "https://commons.wikimedia.org/w/index.php?curid=182628378"
+    }
   },
   {
     "id": "inv_waterproof-hiking-boots",
@@ -511,7 +583,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_waterproof-hiking-boots.jpg",
+    "image_credit": {
+      "openverse_id": "aabe54ff-8587-4469-9553-531ac9e26267",
+      "text": "\"Hiking Boots\" by veggiefrog is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "veggiefrog",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/72139255@N00/3428000910"
+    }
   },
   {
     "id": "inv_platform-canvas-sneakers",
@@ -549,7 +630,16 @@
       "10",
       "11",
       "12"
-    ]
+    ],
+    "image_url": "/photos/inv_platform-canvas-sneakers.jpg",
+    "image_credit": {
+      "openverse_id": "f8507596-4a97-4c06-aa32-876f4b7eddcd",
+      "text": "\"Superga COTW LINEA UP & DOWN Sneaker mit Plateau 2790A Canvas wei\u00df (white) (1)\" by spera.de is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "spera.de",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/130010866@N02/26013782906"
+    }
   },
   {
     "id": "inv_suede-ankle-boots",
@@ -584,7 +674,16 @@
       "8",
       "9",
       "10"
-    ]
+    ],
+    "image_url": "/photos/inv_suede-ankle-boots.jpg",
+    "image_credit": {
+      "openverse_id": "318b0df6-4fe3-4078-b950-9027048b07af",
+      "text": "\"Kennel & Schmenger Biker Ankle Boot mit Schnallen 81 29160.446 Veloursleder schlammfarben / taupe (3)\" by spera.de is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "spera.de",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/130010866@N02/16597065001"
+    }
   },
   {
     "id": "inv_leather-crossbody-bag",
@@ -617,7 +716,16 @@
     "received_at": "2026-06-15T00:00:00.000Z",
     "sizes": [
       "One size"
-    ]
+    ],
+    "image_url": "/photos/inv_leather-crossbody-bag.jpg",
+    "image_credit": {
+      "openverse_id": "cf057970-f6ca-4cf2-a7b1-3bf662afb2b9",
+      "text": "\"Leather messenger / backpack\" by esquetee is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+      "creator": "esquetee",
+      "license": "BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source_url": "https://www.flickr.com/photos/93307622@N00/9645968091"
+    }
   },
   {
     "id": "inv_canvas-weekender-tote",
@@ -650,7 +758,16 @@
     "received_at": "2026-04-01T00:00:00.000Z",
     "sizes": [
       "One size"
-    ]
+    ],
+    "image_url": "/photos/inv_canvas-weekender-tote.jpg",
+    "image_credit": {
+      "openverse_id": "44c44127-4bbe-4fd8-aeec-fd1df83223ee",
+      "text": "\"Elephant market bag - Fair Trade Jute\" by New Internationalist is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "New Internationalist",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/31386874@N00/2905884669"
+    }
   },
   {
     "id": "inv_merino-crew-socks-3-pack",
@@ -683,7 +800,16 @@
     "sizes": [
       "S/M",
       "L/XL"
-    ]
+    ],
+    "image_url": "/photos/inv_merino-crew-socks-3-pack.jpg",
+    "image_credit": {
+      "openverse_id": "22c0c8cf-83c7-45ce-893d-e9e552634465",
+      "text": "\"German wool socks\" by AlisonChaiken is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+      "creator": "AlisonChaiken",
+      "license": "BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source_url": "https://www.flickr.com/photos/99725460@N00/16091328605"
+    }
   },
   {
     "id": "inv_leather-belt",
@@ -718,6 +844,61 @@
       "32",
       "34",
       "36"
-    ]
+    ],
+    "image_url": "/photos/inv_leather-belt.jpg",
+    "image_credit": {
+      "openverse_id": "50ae9f58-f109-477e-900a-ce13a5fcfa0d",
+      "text": "\"ferre-brown-black-pebbled-leather-belt-reversible\" by queenbeeofbeverlyhills is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "queenbeeofbeverlyhills",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/62997622@N03/5867407608"
+    }
+  },
+  {
+    "id": "inv_nude-crisscross-stilettos",
+    "source": "inventory",
+    "sku": "RS-008",
+    "title": "Nude Crisscross Stilettos",
+    "role": "shoes",
+    "subtype": "stiletto",
+    "gender": "women",
+    "color": {
+      "name": "nude",
+      "hex": "#d8b49a"
+    },
+    "styles": [
+      "formal",
+      "romantic"
+    ],
+    "formality": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 15000,
+    "cost_cents": 5500,
+    "currency": "USD",
+    "quantity": 5,
+    "received_at": "2026-06-01T00:00:00.000Z",
+    "sizes": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "model_url": "/models/nude-crisscross-stiletto/stiletto.fbx",
+    "model_texture_url": "/models/nude-crisscross-stiletto/texture.jpg",
+    "image_url": "/photos/inv_nude-crisscross-stilettos.jpg",
+    "image_credit": {
+      "text": "\"Michael Kors Keegan Pump Peep-Toe High Heel mit Korkabsatz 40S4KEMP1A Lackleder beige - nude (2) (16284643967)\" by SPERA.de Designerschuhe, Taschen und Accessoires from Deutschland, CC BY 2.0, via Wikimedia Commons",
+      "creator": "SPERA.de Designerschuhe, Taschen und Accessoires from Deutschland",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Michael_Kors_Keegan_Pump_Peep-Toe_High_Heel_mit_Korkabsatz_40S4KEMP1A_Lackleder_beige_-_nude_(2)_(16284643967).jpg",
+      "openverse_id": "commons:39515054"
+    }
   }
 ]

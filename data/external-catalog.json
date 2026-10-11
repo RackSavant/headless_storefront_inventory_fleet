@@ -1,437 +1,5 @@
 [
   {
-    "id": "ext_tee_white",
-    "source": "external",
-    "title": "White Heavyweight Crew Tee",
-    "role": "top",
-    "subtype": "tee",
-    "gender": "unisex",
-    "color": {
-      "name": "white",
-      "hex": "#f4f2ee"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 2800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Heavyweight%20Crew%20Tee"
-  },
-  {
-    "id": "ext_tee_black",
-    "source": "external",
-    "title": "Black Heavyweight Crew Tee",
-    "role": "top",
-    "subtype": "tee",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 3200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Heavyweight%20Crew%20Tee"
-  },
-  {
-    "id": "ext_tee_heather-grey",
-    "source": "external",
-    "title": "Heather Grey Heavyweight Crew Tee",
-    "role": "top",
-    "subtype": "tee",
-    "gender": "unisex",
-    "color": {
-      "name": "heather grey",
-      "hex": "#a7a9ac"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 3600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Heather%20Grey%20Heavyweight%20Crew%20Tee"
-  },
-  {
-    "id": "ext_tee_olive",
-    "source": "external",
-    "title": "Olive Heavyweight Crew Tee",
-    "role": "top",
-    "subtype": "tee",
-    "gender": "unisex",
-    "color": {
-      "name": "olive",
-      "hex": "#5f6b3a"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 4000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Heavyweight%20Crew%20Tee"
-  },
-  {
-    "id": "ext_oxford-shirt_light-blue",
-    "source": "external",
-    "title": "Light Blue Oxford Button-Down Shirt",
-    "role": "top",
-    "subtype": "oxford-shirt",
-    "gender": "men",
-    "color": {
-      "name": "light blue",
-      "hex": "#a9c4e4"
-    },
-    "styles": [
-      "classic",
-      "preppy"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 5800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Light%20Blue%20Oxford%20Button-Down%20Shirt"
-  },
-  {
-    "id": "ext_oxford-shirt_white",
-    "source": "external",
-    "title": "White Oxford Button-Down Shirt",
-    "role": "top",
-    "subtype": "oxford-shirt",
-    "gender": "men",
-    "color": {
-      "name": "white",
-      "hex": "#f4f2ee"
-    },
-    "styles": [
-      "classic",
-      "preppy"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 6200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Oxford%20Button-Down%20Shirt"
-  },
-  {
-    "id": "ext_silk-camisole_champagne",
-    "source": "external",
-    "title": "Champagne Silk Camisole",
-    "role": "top",
-    "subtype": "silk-camisole",
-    "gender": "women",
-    "color": {
-      "name": "champagne",
-      "hex": "#e8d5b5"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 7800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Champagne%20Silk%20Camisole"
-  },
-  {
-    "id": "ext_silk-camisole_black",
-    "source": "external",
-    "title": "Black Silk Camisole",
-    "role": "top",
-    "subtype": "silk-camisole",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 8200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Silk%20Camisole"
-  },
-  {
-    "id": "ext_silk-camisole_emerald",
-    "source": "external",
-    "title": "Emerald Silk Camisole",
-    "role": "top",
-    "subtype": "silk-camisole",
-    "gender": "women",
-    "color": {
-      "name": "emerald",
-      "hex": "#1f6f50"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 8600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Emerald%20Silk%20Camisole"
-  },
-  {
-    "id": "ext_ribbed-knit-top_oat",
-    "source": "external",
-    "title": "Oat Ribbed Mock-Neck Knit",
-    "role": "top",
-    "subtype": "ribbed-knit-top",
-    "gender": "women",
-    "color": {
-      "name": "oat",
-      "hex": "#d9cbb0"
-    },
-    "styles": [
-      "minimal",
-      "classic"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 4800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Oat%20Ribbed%20Mock-Neck%20Knit"
-  },
-  {
-    "id": "ext_ribbed-knit-top_black",
-    "source": "external",
-    "title": "Black Ribbed Mock-Neck Knit",
-    "role": "top",
-    "subtype": "ribbed-knit-top",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "minimal",
-      "classic"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 5200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Ribbed%20Mock-Neck%20Knit"
-  },
-  {
-    "id": "ext_ribbed-knit-top_burgundy",
-    "source": "external",
-    "title": "Burgundy Ribbed Mock-Neck Knit",
-    "role": "top",
-    "subtype": "ribbed-knit-top",
-    "gender": "women",
-    "color": {
-      "name": "burgundy",
-      "hex": "#6d1f2b"
-    },
-    "styles": [
-      "minimal",
-      "classic"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 5600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Burgundy%20Ribbed%20Mock-Neck%20Knit"
-  },
-  {
-    "id": "ext_hoodie_heather-grey",
-    "source": "external",
-    "title": "Heather Grey Fleece Pullover Hoodie",
-    "role": "top",
-    "subtype": "hoodie",
-    "gender": "unisex",
-    "color": {
-      "name": "heather grey",
-      "hex": "#a7a9ac"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 6400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Heather%20Grey%20Fleece%20Pullover%20Hoodie"
-  },
-  {
-    "id": "ext_hoodie_black",
-    "source": "external",
-    "title": "Black Fleece Pullover Hoodie",
-    "role": "top",
-    "subtype": "hoodie",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 6800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Fleece%20Pullover%20Hoodie"
-  },
-  {
-    "id": "ext_hoodie_sage",
-    "source": "external",
-    "title": "Sage Fleece Pullover Hoodie",
-    "role": "top",
-    "subtype": "hoodie",
-    "gender": "unisex",
-    "color": {
-      "name": "sage",
-      "hex": "#9caf88"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 7200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Sage%20Fleece%20Pullover%20Hoodie"
-  },
-  {
-    "id": "ext_linen-shirt_white",
-    "source": "external",
-    "title": "White Relaxed Linen Shirt",
-    "role": "top",
-    "subtype": "linen-shirt",
-    "gender": "unisex",
-    "color": {
-      "name": "white",
-      "hex": "#f4f2ee"
-    },
-    "styles": [
-      "casual",
-      "boho",
-      "minimal"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 6800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Relaxed%20Linen%20Shirt"
-  },
-  {
     "id": "ext_linen-shirt_sand",
     "source": "external",
     "title": "Sand Relaxed Linen Shirt",
@@ -455,1899 +23,16 @@
     "price_cents": 7200,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Sand%20Relaxed%20Linen%20Shirt"
-  },
-  {
-    "id": "ext_linen-shirt_sky-blue",
-    "source": "external",
-    "title": "Sky Blue Relaxed Linen Shirt",
-    "role": "top",
-    "subtype": "linen-shirt",
-    "gender": "unisex",
-    "color": {
-      "name": "sky blue",
-      "hex": "#8db8dc"
-    },
-    "styles": [
-      "casual",
-      "boho",
-      "minimal"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 7600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Sky%20Blue%20Relaxed%20Linen%20Shirt"
-  },
-  {
-    "id": "ext_cashmere-sweater_camel",
-    "source": "external",
-    "title": "Camel Cashmere Crewneck Sweater",
-    "role": "top",
-    "subtype": "cashmere-sweater",
-    "gender": "unisex",
-    "color": {
-      "name": "camel",
-      "hex": "#b98a52"
-    },
-    "styles": [
-      "classic",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 14000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Camel%20Cashmere%20Crewneck%20Sweater"
-  },
-  {
-    "id": "ext_cashmere-sweater_charcoal",
-    "source": "external",
-    "title": "Charcoal Cashmere Crewneck Sweater",
-    "role": "top",
-    "subtype": "cashmere-sweater",
-    "gender": "unisex",
-    "color": {
-      "name": "charcoal",
-      "hex": "#3d3f43"
-    },
-    "styles": [
-      "classic",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 14400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Cashmere%20Crewneck%20Sweater"
-  },
-  {
-    "id": "ext_cashmere-sweater_cream",
-    "source": "external",
-    "title": "Cream Cashmere Crewneck Sweater",
-    "role": "top",
-    "subtype": "cashmere-sweater",
-    "gender": "unisex",
-    "color": {
-      "name": "cream",
-      "hex": "#efe6d2"
-    },
-    "styles": [
-      "classic",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 14800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Cashmere%20Crewneck%20Sweater"
-  },
-  {
-    "id": "ext_peasant-blouse_ivory",
-    "source": "external",
-    "title": "Ivory Embroidered Peasant Blouse",
-    "role": "top",
-    "subtype": "peasant-blouse",
-    "gender": "women",
-    "color": {
-      "name": "ivory",
-      "hex": "#f3ecdc"
-    },
-    "styles": [
-      "boho",
-      "romantic"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 5400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Ivory%20Embroidered%20Peasant%20Blouse"
-  },
-  {
-    "id": "ext_peasant-blouse_terracotta",
-    "source": "external",
-    "title": "Terracotta Embroidered Peasant Blouse",
-    "role": "top",
-    "subtype": "peasant-blouse",
-    "gender": "women",
-    "color": {
-      "name": "terracotta",
-      "hex": "#c4623f"
-    },
-    "styles": [
-      "boho",
-      "romantic"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 5800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Terracotta%20Embroidered%20Peasant%20Blouse"
-  },
-  {
-    "id": "ext_polo_navy",
-    "source": "external",
-    "title": "Navy Knit Polo",
-    "role": "top",
-    "subtype": "polo",
-    "gender": "men",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "preppy",
-      "classic",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 6000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Knit%20Polo"
-  },
-  {
-    "id": "ext_polo_cream",
-    "source": "external",
-    "title": "Cream Knit Polo",
-    "role": "top",
-    "subtype": "polo",
-    "gender": "men",
-    "color": {
-      "name": "cream",
-      "hex": "#efe6d2"
-    },
-    "styles": [
-      "preppy",
-      "classic",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 6400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Knit%20Polo"
-  },
-  {
-    "id": "ext_polo_forest-green",
-    "source": "external",
-    "title": "Forest Green Knit Polo",
-    "role": "top",
-    "subtype": "polo",
-    "gender": "men",
-    "color": {
-      "name": "forest green",
-      "hex": "#2f4f3a"
-    },
-    "styles": [
-      "preppy",
-      "classic",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 6800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Forest%20Green%20Knit%20Polo"
-  },
-  {
-    "id": "ext_tank_black",
-    "source": "external",
-    "title": "Black Performance Tank",
-    "role": "top",
-    "subtype": "tank",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 3200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Performance%20Tank"
-  },
-  {
-    "id": "ext_tank_cobalt",
-    "source": "external",
-    "title": "Cobalt Performance Tank",
-    "role": "top",
-    "subtype": "tank",
-    "gender": "unisex",
-    "color": {
-      "name": "cobalt",
-      "hex": "#1f4fd1"
-    },
-    "styles": [
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 3600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cobalt%20Performance%20Tank"
-  },
-  {
-    "id": "ext_band-tee_washed-black",
-    "source": "external",
-    "title": "Washed Black Vintage Band Tee",
-    "role": "top",
-    "subtype": "band-tee",
-    "gender": "unisex",
-    "color": {
-      "name": "washed black",
-      "hex": "#2b2b2b"
-    },
-    "styles": [
-      "edgy",
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 3800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Washed%20Black%20Vintage%20Band%20Tee"
-  },
-  {
-    "id": "ext_slim-jean_indigo-denim",
-    "source": "external",
-    "title": "Indigo Denim Slim Selvedge Jeans",
-    "role": "bottom",
-    "subtype": "slim-jean",
-    "gender": "unisex",
-    "color": {
-      "name": "indigo denim",
-      "hex": "#2e3f63"
-    },
-    "styles": [
-      "casual",
-      "classic",
-      "edgy"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Indigo%20Denim%20Slim%20Selvedge%20Jeans"
-  },
-  {
-    "id": "ext_slim-jean_black-denim",
-    "source": "external",
-    "title": "Black Denim Slim Selvedge Jeans",
-    "role": "bottom",
-    "subtype": "slim-jean",
-    "gender": "unisex",
-    "color": {
-      "name": "black denim",
-      "hex": "#2a2c30"
-    },
-    "styles": [
-      "casual",
-      "classic",
-      "edgy"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 10200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Denim%20Slim%20Selvedge%20Jeans"
-  },
-  {
-    "id": "ext_straight-jean_light-wash-denim",
-    "source": "external",
-    "title": "Light Wash Denim Straight-Leg Jeans",
-    "role": "bottom",
-    "subtype": "straight-jean",
-    "gender": "women",
-    "color": {
-      "name": "light wash denim",
-      "hex": "#8fb0cf"
-    },
-    "styles": [
-      "casual",
-      "classic"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 8800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Light%20Wash%20Denim%20Straight-Leg%20Jeans"
-  },
-  {
-    "id": "ext_straight-jean_ecru",
-    "source": "external",
-    "title": "Ecru Straight-Leg Jeans",
-    "role": "bottom",
-    "subtype": "straight-jean",
-    "gender": "women",
-    "color": {
-      "name": "ecru",
-      "hex": "#e9dfc7"
-    },
-    "styles": [
-      "casual",
-      "classic"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Ecru%20Straight-Leg%20Jeans"
-  },
-  {
-    "id": "ext_wide-leg-trouser_black",
-    "source": "external",
-    "title": "Black Pleated Wide-Leg Trousers",
-    "role": "bottom",
-    "subtype": "wide-leg-trouser",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "minimal",
-      "classic",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Pleated%20Wide-Leg%20Trousers"
-  },
-  {
-    "id": "ext_wide-leg-trouser_cream",
-    "source": "external",
-    "title": "Cream Pleated Wide-Leg Trousers",
-    "role": "bottom",
-    "subtype": "wide-leg-trouser",
-    "gender": "women",
-    "color": {
-      "name": "cream",
-      "hex": "#efe6d2"
-    },
-    "styles": [
-      "minimal",
-      "classic",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Pleated%20Wide-Leg%20Trousers"
-  },
-  {
-    "id": "ext_wide-leg-trouser_charcoal",
-    "source": "external",
-    "title": "Charcoal Pleated Wide-Leg Trousers",
-    "role": "bottom",
-    "subtype": "wide-leg-trouser",
-    "gender": "women",
-    "color": {
-      "name": "charcoal",
-      "hex": "#3d3f43"
-    },
-    "styles": [
-      "minimal",
-      "classic",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Pleated%20Wide-Leg%20Trousers"
-  },
-  {
-    "id": "ext_chino_khaki",
-    "source": "external",
-    "title": "Khaki Slim Chinos",
-    "role": "bottom",
-    "subtype": "chino",
-    "gender": "men",
-    "color": {
-      "name": "khaki",
-      "hex": "#b9a77c"
-    },
-    "styles": [
-      "preppy",
-      "classic",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 6800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Khaki%20Slim%20Chinos"
-  },
-  {
-    "id": "ext_chino_navy",
-    "source": "external",
-    "title": "Navy Slim Chinos",
-    "role": "bottom",
-    "subtype": "chino",
-    "gender": "men",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "preppy",
-      "classic",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 7200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Slim%20Chinos"
-  },
-  {
-    "id": "ext_chino_olive",
-    "source": "external",
-    "title": "Olive Slim Chinos",
-    "role": "bottom",
-    "subtype": "chino",
-    "gender": "men",
-    "color": {
-      "name": "olive",
-      "hex": "#5f6b3a"
-    },
-    "styles": [
-      "preppy",
-      "classic",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 7600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Slim%20Chinos"
-  },
-  {
-    "id": "ext_tailored-trouser_charcoal",
-    "source": "external",
-    "title": "Charcoal Tailored Wool Trousers",
-    "role": "bottom",
-    "subtype": "tailored-trouser",
-    "gender": "men",
-    "color": {
-      "name": "charcoal",
-      "hex": "#3d3f43"
-    },
-    "styles": [
-      "formal",
-      "classic",
-      "minimal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 15000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Tailored%20Wool%20Trousers"
-  },
-  {
-    "id": "ext_tailored-trouser_navy",
-    "source": "external",
-    "title": "Navy Tailored Wool Trousers",
-    "role": "bottom",
-    "subtype": "tailored-trouser",
-    "gender": "men",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "formal",
-      "classic",
-      "minimal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 15400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Tailored%20Wool%20Trousers"
-  },
-  {
-    "id": "ext_jogger_heather-grey",
-    "source": "external",
-    "title": "Heather Grey Fleece Joggers",
-    "role": "bottom",
-    "subtype": "jogger",
-    "gender": "unisex",
-    "color": {
-      "name": "heather grey",
-      "hex": "#a7a9ac"
-    },
-    "styles": [
-      "athleisure",
-      "streetwear"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 5800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Heather%20Grey%20Fleece%20Joggers"
-  },
-  {
-    "id": "ext_jogger_black",
-    "source": "external",
-    "title": "Black Fleece Joggers",
-    "role": "bottom",
-    "subtype": "jogger",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "athleisure",
-      "streetwear"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 6200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Fleece%20Joggers"
-  },
-  {
-    "id": "ext_cargo-pant_olive",
-    "source": "external",
-    "title": "Olive Utility Cargo Pants",
-    "role": "bottom",
-    "subtype": "cargo-pant",
-    "gender": "unisex",
-    "color": {
-      "name": "olive",
-      "hex": "#5f6b3a"
-    },
-    "styles": [
-      "streetwear",
-      "edgy",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 8400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Utility%20Cargo%20Pants"
-  },
-  {
-    "id": "ext_cargo-pant_black",
-    "source": "external",
-    "title": "Black Utility Cargo Pants",
-    "role": "bottom",
-    "subtype": "cargo-pant",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear",
-      "edgy",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 8800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Utility%20Cargo%20Pants"
-  },
-  {
-    "id": "ext_cargo-pant_stone",
-    "source": "external",
-    "title": "Stone Utility Cargo Pants",
-    "role": "bottom",
-    "subtype": "cargo-pant",
-    "gender": "unisex",
-    "color": {
-      "name": "stone",
-      "hex": "#bdb3a1"
-    },
-    "styles": [
-      "streetwear",
-      "edgy",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 9200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Stone%20Utility%20Cargo%20Pants"
-  },
-  {
-    "id": "ext_midi-skirt_champagne",
-    "source": "external",
-    "title": "Champagne Satin Midi Skirt",
-    "role": "bottom",
-    "subtype": "midi-skirt",
-    "gender": "women",
-    "color": {
-      "name": "champagne",
-      "hex": "#e8d5b5"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 8800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Champagne%20Satin%20Midi%20Skirt"
-  },
-  {
-    "id": "ext_midi-skirt_black",
-    "source": "external",
-    "title": "Black Satin Midi Skirt",
-    "role": "bottom",
-    "subtype": "midi-skirt",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 9200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Satin%20Midi%20Skirt"
-  },
-  {
-    "id": "ext_midi-skirt_sage",
-    "source": "external",
-    "title": "Sage Satin Midi Skirt",
-    "role": "bottom",
-    "subtype": "midi-skirt",
-    "gender": "women",
-    "color": {
-      "name": "sage",
-      "hex": "#9caf88"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 9600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Sage%20Satin%20Midi%20Skirt"
-  },
-  {
-    "id": "ext_mini-skirt_black",
-    "source": "external",
-    "title": "Black Leather Mini Skirt",
-    "role": "bottom",
-    "subtype": "mini-skirt",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "edgy"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 9600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Leather%20Mini%20Skirt"
-  },
-  {
-    "id": "ext_mini-skirt_chocolate",
-    "source": "external",
-    "title": "Chocolate Leather Mini Skirt",
-    "role": "bottom",
-    "subtype": "mini-skirt",
-    "gender": "women",
-    "color": {
-      "name": "chocolate",
-      "hex": "#4a2f23"
-    },
-    "styles": [
-      "edgy"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter",
-      "spring"
-    ],
-    "price_cents": 10000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Chocolate%20Leather%20Mini%20Skirt"
-  },
-  {
-    "id": "ext_linen-shorts_sand",
-    "source": "external",
-    "title": "Sand Linen Drawstring Shorts",
-    "role": "bottom",
-    "subtype": "linen-shorts",
-    "gender": "unisex",
-    "color": {
-      "name": "sand",
-      "hex": "#d6c4a0"
-    },
-    "styles": [
-      "casual",
-      "boho"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer"
-    ],
-    "price_cents": 4500,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Sand%20Linen%20Drawstring%20Shorts"
-  },
-  {
-    "id": "ext_linen-shorts_white",
-    "source": "external",
-    "title": "White Linen Drawstring Shorts",
-    "role": "bottom",
-    "subtype": "linen-shorts",
-    "gender": "unisex",
-    "color": {
-      "name": "white",
-      "hex": "#f4f2ee"
-    },
-    "styles": [
-      "casual",
-      "boho"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer"
-    ],
-    "price_cents": 4900,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Linen%20Drawstring%20Shorts"
-  },
-  {
-    "id": "ext_linen-shorts_navy",
-    "source": "external",
-    "title": "Navy Linen Drawstring Shorts",
-    "role": "bottom",
-    "subtype": "linen-shorts",
-    "gender": "unisex",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "casual",
-      "boho"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer"
-    ],
-    "price_cents": 5300,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Linen%20Drawstring%20Shorts"
-  },
-  {
-    "id": "ext_athletic-short_black",
-    "source": "external",
-    "title": "Black Running Shorts",
-    "role": "bottom",
-    "subtype": "athletic-short",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 4000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Running%20Shorts"
-  },
-  {
-    "id": "ext_athletic-short_navy",
-    "source": "external",
-    "title": "Navy Running Shorts",
-    "role": "bottom",
-    "subtype": "athletic-short",
-    "gender": "unisex",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 4400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Running%20Shorts"
-  },
-  {
-    "id": "ext_legging_black",
-    "source": "external",
-    "title": "Black High-Rise Leggings",
-    "role": "bottom",
-    "subtype": "legging",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 6800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20High-Rise%20Leggings"
-  },
-  {
-    "id": "ext_legging_chocolate",
-    "source": "external",
-    "title": "Chocolate High-Rise Leggings",
-    "role": "bottom",
-    "subtype": "legging",
-    "gender": "women",
-    "color": {
-      "name": "chocolate",
-      "hex": "#4a2f23"
-    },
-    "styles": [
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 7200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Chocolate%20High-Rise%20Leggings"
-  },
-  {
-    "id": "ext_slip-dress_black",
-    "source": "external",
-    "title": "Black Bias-Cut Slip Dress",
-    "role": "dress",
-    "subtype": "slip-dress",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 12800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Bias-Cut%20Slip%20Dress"
-  },
-  {
-    "id": "ext_slip-dress_champagne",
-    "source": "external",
-    "title": "Champagne Bias-Cut Slip Dress",
-    "role": "dress",
-    "subtype": "slip-dress",
-    "gender": "women",
-    "color": {
-      "name": "champagne",
-      "hex": "#e8d5b5"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 13200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Champagne%20Bias-Cut%20Slip%20Dress"
-  },
-  {
-    "id": "ext_slip-dress_emerald",
-    "source": "external",
-    "title": "Emerald Bias-Cut Slip Dress",
-    "role": "dress",
-    "subtype": "slip-dress",
-    "gender": "women",
-    "color": {
-      "name": "emerald",
-      "hex": "#1f6f50"
-    },
-    "styles": [
-      "romantic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 13600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Emerald%20Bias-Cut%20Slip%20Dress"
-  },
-  {
-    "id": "ext_cocktail-dress_black",
-    "source": "external",
-    "title": "Black Structured Cocktail Dress",
-    "role": "dress",
-    "subtype": "cocktail-dress",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "formal",
-      "classic"
-    ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 19000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Structured%20Cocktail%20Dress"
-  },
-  {
-    "id": "ext_cocktail-dress_crimson",
-    "source": "external",
-    "title": "Crimson Structured Cocktail Dress",
-    "role": "dress",
-    "subtype": "cocktail-dress",
-    "gender": "women",
-    "color": {
-      "name": "crimson",
-      "hex": "#b3202a"
-    },
-    "styles": [
-      "formal",
-      "classic"
-    ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 19400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Crimson%20Structured%20Cocktail%20Dress"
-  },
-  {
-    "id": "ext_cocktail-dress_navy",
-    "source": "external",
-    "title": "Navy Structured Cocktail Dress",
-    "role": "dress",
-    "subtype": "cocktail-dress",
-    "gender": "women",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "formal",
-      "classic"
-    ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 19800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Structured%20Cocktail%20Dress"
-  },
-  {
-    "id": "ext_sundress_buttercup-yellow",
-    "source": "external",
-    "title": "Buttercup Yellow Floral Cotton Sundress",
-    "role": "dress",
-    "subtype": "sundress",
-    "gender": "women",
-    "color": {
-      "name": "buttercup yellow",
-      "hex": "#e8c547"
-    },
-    "styles": [
-      "boho",
-      "romantic",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer",
-      "spring"
-    ],
-    "price_cents": 7800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Buttercup%20Yellow%20Floral%20Cotton%20Sundress"
-  },
-  {
-    "id": "ext_sundress_blush-pink",
-    "source": "external",
-    "title": "Blush Pink Floral Cotton Sundress",
-    "role": "dress",
-    "subtype": "sundress",
-    "gender": "women",
-    "color": {
-      "name": "blush pink",
-      "hex": "#e8b4b8"
-    },
-    "styles": [
-      "boho",
-      "romantic",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer",
-      "spring"
-    ],
-    "price_cents": 8200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Blush%20Pink%20Floral%20Cotton%20Sundress"
-  },
-  {
-    "id": "ext_shirt-dress_white",
-    "source": "external",
-    "title": "White Poplin Shirt Dress",
-    "role": "dress",
-    "subtype": "shirt-dress",
-    "gender": "women",
-    "color": {
-      "name": "white",
-      "hex": "#f4f2ee"
-    },
-    "styles": [
-      "classic",
-      "preppy",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 9800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Poplin%20Shirt%20Dress"
-  },
-  {
-    "id": "ext_shirt-dress_light-blue",
-    "source": "external",
-    "title": "Light Blue Poplin Shirt Dress",
-    "role": "dress",
-    "subtype": "shirt-dress",
-    "gender": "women",
-    "color": {
-      "name": "light blue",
-      "hex": "#a9c4e4"
-    },
-    "styles": [
-      "classic",
-      "preppy",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 10200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Light%20Blue%20Poplin%20Shirt%20Dress"
-  },
-  {
-    "id": "ext_shirt-dress_khaki",
-    "source": "external",
-    "title": "Khaki Poplin Shirt Dress",
-    "role": "dress",
-    "subtype": "shirt-dress",
-    "gender": "women",
-    "color": {
-      "name": "khaki",
-      "hex": "#b9a77c"
-    },
-    "styles": [
-      "classic",
-      "preppy",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 10600,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Khaki%20Poplin%20Shirt%20Dress"
-  },
-  {
-    "id": "ext_knit-midi-dress_oat",
-    "source": "external",
-    "title": "Oat Ribbed Knit Midi Dress",
-    "role": "dress",
-    "subtype": "knit-midi-dress",
-    "gender": "women",
-    "color": {
-      "name": "oat",
-      "hex": "#d9cbb0"
-    },
-    "styles": [
-      "minimal",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Oat%20Ribbed%20Knit%20Midi%20Dress"
-  },
-  {
-    "id": "ext_knit-midi-dress_charcoal",
-    "source": "external",
-    "title": "Charcoal Ribbed Knit Midi Dress",
-    "role": "dress",
-    "subtype": "knit-midi-dress",
-    "gender": "women",
-    "color": {
-      "name": "charcoal",
-      "hex": "#3d3f43"
-    },
-    "styles": [
-      "minimal",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Ribbed%20Knit%20Midi%20Dress"
-  },
-  {
-    "id": "ext_knit-midi-dress_rust",
-    "source": "external",
-    "title": "Rust Ribbed Knit Midi Dress",
-    "role": "dress",
-    "subtype": "knit-midi-dress",
-    "gender": "women",
-    "color": {
-      "name": "rust",
-      "hex": "#a5492b"
-    },
-    "styles": [
-      "minimal",
-      "casual"
-    ],
-    "formality": 3,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Rust%20Ribbed%20Knit%20Midi%20Dress"
-  },
-  {
-    "id": "ext_maxi-dress_terracotta",
-    "source": "external",
-    "title": "Terracotta Tiered Maxi Dress",
-    "role": "dress",
-    "subtype": "maxi-dress",
-    "gender": "women",
-    "color": {
-      "name": "terracotta",
-      "hex": "#c4623f"
-    },
-    "styles": [
-      "boho"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer"
-    ],
-    "price_cents": 11800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Terracotta%20Tiered%20Maxi%20Dress"
-  },
-  {
-    "id": "ext_maxi-dress_ivory",
-    "source": "external",
-    "title": "Ivory Tiered Maxi Dress",
-    "role": "dress",
-    "subtype": "maxi-dress",
-    "gender": "women",
-    "color": {
-      "name": "ivory",
-      "hex": "#f3ecdc"
-    },
-    "styles": [
-      "boho"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer"
-    ],
-    "price_cents": 12200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Ivory%20Tiered%20Maxi%20Dress"
-  },
-  {
-    "id": "ext_denim-jacket_indigo-denim",
-    "source": "external",
-    "title": "Indigo Denim Trucker Denim Jacket",
-    "role": "outerwear",
-    "subtype": "denim-jacket",
-    "gender": "unisex",
-    "color": {
-      "name": "indigo denim",
-      "hex": "#2e3f63"
-    },
-    "styles": [
-      "casual",
-      "streetwear",
-      "classic"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 9800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Indigo%20Denim%20Trucker%20Denim%20Jacket"
-  },
-  {
-    "id": "ext_denim-jacket_black-denim",
-    "source": "external",
-    "title": "Black Denim Trucker Denim Jacket",
-    "role": "outerwear",
-    "subtype": "denim-jacket",
-    "gender": "unisex",
-    "color": {
-      "name": "black denim",
-      "hex": "#2a2c30"
-    },
-    "styles": [
-      "casual",
-      "streetwear",
-      "classic"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 10200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Denim%20Trucker%20Denim%20Jacket"
-  },
-  {
-    "id": "ext_leather-jacket_black",
-    "source": "external",
-    "title": "Black Leather Moto Jacket",
-    "role": "outerwear",
-    "subtype": "leather-jacket",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "edgy",
-      "streetwear"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 32000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Leather%20Moto%20Jacket"
-  },
-  {
-    "id": "ext_leather-jacket_cognac",
-    "source": "external",
-    "title": "Cognac Leather Moto Jacket",
-    "role": "outerwear",
-    "subtype": "leather-jacket",
-    "gender": "unisex",
-    "color": {
-      "name": "cognac",
-      "hex": "#8a4b26"
-    },
-    "styles": [
-      "edgy",
-      "streetwear"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 32400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cognac%20Leather%20Moto%20Jacket"
-  },
-  {
-    "id": "ext_trench-coat_stone",
-    "source": "external",
-    "title": "Stone Classic Trench Coat",
-    "role": "outerwear",
-    "subtype": "trench-coat",
-    "gender": "unisex",
-    "color": {
-      "name": "stone",
-      "hex": "#bdb3a1"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "preppy"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 24000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Stone%20Classic%20Trench%20Coat"
-  },
-  {
-    "id": "ext_trench-coat_navy",
-    "source": "external",
-    "title": "Navy Classic Trench Coat",
-    "role": "outerwear",
-    "subtype": "trench-coat",
-    "gender": "unisex",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "preppy"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 24400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Classic%20Trench%20Coat"
-  },
-  {
-    "id": "ext_wool-coat_camel",
-    "source": "external",
-    "title": "Camel Wool Overcoat",
-    "role": "outerwear",
-    "subtype": "wool-coat",
-    "gender": "unisex",
-    "color": {
-      "name": "camel",
-      "hex": "#b98a52"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 28000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Camel%20Wool%20Overcoat"
-  },
-  {
-    "id": "ext_wool-coat_charcoal",
-    "source": "external",
-    "title": "Charcoal Wool Overcoat",
-    "role": "outerwear",
-    "subtype": "wool-coat",
-    "gender": "unisex",
-    "color": {
-      "name": "charcoal",
-      "hex": "#3d3f43"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 28400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Wool%20Overcoat"
-  },
-  {
-    "id": "ext_wool-coat_black",
-    "source": "external",
-    "title": "Black Wool Overcoat",
-    "role": "outerwear",
-    "subtype": "wool-coat",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "formal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 28800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Wool%20Overcoat"
-  },
-  {
-    "id": "ext_tailored-blazer_navy",
-    "source": "external",
-    "title": "Navy Tailored Blazer",
-    "role": "outerwear",
-    "subtype": "tailored-blazer",
-    "gender": "unisex",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "classic",
-      "formal",
-      "minimal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 19000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Tailored%20Blazer"
-  },
-  {
-    "id": "ext_tailored-blazer_black",
-    "source": "external",
-    "title": "Black Tailored Blazer",
-    "role": "outerwear",
-    "subtype": "tailored-blazer",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "classic",
-      "formal",
-      "minimal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 19400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Tailored%20Blazer"
-  },
-  {
-    "id": "ext_tailored-blazer_oat",
-    "source": "external",
-    "title": "Oat Tailored Blazer",
-    "role": "outerwear",
-    "subtype": "tailored-blazer",
-    "gender": "unisex",
-    "color": {
-      "name": "oat",
-      "hex": "#d9cbb0"
-    },
-    "styles": [
-      "classic",
-      "formal",
-      "minimal"
-    ],
-    "formality": 4,
-    "seasons": [
-      "spring",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 19800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Oat%20Tailored%20Blazer"
-  },
-  {
-    "id": "ext_puffer_black",
-    "source": "external",
-    "title": "Black Puffer Jacket",
-    "role": "outerwear",
-    "subtype": "puffer",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "winter"
-    ],
-    "price_cents": 18000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Puffer%20Jacket"
-  },
-  {
-    "id": "ext_puffer_olive",
-    "source": "external",
-    "title": "Olive Puffer Jacket",
-    "role": "outerwear",
-    "subtype": "puffer",
-    "gender": "unisex",
-    "color": {
-      "name": "olive",
-      "hex": "#5f6b3a"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "winter"
-    ],
-    "price_cents": 18400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Puffer%20Jacket"
-  },
-  {
-    "id": "ext_fleece_cream",
-    "source": "external",
-    "title": "Cream Sherpa Fleece Jacket",
-    "role": "outerwear",
-    "subtype": "fleece",
-    "gender": "unisex",
-    "color": {
-      "name": "cream",
-      "hex": "#efe6d2"
-    },
-    "styles": [
-      "casual",
-      "athleisure"
-    ],
-    "formality": 2,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Sherpa%20Fleece%20Jacket"
-  },
-  {
-    "id": "ext_fleece_chocolate",
-    "source": "external",
-    "title": "Chocolate Sherpa Fleece Jacket",
-    "role": "outerwear",
-    "subtype": "fleece",
-    "gender": "unisex",
-    "color": {
-      "name": "chocolate",
-      "hex": "#4a2f23"
-    },
-    "styles": [
-      "casual",
-      "athleisure"
-    ],
-    "formality": 2,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 11400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Chocolate%20Sherpa%20Fleece%20Jacket"
+    "url": "https://www.google.com/search?tbm=shop&q=Sand%20Relaxed%20Linen%20Shirt",
+    "image_url": "/photos/ext_linen-shirt_sand.jpg",
+    "image_credit": {
+      "openverse_id": "e7ba5e6a-1063-40ab-90c4-88776aed681a",
+      "text": "\"Linen Shirt in Oyster\" by kellyhogaboom is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+      "creator": "kellyhogaboom",
+      "license": "BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source_url": "https://www.flickr.com/photos/11597293@N00/48145980407"
+    }
   },
   {
     "id": "ext_cardigan_cream",
@@ -2373,462 +58,16 @@
     "price_cents": 8800,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Chunky%20Cardigan"
-  },
-  {
-    "id": "ext_cardigan_mustard",
-    "source": "external",
-    "title": "Mustard Chunky Cardigan",
-    "role": "outerwear",
-    "subtype": "cardigan",
-    "gender": "women",
-    "color": {
-      "name": "mustard",
-      "hex": "#c9a227"
-    },
-    "styles": [
-      "romantic",
-      "boho",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Mustard%20Chunky%20Cardigan"
-  },
-  {
-    "id": "ext_bomber_olive",
-    "source": "external",
-    "title": "Olive Satin Bomber Jacket",
-    "role": "outerwear",
-    "subtype": "bomber",
-    "gender": "unisex",
-    "color": {
-      "name": "olive",
-      "hex": "#5f6b3a"
-    },
-    "styles": [
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 12000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Satin%20Bomber%20Jacket"
-  },
-  {
-    "id": "ext_bomber_black",
-    "source": "external",
-    "title": "Black Satin Bomber Jacket",
-    "role": "outerwear",
-    "subtype": "bomber",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear"
-    ],
-    "formality": 2,
-    "seasons": [
-      "spring",
-      "fall"
-    ],
-    "price_cents": 12400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Satin%20Bomber%20Jacket"
-  },
-  {
-    "id": "ext_tote_cognac",
-    "source": "external",
-    "title": "Cognac Leather Tote",
-    "role": "bag",
-    "subtype": "tote",
-    "gender": "women",
-    "color": {
-      "name": "cognac",
-      "hex": "#8a4b26"
-    },
-    "styles": [
-      "classic",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 18000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cognac%20Leather%20Tote"
-  },
-  {
-    "id": "ext_tote_black",
-    "source": "external",
-    "title": "Black Leather Tote",
-    "role": "bag",
-    "subtype": "tote",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "classic",
-      "minimal"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 18400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Leather%20Tote"
-  },
-  {
-    "id": "ext_crossbody_black",
-    "source": "external",
-    "title": "Black Mini Crossbody",
-    "role": "bag",
-    "subtype": "crossbody",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "romantic"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 12000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Mini%20Crossbody"
-  },
-  {
-    "id": "ext_crossbody_cream",
-    "source": "external",
-    "title": "Cream Mini Crossbody",
-    "role": "bag",
-    "subtype": "crossbody",
-    "gender": "women",
-    "color": {
-      "name": "cream",
-      "hex": "#efe6d2"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "romantic"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 12400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Mini%20Crossbody"
-  },
-  {
-    "id": "ext_crossbody_crimson",
-    "source": "external",
-    "title": "Crimson Mini Crossbody",
-    "role": "bag",
-    "subtype": "crossbody",
-    "gender": "women",
-    "color": {
-      "name": "crimson",
-      "hex": "#b3202a"
-    },
-    "styles": [
-      "casual",
-      "minimal",
-      "romantic"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 12800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Crimson%20Mini%20Crossbody"
-  },
-  {
-    "id": "ext_clutch_black",
-    "source": "external",
-    "title": "Black Satin Clutch",
-    "role": "bag",
-    "subtype": "clutch",
-    "gender": "women",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "formal",
-      "romantic"
-    ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Satin%20Clutch"
-  },
-  {
-    "id": "ext_clutch_champagne",
-    "source": "external",
-    "title": "Champagne Satin Clutch",
-    "role": "bag",
-    "subtype": "clutch",
-    "gender": "women",
-    "color": {
-      "name": "champagne",
-      "hex": "#e8d5b5"
-    },
-    "styles": [
-      "formal",
-      "romantic"
-    ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Champagne%20Satin%20Clutch"
-  },
-  {
-    "id": "ext_clutch_silver",
-    "source": "external",
-    "title": "Silver Satin Clutch",
-    "role": "bag",
-    "subtype": "clutch",
-    "gender": "women",
-    "color": {
-      "name": "silver",
-      "hex": "#c0c4c8"
-    },
-    "styles": [
-      "formal",
-      "romantic"
-    ],
-    "formality": 5,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Silver%20Satin%20Clutch"
-  },
-  {
-    "id": "ext_backpack_black",
-    "source": "external",
-    "title": "Black Nylon Backpack",
-    "role": "bag",
-    "subtype": "backpack",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9500,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Nylon%20Backpack"
-  },
-  {
-    "id": "ext_backpack_olive",
-    "source": "external",
-    "title": "Olive Nylon Backpack",
-    "role": "bag",
-    "subtype": "backpack",
-    "gender": "unisex",
-    "color": {
-      "name": "olive",
-      "hex": "#5f6b3a"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 9900,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Nylon%20Backpack"
-  },
-  {
-    "id": "ext_belt-bag_black",
-    "source": "external",
-    "title": "Black Belt Bag",
-    "role": "bag",
-    "subtype": "belt-bag",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 5500,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Belt%20Bag"
-  },
-  {
-    "id": "ext_belt-bag_sage",
-    "source": "external",
-    "title": "Sage Belt Bag",
-    "role": "bag",
-    "subtype": "belt-bag",
-    "gender": "unisex",
-    "color": {
-      "name": "sage",
-      "hex": "#9caf88"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall",
-      "winter"
-    ],
-    "price_cents": 5900,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Sage%20Belt%20Bag"
-  },
-  {
-    "id": "ext_scarf_camel",
-    "source": "external",
-    "title": "Camel Wool Scarf",
-    "role": "accessory",
-    "subtype": "scarf",
-    "gender": "unisex",
-    "color": {
-      "name": "camel",
-      "hex": "#b98a52"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 6500,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Camel%20Wool%20Scarf"
-  },
-  {
-    "id": "ext_scarf_heather-grey",
-    "source": "external",
-    "title": "Heather Grey Wool Scarf",
-    "role": "accessory",
-    "subtype": "scarf",
-    "gender": "unisex",
-    "color": {
-      "name": "heather grey",
-      "hex": "#a7a9ac"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "casual"
-    ],
-    "formality": 2,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 6900,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Heather%20Grey%20Wool%20Scarf"
+    "url": "https://www.google.com/search?tbm=shop&q=Cream%20Chunky%20Cardigan",
+    "image_url": "/photos/ext_cardigan_cream.jpg",
+    "image_credit": {
+      "openverse_id": "ffb6b618-1387-4913-be0d-db2e0e3a7807",
+      "text": "\"Best friends cardigan\" by AnnaKika is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "AnnaKika",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/23193408@N00/2103254486"
+    }
   },
   {
     "id": "ext_scarf_burgundy",
@@ -2854,57 +93,16 @@
     "price_cents": 7300,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Burgundy%20Wool%20Scarf"
-  },
-  {
-    "id": "ext_beanie_black",
-    "source": "external",
-    "title": "Black Rib Beanie",
-    "role": "accessory",
-    "subtype": "beanie",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "streetwear",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 2800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Rib%20Beanie"
-  },
-  {
-    "id": "ext_beanie_oat",
-    "source": "external",
-    "title": "Oat Rib Beanie",
-    "role": "accessory",
-    "subtype": "beanie",
-    "gender": "unisex",
-    "color": {
-      "name": "oat",
-      "hex": "#d9cbb0"
-    },
-    "styles": [
-      "streetwear",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "fall",
-      "winter"
-    ],
-    "price_cents": 3200,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Oat%20Rib%20Beanie"
+    "url": "https://www.google.com/search?tbm=shop&q=Burgundy%20Wool%20Scarf",
+    "image_url": "/photos/ext_scarf_burgundy.jpg",
+    "image_credit": {
+      "openverse_id": "8749e55c-1545-4c87-afe3-9c9707ee14d8",
+      "text": "\"Jamberry scarf\" by ingermaaike2 is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "ingermaaike2",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/17293359@N07/2192874102"
+    }
   },
   {
     "id": "ext_beanie_forest-green",
@@ -2929,113 +127,16 @@
     "price_cents": 3600,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Forest%20Green%20Rib%20Beanie"
-  },
-  {
-    "id": "ext_cap_navy",
-    "source": "external",
-    "title": "Navy Cotton Cap",
-    "role": "accessory",
-    "subtype": "cap",
-    "gender": "unisex",
-    "color": {
-      "name": "navy",
-      "hex": "#1f2a44"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 3000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Cotton%20Cap"
-  },
-  {
-    "id": "ext_cap_white",
-    "source": "external",
-    "title": "White Cotton Cap",
-    "role": "accessory",
-    "subtype": "cap",
-    "gender": "unisex",
-    "color": {
-      "name": "white",
-      "hex": "#f4f2ee"
-    },
-    "styles": [
-      "streetwear",
-      "athleisure",
-      "casual"
-    ],
-    "formality": 1,
-    "seasons": [
-      "spring",
-      "summer",
-      "fall"
-    ],
-    "price_cents": 3400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Cotton%20Cap"
-  },
-  {
-    "id": "ext_sunglasses_tortoise",
-    "source": "external",
-    "title": "Tortoise Acetate Sunglasses",
-    "role": "accessory",
-    "subtype": "sunglasses",
-    "gender": "unisex",
-    "color": {
-      "name": "tortoise",
-      "hex": "#5a3a22"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "edgy"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 12000,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Tortoise%20Acetate%20Sunglasses"
-  },
-  {
-    "id": "ext_sunglasses_black",
-    "source": "external",
-    "title": "Black Acetate Sunglasses",
-    "role": "accessory",
-    "subtype": "sunglasses",
-    "gender": "unisex",
-    "color": {
-      "name": "black",
-      "hex": "#1c1c1e"
-    },
-    "styles": [
-      "classic",
-      "minimal",
-      "edgy"
-    ],
-    "formality": 3,
-    "seasons": [
-      "spring",
-      "summer"
-    ],
-    "price_cents": 12400,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Acetate%20Sunglasses"
+    "url": "https://www.google.com/search?tbm=shop&q=Forest%20Green%20Rib%20Beanie",
+    "image_url": "/photos/ext_beanie_forest-green.jpg",
+    "image_credit": {
+      "openverse_id": "91c110a9-d5a8-49cd-b780-5ccdd0d370b1",
+      "text": "\"Wool Wasabi Green Slouch Beanie Hat\" by smittenkittenorig is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "smittenkittenorig",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/83202873@N00/6014312491"
+    }
   },
   {
     "id": "ext_necklace_gold",
@@ -3063,7 +164,16 @@
     "price_cents": 8500,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Gold%20Chain%20Necklace"
+    "url": "https://www.google.com/search?tbm=shop&q=Gold%20Chain%20Necklace",
+    "image_url": "/photos/ext_necklace_gold.jpg",
+    "image_credit": {
+      "openverse_id": "492d8394-a10c-4072-aa8c-62b528aa7745",
+      "text": "\"Silver and gold necklace\" by James E. Petts is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
+      "creator": "James E. Petts",
+      "license": "BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source_url": "http://www.flickr.com/photos/14730981@N08/18150785653"
+    }
   },
   {
     "id": "ext_watch_silver",
@@ -3090,30 +200,16 @@
     "price_cents": 21000,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Silver%20Steel%20Watch"
-  },
-  {
-    "id": "ext_sun-hat_straw",
-    "source": "external",
-    "title": "Straw Sun Hat",
-    "role": "accessory",
-    "subtype": "sun-hat",
-    "gender": "women",
-    "color": {
-      "name": "straw",
-      "hex": "#d9c08a"
-    },
-    "styles": [
-      "boho"
-    ],
-    "formality": 2,
-    "seasons": [
-      "summer"
-    ],
-    "price_cents": 4800,
-    "currency": "USD",
-    "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Straw%20Sun%20Hat"
+    "url": "https://www.google.com/search?tbm=shop&q=Silver%20Steel%20Watch",
+    "image_url": "/photos/ext_watch_silver.jpg",
+    "image_credit": {
+      "openverse_id": "1794de1b-8912-4b09-b6e5-b0e778c2d4bf",
+      "text": "\"russian wristwatch\" by Kurt:S is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "Kurt:S",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/28847016@N08/21838850705"
+    }
   },
   {
     "id": "ext_white-sneaker_white",
@@ -3141,7 +237,16 @@
     "price_cents": 11000,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=White%20Leather%20Low-Top%20Sneaker"
+    "url": "https://www.google.com/search?tbm=shop&q=White%20Leather%20Low-Top%20Sneaker",
+    "image_url": "/photos/ext_white-sneaker_white.jpg",
+    "image_credit": {
+      "openverse_id": "9ee9a035-332d-4831-a822-0c0d16318a87",
+      "text": "\"White Sneakers - Coach\" by ajay_suresh is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "ajay_suresh",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/83136374@N05/49688016318"
+    }
   },
   {
     "id": "ext_loafer_black",
@@ -3168,7 +273,16 @@
     "price_cents": 16000,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Black%20Classic%20Loafer"
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Classic%20Loafer",
+    "image_url": "/photos/ext_loafer_black.jpg",
+    "image_credit": {
+      "openverse_id": "cf63bbc0-8f56-4dc8-82d1-7853bf4a0a99",
+      "text": "\"Tassel Loafers by Barker Black\" by Menswear Market is licensed under CC BY 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/2.0/.",
+      "creator": "Menswear Market",
+      "license": "BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "source_url": "https://www.flickr.com/photos/85546319@N04/11091794534"
+    }
   },
   {
     "id": "ext_strappy-sandal_champagne",
@@ -3193,7 +307,16 @@
     "price_cents": 11000,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Champagne%20Strappy%20Heeled%20Sandal"
+    "url": "https://www.google.com/search?tbm=shop&q=Champagne%20Strappy%20Heeled%20Sandal",
+    "image_url": "/photos/ext_strappy-sandal_champagne.jpg",
+    "image_credit": {
+      "openverse_id": "77e28976-82a7-4fa9-b6cf-35cba7befd91",
+      "text": "\"Left gold heeled sandal with ankle strap\" by Unidentified is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.",
+      "creator": "Unidentified",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source_url": "https://nmaahc.si.edu/object/nmaahc_2007.3.707"
+    }
   },
   {
     "id": "ext_chelsea-boot_chocolate",
@@ -3218,6 +341,2330 @@
     "price_cents": 19000,
     "currency": "USD",
     "retailer": "Partner catalog (sample)",
-    "url": "https://www.google.com/search?tbm=shop&q=Chocolate%20Suede%20Chelsea%20Boot"
+    "url": "https://www.google.com/search?tbm=shop&q=Chocolate%20Suede%20Chelsea%20Boot",
+    "image_url": "/photos/inv_leather-chelsea-boots.jpg",
+    "image_credit": {
+      "openverse_id": "36a9990c-9961-4bdf-abc2-ae9abe8b0002",
+      "text": "\"Chelsea boot, brown suede\" by Reinthal is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/.",
+      "creator": "Reinthal",
+      "license": "BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source_url": "https://commons.wikimedia.org/w/index.php?curid=52591386"
+    }
+  },
+  {
+    "id": "ext_tee_heather-grey",
+    "source": "external",
+    "title": "Heather Grey Heavyweight Crew Tee",
+    "role": "top",
+    "subtype": "tee",
+    "gender": "unisex",
+    "color": {
+      "name": "heather grey",
+      "hex": "#8e8f91"
+    },
+    "styles": [
+      "casual",
+      "minimal",
+      "streetwear"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 2800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Heather%20Grey%20Heavyweight%20Crew%20Tee",
+    "image_url": "/photos/ext_tee_heather-grey.jpg",
+    "image_credit": {
+      "text": "\"T-shirt mocup gray\" by EdaBojci, CC0, via Wikimedia Commons",
+      "creator": "EdaBojci",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:T-shirt_mocup_gray.jpg",
+      "openverse_id": "commons:147521780"
+    }
+  },
+  {
+    "id": "ext_tee_black",
+    "source": "external",
+    "title": "Black Heavyweight Crew Tee",
+    "role": "top",
+    "subtype": "tee",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "casual",
+      "minimal",
+      "streetwear"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 3200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Heavyweight%20Crew%20Tee",
+    "image_url": "/photos/ext_tee_black.jpg",
+    "image_credit": {
+      "text": "\"T-shirt\" by Relativity, CC0, via Wikimedia Commons",
+      "creator": "Relativity",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:T-shirt.png",
+      "openverse_id": "commons:163405641"
+    }
+  },
+  {
+    "id": "ext_oxford-shirt_white",
+    "source": "external",
+    "title": "White Oxford Button-Down Shirt",
+    "role": "top",
+    "subtype": "oxford-shirt",
+    "gender": "men",
+    "color": {
+      "name": "white",
+      "hex": "#f4f2ee"
+    },
+    "styles": [
+      "classic",
+      "preppy"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 5800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=White%20Oxford%20Button-Down%20Shirt",
+    "image_url": "/photos/ext_oxford-shirt_white.jpg",
+    "image_credit": {
+      "text": "\"Camisade pu\u00f1o doble\" by Incal, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Incal",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Camisade_pu%C3%B1o_doble.jpg",
+      "openverse_id": "commons:15502264"
+    }
+  },
+  {
+    "id": "ext_oxford-shirt_navy",
+    "source": "external",
+    "title": "Navy Oxford Button-Down Shirt",
+    "role": "top",
+    "subtype": "oxford-shirt",
+    "gender": "men",
+    "color": {
+      "name": "navy",
+      "hex": "#25365f"
+    },
+    "styles": [
+      "classic",
+      "preppy"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 6200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Oxford%20Button-Down%20Shirt",
+    "image_url": "/photos/ext_oxford-shirt_navy.jpg",
+    "image_credit": {
+      "text": "\"Banana Republic Button-Down Shirt 1 2019-03-21\" by FASTILY, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "FASTILY",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Banana_Republic_Button-Down_Shirt_1_2019-03-21.jpg",
+      "openverse_id": "commons:77495720"
+    }
+  },
+  {
+    "id": "ext_silk-camisole_navy",
+    "source": "external",
+    "title": "Navy Silk Camisole",
+    "role": "top",
+    "subtype": "silk-camisole",
+    "gender": "women",
+    "color": {
+      "name": "navy",
+      "hex": "#28305f"
+    },
+    "styles": [
+      "romantic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 7800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Silk%20Camisole",
+    "image_url": "/photos/ext_silk-camisole_navy.jpg",
+    "image_credit": {
+      "text": "\"Camisole (AM 2000.93.71-1)\" by Bendon, CC BY 4.0, via Wikimedia Commons",
+      "creator": "Bendon",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Camisole_(AM_2000.93.71-1).jpg",
+      "openverse_id": "commons:65202016"
+    }
+  },
+  {
+    "id": "ext_silk-camisole_emerald",
+    "source": "external",
+    "title": "Emerald Silk Camisole",
+    "role": "top",
+    "subtype": "silk-camisole",
+    "gender": "women",
+    "color": {
+      "name": "emerald",
+      "hex": "#1f5f5a"
+    },
+    "styles": [
+      "romantic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 8200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Emerald%20Silk%20Camisole",
+    "image_url": "/photos/ext_silk-camisole_emerald.jpg",
+    "image_credit": {
+      "text": "\"Camisole (AM 2000.93.87-2)\" by Bendon, CC BY 4.0, via Wikimedia Commons",
+      "creator": "Bendon",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Camisole_(AM_2000.93.87-2).jpg",
+      "openverse_id": "commons:65202455"
+    }
+  },
+  {
+    "id": "ext_silk-camisole_ivory",
+    "source": "external",
+    "title": "Ivory Silk Camisole",
+    "role": "top",
+    "subtype": "silk-camisole",
+    "gender": "women",
+    "color": {
+      "name": "ivory",
+      "hex": "#ede8dc"
+    },
+    "styles": [
+      "romantic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 8600,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Ivory%20Silk%20Camisole",
+    "image_url": "/photos/ext_silk-camisole_ivory.jpg",
+    "image_credit": {
+      "text": "\"Camisole (AM 2000.93.96-1)\" by Bendon, CC BY 4.0, via Wikimedia Commons",
+      "creator": "Bendon",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Camisole_(AM_2000.93.96-1).jpg",
+      "openverse_id": "commons:65201103"
+    }
+  },
+  {
+    "id": "ext_ribbed-knit-top_forest-green",
+    "source": "external",
+    "title": "Forest Green Ribbed Mock-Neck Knit",
+    "role": "top",
+    "subtype": "ribbed-knit-top",
+    "gender": "women",
+    "color": {
+      "name": "forest green",
+      "hex": "#24493a"
+    },
+    "styles": [
+      "minimal",
+      "classic"
+    ],
+    "formality": 3,
+    "seasons": [
+      "fall",
+      "winter",
+      "spring"
+    ],
+    "price_cents": 4800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Forest%20Green%20Ribbed%20Mock-Neck%20Knit",
+    "image_url": "/photos/ext_ribbed-knit-top_forest-green.jpg",
+    "image_credit": {
+      "text": "\"Kindertrui, koltrui gebreid van donkergroene wol in reli\u00ebfpatroon, objectnr 75631\" by Museum Rotterdam, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Museum Rotterdam",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kindertrui,_koltrui_gebreid_van_donkergroene_wol_in_reli%C3%ABfpatroon,_objectnr_75631.JPG",
+      "openverse_id": "commons:87655020"
+    }
+  },
+  {
+    "id": "ext_ribbed-knit-top_oatmeal",
+    "source": "external",
+    "title": "Oatmeal Ribbed Mock-Neck Knit",
+    "role": "top",
+    "subtype": "ribbed-knit-top",
+    "gender": "women",
+    "color": {
+      "name": "oatmeal",
+      "hex": "#a59e8c"
+    },
+    "styles": [
+      "minimal",
+      "classic"
+    ],
+    "formality": 3,
+    "seasons": [
+      "fall",
+      "winter",
+      "spring"
+    ],
+    "price_cents": 5200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Oatmeal%20Ribbed%20Mock-Neck%20Knit",
+    "image_url": "/photos/ext_ribbed-knit-top_oatmeal.jpg",
+    "image_credit": {
+      "text": "\"Jersei-coll-alt\" by Joan Rocaguinard, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Joan Rocaguinard",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jersei-coll-alt.jpg",
+      "openverse_id": "commons:17610311"
+    }
+  },
+  {
+    "id": "ext_hoodie_charcoal",
+    "source": "external",
+    "title": "Charcoal Fleece Pullover Hoodie",
+    "role": "top",
+    "subtype": "hoodie",
+    "gender": "unisex",
+    "color": {
+      "name": "charcoal",
+      "hex": "#2f3134"
+    },
+    "styles": [
+      "streetwear",
+      "athleisure",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "fall",
+      "winter",
+      "spring"
+    ],
+    "price_cents": 6400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Fleece%20Pullover%20Hoodie",
+    "image_url": "/photos/ext_hoodie_charcoal.jpg",
+    "image_credit": {
+      "text": "\"Hoodie m7agar\" by YoussefTahoun, CC0, via Wikimedia Commons",
+      "creator": "YoussefTahoun",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hoodie_m7agar.jpg",
+      "openverse_id": "commons:140673215"
+    }
+  },
+  {
+    "id": "ext_linen-shirt_ivory",
+    "source": "external",
+    "title": "Ivory Relaxed Linen Shirt",
+    "role": "top",
+    "subtype": "linen-shirt",
+    "gender": "unisex",
+    "color": {
+      "name": "ivory",
+      "hex": "#e9e2d0"
+    },
+    "styles": [
+      "casual",
+      "boho",
+      "minimal"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 6800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Ivory%20Relaxed%20Linen%20Shirt",
+    "image_url": "/photos/ext_linen-shirt_ivory.jpg",
+    "image_credit": {
+      "text": "\"White linen shirt - DPLA - 49305c2d44ff85895b8361c57c330e51 (page 1)\" by unknown, Public domain, via Wikimedia Commons",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:White_linen_shirt_-_DPLA_-_49305c2d44ff85895b8361c57c330e51_(page_1).jpg",
+      "openverse_id": "commons:120665581"
+    }
+  },
+  {
+    "id": "ext_polo_mint",
+    "source": "external",
+    "title": "Mint Knit Polo",
+    "role": "top",
+    "subtype": "polo",
+    "gender": "men",
+    "color": {
+      "name": "mint",
+      "hex": "#a9cbb8"
+    },
+    "styles": [
+      "preppy",
+      "classic",
+      "casual"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 6000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Mint%20Knit%20Polo",
+    "image_url": "/photos/ext_polo_mint.jpg",
+    "image_credit": {
+      "text": "\"Vintage 90's Lacoste Polo Shirt\" by Quercus acuta, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Quercus acuta",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Vintage_90%27s_Lacoste_Polo_Shirt.jpg",
+      "openverse_id": "commons:195045100"
+    }
+  },
+  {
+    "id": "ext_polo_white",
+    "source": "external",
+    "title": "White Knit Polo",
+    "role": "top",
+    "subtype": "polo",
+    "gender": "men",
+    "color": {
+      "name": "white",
+      "hex": "#f4f2ee"
+    },
+    "styles": [
+      "preppy",
+      "classic",
+      "casual"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 6400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=White%20Knit%20Polo",
+    "image_url": "/photos/ext_polo_white.jpg",
+    "image_credit": {
+      "text": "\"IPR Counterfeit Hugo Boss Golf Shirt (5818733728)\" by CBP Photography, Public domain, via Wikimedia Commons",
+      "creator": "CBP Photography",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:IPR_Counterfeit_Hugo_Boss_Golf_Shirt_(5818733728).jpg",
+      "openverse_id": "commons:167991626"
+    }
+  },
+  {
+    "id": "ext_polo_charcoal",
+    "source": "external",
+    "title": "Charcoal Knit Polo",
+    "role": "top",
+    "subtype": "polo",
+    "gender": "men",
+    "color": {
+      "name": "charcoal",
+      "hex": "#3d3f43"
+    },
+    "styles": [
+      "preppy",
+      "classic",
+      "casual"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 6800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Knit%20Polo",
+    "image_url": "/photos/ext_polo_charcoal.jpg",
+    "image_credit": {
+      "text": "\"EEPISAT Black Polo Shirt\" by Mukhayyar, CC0, via Wikimedia Commons",
+      "creator": "Mukhayyar",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:EEPISAT_Black_Polo_Shirt.png",
+      "openverse_id": "commons:148223738"
+    }
+  },
+  {
+    "id": "ext_tank_white",
+    "source": "external",
+    "title": "White Performance Tank",
+    "role": "top",
+    "subtype": "tank",
+    "gender": "unisex",
+    "color": {
+      "name": "white",
+      "hex": "#ecebe6"
+    },
+    "styles": [
+      "athleisure"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 3200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=White%20Performance%20Tank",
+    "image_url": "/photos/ext_tank_white.jpg",
+    "image_credit": {
+      "text": "\"A white tank top with clothes stand in the building\" by Peachyeung316, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Peachyeung316",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:A_white_tank_top_with_clothes_stand_in_the_building.jpg",
+      "openverse_id": "commons:99563312"
+    }
+  },
+  {
+    "id": "ext_slim-jean_indigo-denim",
+    "source": "external",
+    "title": "Indigo Denim Slim Selvedge Jeans",
+    "role": "bottom",
+    "subtype": "slim-jean",
+    "gender": "unisex",
+    "color": {
+      "name": "indigo denim",
+      "hex": "#2e4a73"
+    },
+    "styles": [
+      "casual",
+      "classic",
+      "edgy"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 9800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Indigo%20Denim%20Slim%20Selvedge%20Jeans",
+    "image_url": "/photos/ext_slim-jean_indigo-denim.jpg",
+    "image_credit": {
+      "text": "\"Blauwe jeans, merk Tommy Hilfiger, maat 3334, objectnr 86975-2(1)\" by Tommy Hilfiger, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Tommy Hilfiger",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Blauwe_jeans,_merk_Tommy_Hilfiger,_maat_3334,_objectnr_86975-2(1).JPG",
+      "openverse_id": "commons:88203244"
+    }
+  },
+  {
+    "id": "ext_straight-jean_light-wash-denim",
+    "source": "external",
+    "title": "Light Wash Denim Straight-Leg Jeans",
+    "role": "bottom",
+    "subtype": "straight-jean",
+    "gender": "women",
+    "color": {
+      "name": "light wash denim",
+      "hex": "#6f8fb5"
+    },
+    "styles": [
+      "casual",
+      "classic"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 8800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Light%20Wash%20Denim%20Straight-Leg%20Jeans",
+    "image_url": "/photos/ext_straight-jean_light-wash-denim.jpg",
+    "image_credit": {
+      "text": "\"Slitna jeans f\u00f6r m\u00e4n i bomull med lagade med sick-sacks\u00f6m p\u00e5 kn\u00e4na. 032s8YepsD7C\" by unknown, CC BY-SA 4.0, via Wikimedia Commons",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Slitna_jeans_f%C3%B6r_m%C3%A4n_i_bomull_med_lagade_med_sick-sacks%C3%B6m_p%C3%A5_kn%C3%A4na._032s8YepsD7C.jpg",
+      "openverse_id": "commons:144070398"
+    }
+  },
+  {
+    "id": "ext_chino_khaki",
+    "source": "external",
+    "title": "Khaki Slim Chinos",
+    "role": "bottom",
+    "subtype": "chino",
+    "gender": "men",
+    "color": {
+      "name": "khaki",
+      "hex": "#c9bf9e"
+    },
+    "styles": [
+      "preppy",
+      "classic",
+      "casual"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 6800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Khaki%20Slim%20Chinos",
+    "image_url": "/photos/ext_chino_khaki.jpg",
+    "image_credit": {
+      "text": "\"Chino pants\" by Kuha455405, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Kuha455405",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chino_pants.jpg",
+      "openverse_id": "commons:5999345"
+    }
+  },
+  {
+    "id": "ext_chino_salmon",
+    "source": "external",
+    "title": "Salmon Slim Chinos",
+    "role": "bottom",
+    "subtype": "chino",
+    "gender": "men",
+    "color": {
+      "name": "salmon",
+      "hex": "#c46a5c"
+    },
+    "styles": [
+      "preppy",
+      "classic",
+      "casual"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 7200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Salmon%20Slim%20Chinos",
+    "image_url": "/photos/ext_chino_salmon.jpg",
+    "image_credit": {
+      "text": "\"HK CWB \u9285\u947c\u7063 Causeway Bay Percival Street n Matheson Street \u5229\u821e\u53f0\u5ee3\u5834 Lee Theatre Plaza shop \u512a\u8863\u5eab UNIQLO clothing display June 2020 SS2 03\" by Kwong Fat Zhau, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Kwong Fat Zhau",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:HK_CWB_%E9%8A%85%E9%91%BC%E7%81%A3_Causeway_Bay_Percival_Street_n_Matheson_Street_%E5%88%A9%E8%88%9E%E5%8F%B0%E5%BB%A3%E5%A0%B4_Lee_Theatre_Plaza_shop_%E5%84%AA%E8%A1%A3%E5%BA%AB_UNIQLO_clothing_display_June_2020_SS2_03.jpg",
+      "openverse_id": "commons:91063405"
+    }
+  },
+  {
+    "id": "ext_chino_rust",
+    "source": "external",
+    "title": "Rust Slim Chinos",
+    "role": "bottom",
+    "subtype": "chino",
+    "gender": "men",
+    "color": {
+      "name": "rust",
+      "hex": "#a4562c"
+    },
+    "styles": [
+      "preppy",
+      "classic",
+      "casual"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 7600,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Rust%20Slim%20Chinos",
+    "image_url": "/photos/ext_chino_rust.jpg",
+    "image_credit": {
+      "text": "\"Jeans MET 1978.175.3 B\" by Levi Strauss &amp; Co., CC0, via Wikimedia Commons",
+      "creator": "Levi Strauss &amp; Co.",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jeans_MET_1978.175.3_B.jpg",
+      "openverse_id": "commons:59495809"
+    }
+  },
+  {
+    "id": "ext_jogger_navy",
+    "source": "external",
+    "title": "Navy Fleece Joggers",
+    "role": "bottom",
+    "subtype": "jogger",
+    "gender": "unisex",
+    "color": {
+      "name": "navy",
+      "hex": "#1f2a44"
+    },
+    "styles": [
+      "athleisure",
+      "streetwear"
+    ],
+    "formality": 1,
+    "seasons": [
+      "fall",
+      "winter",
+      "spring"
+    ],
+    "price_cents": 5800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Fleece%20Joggers",
+    "image_url": "/photos/ext_jogger_navy.jpg",
+    "image_credit": {
+      "text": "\"Tracksuit pants (AM 2017.66.26-4)\" by Adidas, CC BY 4.0, via Wikimedia Commons",
+      "creator": "Adidas",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tracksuit_pants_(AM_2017.66.26-4).jpg",
+      "openverse_id": "commons:83512513"
+    }
+  },
+  {
+    "id": "ext_cargo-pant_olive",
+    "source": "external",
+    "title": "Olive Utility Cargo Pants",
+    "role": "bottom",
+    "subtype": "cargo-pant",
+    "gender": "unisex",
+    "color": {
+      "name": "olive",
+      "hex": "#5f6b3a"
+    },
+    "styles": [
+      "streetwear",
+      "edgy",
+      "casual"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 8400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Utility%20Cargo%20Pants",
+    "image_url": "/photos/ext_cargo-pant_olive.jpg",
+    "image_credit": {
+      "text": "\"Cargo pants 001\" by Ocdp, CC0, via Wikimedia Commons",
+      "creator": "Ocdp",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cargo_pants_001.jpg",
+      "openverse_id": "commons:25549559"
+    }
+  },
+  {
+    "id": "ext_cargo-pant_black",
+    "source": "external",
+    "title": "Black Utility Cargo Pants",
+    "role": "bottom",
+    "subtype": "cargo-pant",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1f1f21"
+    },
+    "styles": [
+      "streetwear",
+      "edgy",
+      "casual"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 8800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Utility%20Cargo%20Pants",
+    "image_url": "/photos/ext_cargo-pant_black.jpg",
+    "image_credit": {
+      "text": "\"Zwarte werkbroek met witte bies, van Bulgaarse bouwvakker, objectnr 91220-3\" by Museum Rotterdam, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Museum Rotterdam",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Zwarte_werkbroek_met_witte_bies,_van_Bulgaarse_bouwvakker,_objectnr_91220-3.JPG",
+      "openverse_id": "commons:88291804"
+    }
+  },
+  {
+    "id": "ext_midi-skirt_bottle-green",
+    "source": "external",
+    "title": "Bottle Green Satin Midi Skirt",
+    "role": "bottom",
+    "subtype": "midi-skirt",
+    "gender": "women",
+    "color": {
+      "name": "bottle green",
+      "hex": "#1f3a33"
+    },
+    "styles": [
+      "romantic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 8800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Bottle%20Green%20Satin%20Midi%20Skirt",
+    "image_url": "/photos/ext_midi-skirt_bottle-green.jpg",
+    "image_credit": {
+      "text": "\"Green Poplin Skirt by Sybil Connolly- full length front\" by Hunt Museum and In\u00e9s Rivilla L\u00f3pez, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Hunt Museum and In\u00e9s Rivilla L\u00f3pez",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Green_Poplin_Skirt_by_Sybil_Connolly-_full_length_front.jpg",
+      "openverse_id": "commons:85750836"
+    }
+  },
+  {
+    "id": "ext_midi-skirt_khaki",
+    "source": "external",
+    "title": "Khaki Satin Midi Skirt",
+    "role": "bottom",
+    "subtype": "midi-skirt",
+    "gender": "women",
+    "color": {
+      "name": "khaki",
+      "hex": "#7d6f4a"
+    },
+    "styles": [
+      "romantic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 9200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Khaki%20Satin%20Midi%20Skirt",
+    "image_url": "/photos/ext_midi-skirt_khaki.jpg",
+    "image_credit": {
+      "text": "\"Skirt (AM 1970.229-4)\" by not researched, CC BY 4.0, via Wikimedia Commons",
+      "creator": "not researched",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Skirt_(AM_1970.229-4).jpg",
+      "openverse_id": "commons:65456788"
+    }
+  },
+  {
+    "id": "ext_mini-skirt_tangerine",
+    "source": "external",
+    "title": "Tangerine Leather Mini Skirt",
+    "role": "bottom",
+    "subtype": "mini-skirt",
+    "gender": "women",
+    "color": {
+      "name": "tangerine",
+      "hex": "#d9692f"
+    },
+    "styles": [
+      "edgy"
+    ],
+    "formality": 3,
+    "seasons": [
+      "fall",
+      "winter",
+      "spring"
+    ],
+    "price_cents": 9600,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Tangerine%20Leather%20Mini%20Skirt",
+    "image_url": "/photos/ext_mini-skirt_tangerine.jpg",
+    "image_credit": {
+      "text": "\"Orange Leather Skirt (374531163)\" by Housing Works Thrift Shops from New York, NY, USA, CC BY-SA 2.0, via Wikimedia Commons",
+      "creator": "Housing Works Thrift Shops from New York, NY, USA",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Orange_Leather_Skirt_(374531163).jpg",
+      "openverse_id": "commons:75459926"
+    }
+  },
+  {
+    "id": "ext_mini-skirt_black",
+    "source": "external",
+    "title": "Black Leather Mini Skirt",
+    "role": "bottom",
+    "subtype": "mini-skirt",
+    "gender": "women",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "edgy"
+    ],
+    "formality": 3,
+    "seasons": [
+      "fall",
+      "winter",
+      "spring"
+    ],
+    "price_cents": 10000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Leather%20Mini%20Skirt",
+    "image_url": "/photos/ext_mini-skirt_black.jpg",
+    "image_credit": {
+      "text": "\"Photos cr\u00e9atif 2014 013\" by Touzrimounir, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Touzrimounir",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Photos_cr%C3%A9atif_2014_013.JPG",
+      "openverse_id": "commons:43932838"
+    }
+  },
+  {
+    "id": "ext_athletic-short_red",
+    "source": "external",
+    "title": "Red Running Shorts",
+    "role": "bottom",
+    "subtype": "athletic-short",
+    "gender": "unisex",
+    "color": {
+      "name": "red",
+      "hex": "#c8202a"
+    },
+    "styles": [
+      "athleisure"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 4000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Red%20Running%20Shorts",
+    "image_url": "/photos/ext_athletic-short_red.jpg",
+    "image_credit": {
+      "text": "\"Soffe Gym Shorts\" by Scoty6776, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Scoty6776",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Soffe_Gym_Shorts.jpg",
+      "openverse_id": "commons:22471305"
+    }
+  },
+  {
+    "id": "ext_athletic-short_black",
+    "source": "external",
+    "title": "Black Running Shorts",
+    "role": "bottom",
+    "subtype": "athletic-short",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "athleisure"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 4400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Running%20Shorts",
+    "image_url": "/photos/ext_athletic-short_black.jpg",
+    "image_credit": {
+      "text": "\"Black shorts and Franklin jockstrap\" by Scoty6776, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Scoty6776",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Black_shorts_and_Franklin_jockstrap.jpg",
+      "openverse_id": "commons:22471303"
+    }
+  },
+  {
+    "id": "ext_athletic-short_grey",
+    "source": "external",
+    "title": "Grey Running Shorts",
+    "role": "bottom",
+    "subtype": "athletic-short",
+    "gender": "unisex",
+    "color": {
+      "name": "grey",
+      "hex": "#b8b6b1"
+    },
+    "styles": [
+      "athleisure"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 4000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Grey%20Running%20Shorts",
+    "image_url": "/photos/ext_athletic-short_grey.jpg",
+    "image_credit": {
+      "text": "\"White dolphin shorts (with pink line)\" by Seeds_of_Peace, CC BY-SA 2.0, via Wikimedia Commons",
+      "creator": "Seeds_of_Peace",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:White_dolphin_shorts_(with_pink_line).jpg",
+      "openverse_id": "commons:153411681"
+    }
+  },
+  {
+    "id": "ext_slip-dress_cobalt",
+    "source": "external",
+    "title": "Cobalt Bias-Cut Slip Dress",
+    "role": "dress",
+    "subtype": "slip-dress",
+    "gender": "women",
+    "color": {
+      "name": "cobalt",
+      "hex": "#2340a8"
+    },
+    "styles": [
+      "romantic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 12800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Cobalt%20Bias-Cut%20Slip%20Dress",
+    "image_url": "/photos/ext_slip-dress_cobalt.jpg",
+    "image_credit": {
+      "text": "\"Cocktail dress MET 1979.424.4 TQL\" by Ceil Chapman, CC0, via Wikimedia Commons",
+      "creator": "Ceil Chapman",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cocktail_dress_MET_1979.424.4_TQL.jpg",
+      "openverse_id": "commons:59497343"
+    }
+  },
+  {
+    "id": "ext_cocktail-dress_black",
+    "source": "external",
+    "title": "Black Structured Cocktail Dress",
+    "role": "dress",
+    "subtype": "cocktail-dress",
+    "gender": "women",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "formal",
+      "classic"
+    ],
+    "formality": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 19000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Structured%20Cocktail%20Dress",
+    "image_url": "/photos/ext_cocktail-dress_black.jpg",
+    "image_credit": {
+      "text": "\"Cocktail dress MET 1979.424.1 F\" by Ceil Chapman, CC0, via Wikimedia Commons",
+      "creator": "Ceil Chapman",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cocktail_dress_MET_1979.424.1_F.jpg",
+      "openverse_id": "commons:59499145"
+    }
+  },
+  {
+    "id": "ext_cocktail-dress_burgundy",
+    "source": "external",
+    "title": "Burgundy Structured Cocktail Dress",
+    "role": "dress",
+    "subtype": "cocktail-dress",
+    "gender": "women",
+    "color": {
+      "name": "burgundy",
+      "hex": "#6d1f2b"
+    },
+    "styles": [
+      "formal",
+      "classic"
+    ],
+    "formality": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 19400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Burgundy%20Structured%20Cocktail%20Dress",
+    "image_url": "/photos/ext_cocktail-dress_burgundy.jpg",
+    "image_credit": {
+      "text": "\"Cocktail dress MET 2000.366.1ab F\" by Ceil Chapman, CC0, via Wikimedia Commons",
+      "creator": "Ceil Chapman",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cocktail_dress_MET_2000.366.1ab_F.jpg",
+      "openverse_id": "commons:59497034"
+    }
+  },
+  {
+    "id": "ext_cocktail-dress_navy",
+    "source": "external",
+    "title": "Navy Structured Cocktail Dress",
+    "role": "dress",
+    "subtype": "cocktail-dress",
+    "gender": "women",
+    "color": {
+      "name": "navy",
+      "hex": "#1f2a44"
+    },
+    "styles": [
+      "formal",
+      "classic"
+    ],
+    "formality": 5,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 19800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Structured%20Cocktail%20Dress",
+    "image_url": "/photos/ext_cocktail-dress_navy.jpg",
+    "image_credit": {
+      "text": "\"Karl lagerfeld, abito da cocktail, in viscosa e applicazioni, 1975\" by Sailko, CC BY 3.0, via Wikimedia Commons",
+      "creator": "Sailko",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Karl_lagerfeld,_abito_da_cocktail,_in_viscosa_e_applicazioni,_1975.jpg",
+      "openverse_id": "commons:139793830"
+    }
+  },
+  {
+    "id": "ext_sundress_ochre",
+    "source": "external",
+    "title": "Ochre Floral Cotton Sundress",
+    "role": "dress",
+    "subtype": "sundress",
+    "gender": "women",
+    "color": {
+      "name": "ochre",
+      "hex": "#c98d2e"
+    },
+    "styles": [
+      "boho",
+      "romantic",
+      "casual"
+    ],
+    "formality": 2,
+    "seasons": [
+      "summer",
+      "spring"
+    ],
+    "price_cents": 7800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Ochre%20Floral%20Cotton%20Sundress",
+    "image_url": "/photos/ext_sundress_ochre.jpg",
+    "image_credit": {
+      "text": "\"Kl\u00e4nning tillh\u00f6rande Irma von Geijer, f. von Hallwyl, fr\u00e5n 1930-talet - Hallwylska museet - 89093\" by Unknown author, Public domain, via Wikimedia Commons",
+      "creator": "Unknown author",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kl%C3%A4nning_tillh%C3%B6rande_Irma_von_Geijer,_f._von_Hallwyl,_fr%C3%A5n_1930-talet_-_Hallwylska_museet_-_89093.tif",
+      "openverse_id": "commons:28919371"
+    }
+  },
+  {
+    "id": "ext_shirt-dress_camel",
+    "source": "external",
+    "title": "Camel Poplin Shirt Dress",
+    "role": "dress",
+    "subtype": "shirt-dress",
+    "gender": "women",
+    "color": {
+      "name": "camel",
+      "hex": "#b98a52"
+    },
+    "styles": [
+      "classic",
+      "preppy",
+      "minimal"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 9800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Camel%20Poplin%20Shirt%20Dress",
+    "image_url": "/photos/ext_shirt-dress_camel.jpg",
+    "image_credit": {
+      "text": "\"Halston shirt dress\" by Museum at FIT, CC BY-SA 2.0, via Wikimedia Commons",
+      "creator": "Museum at FIT",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Halston_shirt_dress.jpg",
+      "openverse_id": "commons:65894387"
+    }
+  },
+  {
+    "id": "ext_maxi-dress_midnight-blue",
+    "source": "external",
+    "title": "Midnight Blue Tiered Maxi Dress",
+    "role": "dress",
+    "subtype": "maxi-dress",
+    "gender": "women",
+    "color": {
+      "name": "midnight blue",
+      "hex": "#1d2147"
+    },
+    "styles": [
+      "boho"
+    ],
+    "formality": 2,
+    "seasons": [
+      "summer"
+    ],
+    "price_cents": 11800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Midnight%20Blue%20Tiered%20Maxi%20Dress",
+    "image_url": "/photos/ext_maxi-dress_midnight-blue.jpg",
+    "image_credit": {
+      "text": "\"Christian Dior Dress indianapolis\" by Flickr user unforth, CC BY-SA 2.0, via Wikimedia Commons",
+      "creator": "Flickr user unforth",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Christian_Dior_Dress_indianapolis.jpg",
+      "openverse_id": "commons:4914883"
+    }
+  },
+  {
+    "id": "ext_denim-jacket_light-wash-denim",
+    "source": "external",
+    "title": "Light Wash Denim Trucker Denim Jacket",
+    "role": "outerwear",
+    "subtype": "denim-jacket",
+    "gender": "unisex",
+    "color": {
+      "name": "light wash denim",
+      "hex": "#7d9cc0"
+    },
+    "styles": [
+      "casual",
+      "streetwear",
+      "classic"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 9800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Light%20Wash%20Denim%20Trucker%20Denim%20Jacket",
+    "image_url": "/photos/ext_denim-jacket_light-wash-denim.jpg",
+    "image_credit": {
+      "text": "\"Jean jacket\" by NikosLikomitros, CC0, via Wikimedia Commons",
+      "creator": "NikosLikomitros",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jean_jacket.jpg",
+      "openverse_id": "commons:135953332"
+    }
+  },
+  {
+    "id": "ext_denim-jacket_mid-wash-denim",
+    "source": "external",
+    "title": "Mid Wash Denim Trucker Denim Jacket",
+    "role": "outerwear",
+    "subtype": "denim-jacket",
+    "gender": "unisex",
+    "color": {
+      "name": "mid wash denim",
+      "hex": "#4f6f9c"
+    },
+    "styles": [
+      "casual",
+      "streetwear",
+      "classic"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 10200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Mid%20Wash%20Denim%20Trucker%20Denim%20Jacket",
+    "image_url": "/photos/ext_denim-jacket_mid-wash-denim.jpg",
+    "image_credit": {
+      "text": "\"Denim Jacket (51079649933)\" by ajay_suresh, CC BY 2.0, via Wikimedia Commons",
+      "creator": "ajay_suresh",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Denim_Jacket_(51079649933).jpg",
+      "openverse_id": "commons:104519018"
+    }
+  },
+  {
+    "id": "ext_leather-jacket_black",
+    "source": "external",
+    "title": "Black Leather Moto Jacket",
+    "role": "outerwear",
+    "subtype": "leather-jacket",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "edgy",
+      "streetwear"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 32000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Leather%20Moto%20Jacket",
+    "image_url": "/photos/ext_leather-jacket_black.jpg",
+    "image_credit": {
+      "text": "\"New-613-Schott Perfecto-cut-out-and-shaded\" by Rundvald, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Rundvald",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:New-613-Schott_Perfecto-cut-out-and-shaded.jpg",
+      "openverse_id": "commons:144449167"
+    }
+  },
+  {
+    "id": "ext_leather-jacket_cognac",
+    "source": "external",
+    "title": "Cognac Leather Moto Jacket",
+    "role": "outerwear",
+    "subtype": "leather-jacket",
+    "gender": "unisex",
+    "color": {
+      "name": "cognac",
+      "hex": "#8a4b26"
+    },
+    "styles": [
+      "edgy",
+      "streetwear"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 32400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Cognac%20Leather%20Moto%20Jacket",
+    "image_url": "/photos/ext_leather-jacket_cognac.jpg",
+    "image_credit": {
+      "text": "\"Brown Leather Double Breasted Flight Jacket Belonging to Charles Lindbergh - DPLA - cb7f8df8477f3c68022081ec8c3e5282 (page 1)\" by Abercrombie and Fitch, Public domain, via Wikimedia Commons",
+      "creator": "Abercrombie and Fitch",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Brown_Leather_Double_Breasted_Flight_Jacket_Belonging_to_Charles_Lindbergh_-_DPLA_-_cb7f8df8477f3c68022081ec8c3e5282_(page_1).jpg",
+      "openverse_id": "commons:158147322"
+    }
+  },
+  {
+    "id": "ext_trench-coat_stone",
+    "source": "external",
+    "title": "Stone Classic Trench Coat",
+    "role": "outerwear",
+    "subtype": "trench-coat",
+    "gender": "unisex",
+    "color": {
+      "name": "stone",
+      "hex": "#cfc9bd"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "preppy"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 24000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Stone%20Classic%20Trench%20Coat",
+    "image_url": "/photos/ext_trench-coat_stone.jpg",
+    "image_credit": {
+      "text": "\"Trench coat for male ball-jointed doll\" by Anna Frodesiak, CC0, via Wikimedia Commons",
+      "creator": "Anna Frodesiak",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Trench_coat_for_male_ball-jointed_doll.JPG",
+      "openverse_id": "commons:27070957"
+    }
+  },
+  {
+    "id": "ext_wool-coat_chocolate",
+    "source": "external",
+    "title": "Chocolate Wool Overcoat",
+    "role": "outerwear",
+    "subtype": "wool-coat",
+    "gender": "unisex",
+    "color": {
+      "name": "chocolate",
+      "hex": "#4a2f23"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "price_cents": 28000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Chocolate%20Wool%20Overcoat",
+    "image_url": "/photos/ext_wool-coat_chocolate.jpg",
+    "image_credit": {
+      "text": "\"Overcoat MET X21 front CP4\" by unknown, CC0, via Wikimedia Commons",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Overcoat_MET_X21_front_CP4.jpg",
+      "openverse_id": "commons:59658651"
+    }
+  },
+  {
+    "id": "ext_wool-coat_espresso",
+    "source": "external",
+    "title": "Espresso Wool Overcoat",
+    "role": "outerwear",
+    "subtype": "wool-coat",
+    "gender": "unisex",
+    "color": {
+      "name": "espresso",
+      "hex": "#2d2420"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "formal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "price_cents": 28400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Espresso%20Wool%20Overcoat",
+    "image_url": "/photos/ext_wool-coat_espresso.jpg",
+    "image_credit": {
+      "text": "\"Overcoat - SU2191-3\" by unknown, CC BY 4.0, via Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Overcoat_-_SU2191-3.jpg",
+      "openverse_id": "commons:192537021"
+    }
+  },
+  {
+    "id": "ext_tailored-blazer_navy",
+    "source": "external",
+    "title": "Navy Tailored Blazer",
+    "role": "outerwear",
+    "subtype": "tailored-blazer",
+    "gender": "unisex",
+    "color": {
+      "name": "navy",
+      "hex": "#1f2a44"
+    },
+    "styles": [
+      "classic",
+      "formal",
+      "minimal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 19000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Tailored%20Blazer",
+    "image_url": "/photos/ext_tailored-blazer_navy.jpg",
+    "image_credit": {
+      "text": "\"Navy blazer jacket\" by \u30b5\u30d5\u30a3\u30eb, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "\u30b5\u30d5\u30a3\u30eb",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Navy_blazer_jacket.jpg",
+      "openverse_id": "commons:73524549"
+    }
+  },
+  {
+    "id": "ext_tailored-blazer_cobalt",
+    "source": "external",
+    "title": "Cobalt Tailored Blazer",
+    "role": "outerwear",
+    "subtype": "tailored-blazer",
+    "gender": "unisex",
+    "color": {
+      "name": "cobalt",
+      "hex": "#2b5ea8"
+    },
+    "styles": [
+      "classic",
+      "formal",
+      "minimal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 19400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Cobalt%20Tailored%20Blazer",
+    "image_url": "/photos/ext_tailored-blazer_cobalt.jpg",
+    "image_credit": {
+      "text": "\"Navy Blazer (51011161195)\" by ajay_suresh, CC BY 2.0, via Wikimedia Commons",
+      "creator": "ajay_suresh",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Navy_Blazer_(51011161195).jpg",
+      "openverse_id": "commons:104519005"
+    }
+  },
+  {
+    "id": "ext_tailored-blazer_charcoal",
+    "source": "external",
+    "title": "Charcoal Tailored Blazer",
+    "role": "outerwear",
+    "subtype": "tailored-blazer",
+    "gender": "unisex",
+    "color": {
+      "name": "charcoal",
+      "hex": "#3d3f43"
+    },
+    "styles": [
+      "classic",
+      "formal",
+      "minimal"
+    ],
+    "formality": 4,
+    "seasons": [
+      "spring",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 19800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Charcoal%20Tailored%20Blazer",
+    "image_url": "/photos/ext_tailored-blazer_charcoal.jpg",
+    "image_credit": {
+      "text": "\"Teba jacket\" by Barbudo Barbudo, CC0, via Wikimedia Commons",
+      "creator": "Barbudo Barbudo",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Teba_jacket.jpg",
+      "openverse_id": "commons:64561085"
+    }
+  },
+  {
+    "id": "ext_puffer_ivory",
+    "source": "external",
+    "title": "Ivory Puffer Jacket",
+    "role": "outerwear",
+    "subtype": "puffer",
+    "gender": "unisex",
+    "color": {
+      "name": "ivory",
+      "hex": "#e8e2d4"
+    },
+    "styles": [
+      "streetwear",
+      "athleisure",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "winter"
+    ],
+    "price_cents": 18000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Ivory%20Puffer%20Jacket",
+    "image_url": "/photos/ext_puffer_ivory.jpg",
+    "image_credit": {
+      "text": "\"FILA Daunenjacke von hinten\" by DirkF601, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "DirkF601",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FILA_Daunenjacke_von_hinten.JPG",
+      "openverse_id": "commons:36622600"
+    }
+  },
+  {
+    "id": "ext_bomber_olive",
+    "source": "external",
+    "title": "Olive Satin Bomber Jacket",
+    "role": "outerwear",
+    "subtype": "bomber",
+    "gender": "unisex",
+    "color": {
+      "name": "olive",
+      "hex": "#5f6b3a"
+    },
+    "styles": [
+      "streetwear"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 12000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Olive%20Satin%20Bomber%20Jacket",
+    "image_url": "/photos/ext_bomber_olive.jpg",
+    "image_credit": {
+      "text": "\"IAF B15 Bomber flying jacket\" by McKaby, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "McKaby",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:IAF_B15_Bomber_flying_jacket.png",
+      "openverse_id": "commons:134876731"
+    }
+  },
+  {
+    "id": "ext_bomber_brown",
+    "source": "external",
+    "title": "Brown Satin Bomber Jacket",
+    "role": "outerwear",
+    "subtype": "bomber",
+    "gender": "unisex",
+    "color": {
+      "name": "brown",
+      "hex": "#5c3a24"
+    },
+    "styles": [
+      "streetwear"
+    ],
+    "formality": 2,
+    "seasons": [
+      "spring",
+      "fall"
+    ],
+    "price_cents": 12400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Brown%20Satin%20Bomber%20Jacket",
+    "image_url": "/photos/ext_bomber_brown.jpg",
+    "image_credit": {
+      "text": "\"BHC-Fliegerjacke\" by Nolispanmo, CC BY 3.0, via Wikimedia Commons",
+      "creator": "Nolispanmo",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:BHC-Fliegerjacke.jpg",
+      "openverse_id": "commons:12883667"
+    }
+  },
+  {
+    "id": "ext_tote_pink-stripe",
+    "source": "external",
+    "title": "Pink Stripe Leather Tote",
+    "role": "bag",
+    "subtype": "tote",
+    "gender": "women",
+    "color": {
+      "name": "pink stripe",
+      "hex": "#d0559b"
+    },
+    "styles": [
+      "classic",
+      "minimal"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 18000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Pink%20Stripe%20Leather%20Tote",
+    "image_url": "/photos/ext_tote_pink-stripe.jpg",
+    "image_credit": {
+      "text": "\"Knitted & Felted Tote Bag\" by ChesPal (Debra Heaphy), CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "ChesPal (Debra Heaphy)",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Knitted_%26_Felted_Tote_Bag.JPG",
+      "openverse_id": "commons:27048002"
+    }
+  },
+  {
+    "id": "ext_tote_kente-print",
+    "source": "external",
+    "title": "Kente Print Leather Tote",
+    "role": "bag",
+    "subtype": "tote",
+    "gender": "women",
+    "color": {
+      "name": "kente print",
+      "hex": "#b5651d"
+    },
+    "styles": [
+      "classic",
+      "minimal"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 18400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Kente%20Print%20Leather%20Tote",
+    "image_url": "/photos/ext_tote_kente-print.jpg",
+    "image_credit": {
+      "text": "\"Tote bag abidjanais 2 2023-07-14 \u00e0 15.24.08\" by Mviena, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Mviena",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tote_bag_abidjanais_2_2023-07-14_%C3%A0_15.24.08.jpg",
+      "openverse_id": "commons:134556779"
+    }
+  },
+  {
+    "id": "ext_crossbody_taupe",
+    "source": "external",
+    "title": "Taupe Mini Crossbody",
+    "role": "bag",
+    "subtype": "crossbody",
+    "gender": "women",
+    "color": {
+      "name": "taupe",
+      "hex": "#6b5a55"
+    },
+    "styles": [
+      "casual",
+      "minimal",
+      "romantic"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 12000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Taupe%20Mini%20Crossbody",
+    "image_url": "/photos/ext_crossbody_taupe.jpg",
+    "image_credit": {
+      "text": "\"SAKURAKO gets a new shoulder bag. (6992508655)\" by MIKI Yoshihito from Sapporo City,Hokkaido., JAPAN, CC BY 2.0, via Wikimedia Commons",
+      "creator": "MIKI Yoshihito from Sapporo City,Hokkaido., JAPAN",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:SAKURAKO_gets_a_new_shoulder_bag._(6992508655).jpg",
+      "openverse_id": "commons:122593702"
+    }
+  },
+  {
+    "id": "ext_crossbody_red",
+    "source": "external",
+    "title": "Red Mini Crossbody",
+    "role": "bag",
+    "subtype": "crossbody",
+    "gender": "women",
+    "color": {
+      "name": "red",
+      "hex": "#b8322b"
+    },
+    "styles": [
+      "casual",
+      "minimal",
+      "romantic"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 12400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Red%20Mini%20Crossbody",
+    "image_url": "/photos/ext_crossbody_red.jpg",
+    "image_credit": {
+      "text": "\"Gro\u00dfklaus Upcycling - Shoulder bag from upcycled red one-way nets\" by GrossklausSimone, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "GrossklausSimone",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gro%C3%9Fklaus_Upcycling_-_Shoulder_bag_from_upcycled_red_one-way_nets.jpg",
+      "openverse_id": "commons:197288291"
+    }
+  },
+  {
+    "id": "ext_crossbody_slate",
+    "source": "external",
+    "title": "Slate Mini Crossbody",
+    "role": "bag",
+    "subtype": "crossbody",
+    "gender": "women",
+    "color": {
+      "name": "slate",
+      "hex": "#5a5f66"
+    },
+    "styles": [
+      "casual",
+      "minimal",
+      "romantic"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 12800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Slate%20Mini%20Crossbody",
+    "image_url": "/photos/ext_crossbody_slate.jpg",
+    "image_credit": {
+      "text": "\"Wallet attached to shoulder pack\" by Tiia Monto, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Tiia Monto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wallet_attached_to_shoulder_pack.jpg",
+      "openverse_id": "commons:47504740"
+    }
+  },
+  {
+    "id": "ext_backpack_heather-grey",
+    "source": "external",
+    "title": "Heather Grey Nylon Backpack",
+    "role": "bag",
+    "subtype": "backpack",
+    "gender": "unisex",
+    "color": {
+      "name": "heather grey",
+      "hex": "#6e6f73"
+    },
+    "styles": [
+      "streetwear",
+      "athleisure",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 9500,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Heather%20Grey%20Nylon%20Backpack",
+    "image_url": "/photos/ext_backpack_heather-grey.jpg",
+    "image_credit": {
+      "text": "\"Ankara backpack made in Uganda\" by Owobusingye, CC BY 4.0, via Wikimedia Commons",
+      "creator": "Owobusingye",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ankara_backpack_made_in_Uganda.jpg",
+      "openverse_id": "commons:198011910"
+    }
+  },
+  {
+    "id": "ext_belt-bag_black",
+    "source": "external",
+    "title": "Black Belt Bag",
+    "role": "bag",
+    "subtype": "belt-bag",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "streetwear",
+      "athleisure"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall",
+      "winter"
+    ],
+    "price_cents": 5500,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Belt%20Bag",
+    "image_url": "/photos/ext_belt-bag_black.jpg",
+    "image_credit": {
+      "text": "\"SAKURAKO gets a new shoulder bag. (6846390008)\" by MIKI Yoshihito from Sapporo City,Hokkaido., JAPAN, CC BY 2.0, via Wikimedia Commons",
+      "creator": "MIKI Yoshihito from Sapporo City,Hokkaido., JAPAN",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:SAKURAKO_gets_a_new_shoulder_bag._(6846390008).jpg",
+      "openverse_id": "commons:122593693"
+    }
+  },
+  {
+    "id": "ext_scarf_cornflower-blue",
+    "source": "external",
+    "title": "Cornflower Blue Wool Scarf",
+    "role": "accessory",
+    "subtype": "scarf",
+    "gender": "unisex",
+    "color": {
+      "name": "cornflower blue",
+      "hex": "#5b8fd6"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "casual"
+    ],
+    "formality": 2,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "price_cents": 6500,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Cornflower%20Blue%20Wool%20Scarf",
+    "image_url": "/photos/ext_scarf_cornflower-blue.jpg",
+    "image_credit": {
+      "text": "\"Crochet scarf in two shades of blue\" by 999real, CC0, via Wikimedia Commons",
+      "creator": "999real",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Crochet_scarf_in_two_shades_of_blue.jpg",
+      "openverse_id": "commons:153708585"
+    }
+  },
+  {
+    "id": "ext_scarf_black-plaid",
+    "source": "external",
+    "title": "Black Plaid Wool Scarf",
+    "role": "accessory",
+    "subtype": "scarf",
+    "gender": "unisex",
+    "color": {
+      "name": "black plaid",
+      "hex": "#3a3a3a"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "casual"
+    ],
+    "formality": 2,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "price_cents": 6900,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Plaid%20Wool%20Scarf",
+    "image_url": "/photos/ext_scarf_black-plaid.jpg",
+    "image_credit": {
+      "text": "\"Scarf soft\" by Simon Ebner, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Simon Ebner",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Scarf_soft.jpg",
+      "openverse_id": "commons:10967198"
+    }
+  },
+  {
+    "id": "ext_beanie_black",
+    "source": "external",
+    "title": "Black Rib Beanie",
+    "role": "accessory",
+    "subtype": "beanie",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "streetwear",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "price_cents": 2800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Rib%20Beanie",
+    "image_url": "/photos/ext_beanie_black.jpg",
+    "image_credit": {
+      "text": "\"Blue knit fleece hat\" by John Harvey, Public domain, via Wikimedia Commons",
+      "creator": "John Harvey",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Blue_knit_fleece_hat.jpg",
+      "openverse_id": "commons:24925049"
+    }
+  },
+  {
+    "id": "ext_beanie_moss",
+    "source": "external",
+    "title": "Moss Rib Beanie",
+    "role": "accessory",
+    "subtype": "beanie",
+    "gender": "unisex",
+    "color": {
+      "name": "moss",
+      "hex": "#6b6a3a"
+    },
+    "styles": [
+      "streetwear",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "fall",
+      "winter"
+    ],
+    "price_cents": 3200,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Moss%20Rib%20Beanie",
+    "image_url": "/photos/ext_beanie_moss.jpg",
+    "image_credit": {
+      "text": "\"Beanie - Knit Cap (51013511676)\" by ajay_suresh, CC BY 2.0, via Wikimedia Commons",
+      "creator": "ajay_suresh",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beanie_-_Knit_Cap_(51013511676).jpg",
+      "openverse_id": "commons:101300772"
+    }
+  },
+  {
+    "id": "ext_cap_navy",
+    "source": "external",
+    "title": "Navy Cotton Cap",
+    "role": "accessory",
+    "subtype": "cap",
+    "gender": "unisex",
+    "color": {
+      "name": "navy",
+      "hex": "#2b3242"
+    },
+    "styles": [
+      "streetwear",
+      "athleisure",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 3000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Navy%20Cotton%20Cap",
+    "image_url": "/photos/ext_cap_navy.jpg",
+    "image_credit": {
+      "text": "\"Baseball cap\" by Original photograph by TexasRebelDerivative version by ReneeWrites, CC BY 4.0, via Wikimedia Commons",
+      "creator": "Original photograph by TexasRebelDerivative version by ReneeWrites",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Baseball_cap.png",
+      "openverse_id": "commons:138277181"
+    }
+  },
+  {
+    "id": "ext_cap_chambray",
+    "source": "external",
+    "title": "Chambray Cotton Cap",
+    "role": "accessory",
+    "subtype": "cap",
+    "gender": "unisex",
+    "color": {
+      "name": "chambray",
+      "hex": "#8aa3c4"
+    },
+    "styles": [
+      "streetwear",
+      "athleisure",
+      "casual"
+    ],
+    "formality": 1,
+    "seasons": [
+      "spring",
+      "summer",
+      "fall"
+    ],
+    "price_cents": 3400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Chambray%20Cotton%20Cap",
+    "image_url": "/photos/ext_cap_chambray.jpg",
+    "image_credit": {
+      "text": "\"Blue baseball cap on wooden table\" by Will Daan, CC BY-SA 3.0, via Wikimedia Commons",
+      "creator": "Will Daan",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Blue_baseball_cap_on_wooden_table.jpg",
+      "openverse_id": "commons:27682966"
+    }
+  },
+  {
+    "id": "ext_sunglasses_black",
+    "source": "external",
+    "title": "Black Acetate Sunglasses",
+    "role": "accessory",
+    "subtype": "sunglasses",
+    "gender": "unisex",
+    "color": {
+      "name": "black",
+      "hex": "#1c1c1e"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "edgy"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 12000,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Black%20Acetate%20Sunglasses",
+    "image_url": "/photos/ext_sunglasses_black.jpg",
+    "image_credit": {
+      "text": "\"2008-07-27 Sunglasses\" by Ildar Sagdejev (Specious), CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Ildar Sagdejev (Specious)",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2008-07-27_Sunglasses.jpg",
+      "openverse_id": "commons:4469278"
+    }
+  },
+  {
+    "id": "ext_sunglasses_brown",
+    "source": "external",
+    "title": "Brown Acetate Sunglasses",
+    "role": "accessory",
+    "subtype": "sunglasses",
+    "gender": "unisex",
+    "color": {
+      "name": "brown",
+      "hex": "#5a3a22"
+    },
+    "styles": [
+      "classic",
+      "minimal",
+      "edgy"
+    ],
+    "formality": 3,
+    "seasons": [
+      "spring",
+      "summer"
+    ],
+    "price_cents": 12400,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Brown%20Acetate%20Sunglasses",
+    "image_url": "/photos/ext_sunglasses_brown.jpg",
+    "image_credit": {
+      "text": "\"Sunglasses on ground outside Varnado Hall\" by Timothy Holdiness, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Timothy Holdiness",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sunglasses_on_ground_outside_Varnado_Hall.jpg",
+      "openverse_id": "commons:135129426"
+    }
+  },
+  {
+    "id": "ext_sun-hat_straw",
+    "source": "external",
+    "title": "Straw Sun Hat",
+    "role": "accessory",
+    "subtype": "sun-hat",
+    "gender": "women",
+    "color": {
+      "name": "straw",
+      "hex": "#c9a46a"
+    },
+    "styles": [
+      "boho"
+    ],
+    "formality": 2,
+    "seasons": [
+      "summer"
+    ],
+    "price_cents": 4800,
+    "currency": "USD",
+    "retailer": "Partner catalog (sample)",
+    "url": "https://www.google.com/search?tbm=shop&q=Straw%20Sun%20Hat",
+    "image_url": "/photos/ext_sun-hat_straw.jpg",
+    "image_credit": {
+      "text": "\"Straw hat 1830s\" by Eriksson, Elisabeth/Nordiska museet, CC BY-SA 4.0, via Wikimedia Commons",
+      "creator": "Eriksson, Elisabeth/Nordiska museet",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Straw_hat_1830s.jpg",
+      "openverse_id": "commons:149866389"
+    }
   }
 ]

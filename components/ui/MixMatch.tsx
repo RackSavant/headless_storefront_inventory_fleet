@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { usd } from "@/lib/client";
 import { genderCompatible, pairScore } from "@/lib/reco/compat";
-import type { Gender, Product, Role } from "@/lib/types";
+import type { Gender, Product, Role, ScoringPolicy } from "@/lib/types";
 import { SourceBadge } from "./LookCard";
 import Swatch from "./Swatch";
 
@@ -17,11 +17,11 @@ const LABEL: Record<Role, string> = {
   accessory: "Accessory",
 };
 
-export function outfitMatch(items: Product[]) {
+export function outfitMatch(items: Product[], scoring?: ScoringPolicy) {
   const pairs: Array<{ a: Product; b: Product; total: number; reason: string }> = [];
   for (let i = 0; i < items.length; i++)
     for (let j = i + 1; j < items.length; j++) {
-      const s = pairScore(items[i], items[j]);
+      const s = pairScore(items[i], items[j], scoring);
       pairs.push({ a: items[i], b: items[j], total: s.total, reason: s.reasons[0] ?? "" });
     }
   const mean = pairs.length ? pairs.reduce((s, p) => s + p.total, 0) / pairs.length : 0;
@@ -44,6 +44,7 @@ export default function MixMatch({
   onStyleMe,
   onInspect,
   styling,
+  scoring,
 }: {
   outfit: Product[];
   catalog: Product[];
@@ -52,6 +53,7 @@ export default function MixMatch({
   onStyleMe: () => void;
   onInspect: (p: Product) => void;
   styling: boolean;
+  scoring?: ScoringPolicy;
 }) {
   const dressMode = outfit.some((p) => p.role === "dress");
   const slots: Role[] = dressMode
@@ -68,7 +70,7 @@ export default function MixMatch({
         .filter((p) => !anchorGender || genderCompatible(p.gender, anchorGender))
         .map((p) => ({
           p,
-          s: others.length ? others.reduce((sum, o) => sum + pairScore(p, o).total, 0) / others.length : 0.5,
+          s: others.length ? others.reduce((sum, o) => sum + pairScore(p, o, scoring).total, 0) / others.length : 0.5,
         }))
         // in-store first at equal-ish compatibility, so mixing defaults to your stock
         .sort((a, b) => b.s + (b.p.source === "inventory" ? 0.05 : 0) - (a.s + (a.p.source === "inventory" ? 0.05 : 0)))
@@ -76,9 +78,9 @@ export default function MixMatch({
     }
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [outfit, catalog, anchorGender, dressMode]);
+  }, [outfit, catalog, anchorGender, dressMode, scoring]);
 
-  const match = outfitMatch(outfit);
+  const match = outfitMatch(outfit, scoring);
   const total = outfit.reduce((s, p) => s + p.price_cents, 0);
 
   const step = (role: Role, dir: 1 | -1) => {

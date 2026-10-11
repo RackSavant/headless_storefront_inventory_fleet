@@ -9,7 +9,10 @@ import type { Gender, Look, Product } from "@/lib/types";
 import { buildSections } from "./store3d/layout";
 import LookCard, { SourceBadge } from "./ui/LookCard";
 import MixMatch, { wear } from "./ui/MixMatch";
+import { useProductShot } from "./store3d/shots";
 import Swatch from "./ui/Swatch";
+
+const TryOnStudio = dynamic(() => import("./tryon/TryOnStudio"), { ssr: false });
 
 const StoreScene = dynamic(() => import("./store3d/StoreScene"), {
   ssr: false,
@@ -39,6 +42,7 @@ export default function StoreApp() {
   const [cartOpen, setCartOpen] = useState(false);
   const [dislikeFor, setDislikeFor] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [photoTryOn, setPhotoTryOn] = useState<Product[] | null>(null);
   const reqId = useRef(0);
 
   useEffect(() => {
@@ -276,20 +280,26 @@ export default function StoreApp() {
               onStyleMe={() => fetchLooks(outfit)}
               onInspect={(p) => setSelected(p)}
               styling={loadingLooks}
+              scoring={catalog.scoring}
             />
+            {outfit.length > 0 && (
+              <button onClick={() => setPhotoTryOn(outfit)} className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-medium hover:border-stone-500">
+                See this outfit on you (photo)
+              </button>
+            )}
             {!outfit.length && (
               <p className="rounded-xl bg-stone-50 p-3 text-xs text-stone-600">
                 The mannequin is waiting. Use the arrows to dress it, or pick something from any section and tap “Try on”.
               </p>
             )}
             {selected && view === "fitting" && (
-              <ItemDetail product={selected} compact onTryOn={() => tryOn([selected])} onAdd={() => addItem(selected)} onShop={() => shopPartner(selected)} onFeedback={feedback} dislikeFor={dislikeFor} setDislikeFor={setDislikeFor} />
+              <ItemDetail product={selected} compact onTryOnMe={() => setPhotoTryOn([selected])} onTryOn={() => tryOn([selected])} onAdd={() => addItem(selected)} onShop={() => shopPartner(selected)} onFeedback={feedback} dislikeFor={dislikeFor} setDislikeFor={setDislikeFor} />
             )}
-            {looksForOutfit && <Recommendations res={looksForOutfit} loading={loadingLooks} onTryOn={(l) => tryOn(l.items.map((i) => i.product))} onAddBundle={addLookBundle} onAddItem={addItem} onShopPartner={shopPartner} onInspect={(p) => setSelected(p)} onAddInvBundle={(b) => addBundle(b.title, b.items, b.price_cents, b.list_cents)} />}
+            {looksForOutfit && <Recommendations res={looksForOutfit} loading={loadingLooks} onTryOn={(l) => tryOn(l.items.map((i) => i.product))} onAddBundle={addLookBundle} onAddItem={addItem} onShopPartner={shopPartner} onInspect={(p) => setSelected(p)} onAddInvBundle={(b) => addBundle(b.title, b.items, b.price_cents, b.list_cents)} onTryOnMe={setPhotoTryOn} />}
           </div>
         ) : selected ? (
           <div className="space-y-4">
-            <ItemDetail product={selected} onTryOn={() => tryOn([selected])} onAdd={() => addItem(selected)} onShop={() => shopPartner(selected)} onFeedback={feedback} dislikeFor={dislikeFor} setDislikeFor={setDislikeFor} />
+            <ItemDetail product={selected} onTryOnMe={() => setPhotoTryOn([selected])} onTryOn={() => tryOn([selected])} onAdd={() => addItem(selected)} onShop={() => shopPartner(selected)} onFeedback={feedback} dislikeFor={dislikeFor} setDislikeFor={setDislikeFor} />
             <Recommendations
               res={looksForSelected}
               loading={loadingLooks}
@@ -299,6 +309,7 @@ export default function StoreApp() {
               onShopPartner={shopPartner}
               onInspect={inspect}
               onAddInvBundle={(b) => addBundle(b.title, b.items, b.price_cents, b.list_cents)}
+              onTryOnMe={setPhotoTryOn}
             />
           </div>
         ) : current ? (
@@ -356,6 +367,8 @@ export default function StoreApp() {
           </div>
         </div>
       )}
+
+      {photoTryOn && <TryOnStudio items={photoTryOn} onClose={() => setPhotoTryOn(null)} />}
 
       {toast && (
         <div role="status" className="absolute left-1/2 top-20 z-50 -translate-x-1/2 rounded-full bg-stone-900 px-4 py-2 text-xs text-white shadow-lg">
@@ -433,6 +446,7 @@ function ItemDetail({
   product,
   compact,
   onTryOn,
+  onTryOnMe,
   onAdd,
   onShop,
   onFeedback,
@@ -442,6 +456,7 @@ function ItemDetail({
   product: Product;
   compact?: boolean;
   onTryOn: () => void;
+  onTryOnMe: () => void;
   onAdd: () => void;
   onShop: () => void;
   onFeedback: (p: Product, v: "like" | "dislike", reason?: string) => void;
@@ -451,8 +466,9 @@ function ItemDetail({
   const [reason, setReason] = useState("");
   return (
     <section className="rounded-2xl border border-stone-200 bg-white p-3.5">
+      {!compact && <ProductHero product={product} />}
       <div className="flex gap-3">
-        <Swatch product={product} size={compact ? 48 : 64} />
+        {compact && <Swatch product={product} size={48} />}
         <div className="min-w-0 flex-1">
           <h2 className="text-base font-semibold leading-tight">{product.title}</h2>
           <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-stone-600">
@@ -478,6 +494,7 @@ function ItemDetail({
       </div>
       <div className="mt-3 flex flex-wrap gap-1.5">
         <button onClick={onTryOn} className="rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white hover:bg-stone-700">Try on</button>
+        <button onClick={onTryOnMe} className="rounded-lg border border-stone-300 px-3 py-1.5 text-xs font-medium hover:bg-stone-50">On me</button>
         {product.source === "inventory" ? (
           <button onClick={onAdd} className="rounded-lg border border-stone-300 px-3 py-1.5 text-xs font-medium hover:bg-stone-50">Add to bag</button>
         ) : (
@@ -513,6 +530,68 @@ function ItemDetail({
   );
 }
 
+/** Large product image: real photo when available, else a high-res studio render of the 3D model. */
+function ProductHero({ product }: { product: Product }) {
+  const shot = useProductShot(product, "hero", 640);
+  const credit = product.image_credit;
+  return (
+    <div className="mb-3">
+      <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-b from-white to-stone-100">
+        {shot ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={shot} alt={product.title} className={`h-full w-full ${product.image_url ? "object-cover" : "object-contain"}`} />
+        ) : (
+          <Swatch product={product} size={96} />
+        )}
+      </div>
+      {credit ? (
+        <PhotoCredit credit={credit} />
+      ) : (
+        !product.image_url && <p className="mt-1 text-[10px] text-stone-400">{product.model_url ? "3D scan" : "3D render"}</p>
+      )}
+    </div>
+  );
+}
+
+/** Attribution required by the photo's Creative Commons license. */
+export function PhotoCredit({ credit }: { credit: NonNullable<Product["image_credit"]> }) {
+  return (
+    <p className="mt-1 truncate text-[10px] text-stone-400" title={credit.text}>
+      Photo
+      {credit.creator ? (
+        <>
+          {" by "}
+          {credit.source_url ? (
+            <a href={credit.source_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">
+              {credit.creator}
+            </a>
+          ) : (
+            credit.creator
+          )}
+        </>
+      ) : (
+        credit.source_url && (
+          <>
+            {" "}
+            <a href={credit.source_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">
+              source
+            </a>
+          </>
+        )
+      )}
+      {", "}
+      {credit.license_url ? (
+        <a href={credit.license_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">
+          {credit.license}
+        </a>
+      ) : (
+        credit.license
+      )}
+      {" · representative photo"}
+    </p>
+  );
+}
+
 function Recommendations({
   res,
   loading,
@@ -522,6 +601,7 @@ function Recommendations({
   onShopPartner,
   onInspect,
   onAddInvBundle,
+  onTryOnMe,
 }: {
   res: LooksResponse | null;
   loading: boolean;
@@ -531,6 +611,7 @@ function Recommendations({
   onShopPartner: (p: Product, l: Look) => void;
   onInspect: (p: Product) => void;
   onAddInvBundle: (b: InventoryBundle) => void;
+  onTryOnMe: (items: Product[]) => void;
 }) {
   if (!res) return <p className="text-xs text-stone-500">{loading ? "Styling outfits…" : ""}</p>;
   const ctx = res.context;
@@ -549,7 +630,7 @@ function Recommendations({
         </p>
       )}
       {res.looks.map((l) => (
-        <LookCard key={l.id} look={l} onTryOn={onTryOn} onAddBundle={onAddBundle} onAddItem={onAddItem} onShopPartner={onShopPartner} onInspect={onInspect} />
+        <LookCard key={l.id} look={l} onTryOnMe={(look) => onTryOnMe(look.items.map((i) => i.product))} onTryOn={onTryOn} onAddBundle={onAddBundle} onAddItem={onAddItem} onShopPartner={onShopPartner} onInspect={onInspect} />
       ))}
       {res.bundles.length > 0 && (
         <div className="space-y-2">

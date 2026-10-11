@@ -1,0 +1,9 @@
+{
+  "_note": "Pieces laid out on the table in front of the SO-101. `prompt` is what the camera looks for (YOLO-World), so describe what it looks like, not the product name. Keep items light and flat: the arm lifts a few hundred grams.",
+  "items": [
+    { "product_id": "inv_merino-crew-socks-3-pack", "prompt": "grey socks", "grasp": "top" },
+    { "product_id": "inv_leather-belt", "prompt": "brown belt", "grasp": "top" },
+    { "product_id": "inv_leather-slides", "prompt": "brown sandal", "grasp": "top" },
+    { "product_id": "inv_leather-crossbody-bag", "prompt": "brown bag", "grasp": "top" }
+  ]
+}

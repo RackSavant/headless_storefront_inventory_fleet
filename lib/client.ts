@@ -1,6 +1,6 @@
 "use client";
 
-import type { Bundle, Look, Product, ShopperContext, ShopperProfile } from "@/lib/types";
+import type { Bundle, Look, Product, ScoringPolicy, ShopperContext, ShopperProfile } from "@/lib/types";
 
 export const usd = (cents: number) =>
   `$${(cents / 100).toLocaleString("en-US", { minimumFractionDigits: cents % 100 ? 2 : 0, maximumFractionDigits: 2 })}`;
@@ -22,6 +22,8 @@ export interface CatalogResponse {
   store_name: string;
   protect_min_items: number;
   llm: boolean;
+  policy_version: number;
+  scoring: ScoringPolicy;
   inventory: Product[];
   external: Product[];
 }

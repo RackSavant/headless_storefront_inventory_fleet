@@ -13,10 +13,13 @@
     "catalog:shopify": "tsx scripts/import-shopify.ts",
     "catalog:csv": "tsx scripts/import-csv.ts",
     "inventory:import": "tsx scripts/import-inventory.ts",
-    "reco:demo": "tsx scripts/reco-demo.ts"
+    "reco:demo": "tsx scripts/reco-demo.ts",
+    "harness:evolve": "tsx scripts/evolve.ts",
+    "photos:fetch": "tsx scripts/fetch-photos.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",
+    "@mediapipe/tasks-vision": "^1.1.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
     "@sparkjsdev/spark": "^2.3.1",

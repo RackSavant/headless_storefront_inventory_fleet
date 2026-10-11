@@ -19,7 +19,19 @@ const ProductSchema = z.object({
   price_cents: z.number().int().nonnegative(),
   currency: z.literal("USD"),
   image_url: z.string().optional(),
+  image_credit: z
+    .object({
+      openverse_id: z.string().optional(),
+      text: z.string(),
+      creator: z.string().nullish(),
+      license: z.string(),
+      license_url: z.string().nullish(),
+      source_url: z.string().nullish(),
+    })
+    .optional(),
   model_url: z.string().optional(),
+  model_texture_url: z.string().optional(),
+  model_rotation_y: z.number().optional(),
   sku: z.string().optional(),
   quantity: z.number().int().nonnegative().optional(),
   cost_cents: z.number().int().nonnegative().optional(),
