@@ -17,6 +17,7 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
   const [camera, setCamera] = useState<MediaStream | null>(null);
   const [ai, setAi] = useState<{ enabled: boolean; loading: boolean; image: string | null; error: string | null }>({ enabled: false, loading: false, image: null, error: null });
   const [showPoints, setShowPoints] = useState(false);
+  const [avatars, setAvatars] = useState<number[]>([]);
   const canvas = useRef<HTMLCanvasElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const stage = useRef<HTMLDivElement>(null);
@@ -27,6 +28,15 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
       .then((r) => r.json())
       .then((d) => setAi((s) => ({ ...s, enabled: !!d.enabled })))
       .catch(() => {});
+  }, []);
+
+  // Saved avatars (public/avatars/avatar-N.jpg with avatar-N-thumb.webp); only the ones that exist are offered.
+  useEffect(() => {
+    let alive = true;
+    Promise.all([1, 2, 3, 4, 5, 6].map((n) => fetch(`/avatars/avatar-${n}-thumb.webp`, { method: "HEAD" }).then((r) => (r.ok ? n : 0)).catch(() => 0))).then((found) => alive && setAvatars(found.filter(Boolean)));
+    return () => {
+      alive = false;
+    };
   }, []);
 
   // Garment cut-outs for this outfit.
@@ -219,6 +229,19 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
           <button onClick={async () => setPhoto(await modelPhoto())} className="w-full text-xs text-stone-500 hover:underline">
             No photo? Try it on a model
           </button>
+          {avatars.length > 0 && (
+            <div>
+              <h3 className="mb-1.5 text-xs font-medium uppercase tracking-wide text-stone-500">Saved avatars</h3>
+              <div className="flex gap-2">
+                {avatars.map((n) => (
+                  <button key={n} onClick={() => setPhoto(`/avatars/avatar-${n}.jpg`)} className="h-14 w-14 overflow-hidden rounded-full border-2 border-stone-200 hover:border-orange-600" aria-label={`Use avatar ${n}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/avatars/avatar-${n}-thumb.webp`} alt={`Avatar ${n}`} className="h-full w-full object-cover" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {status === "no-pose" && (
             <p className="rounded-lg bg-amber-50 p-2.5 text-xs text-amber-900">Couldn&apos;t find a full body. Drag the orange points onto your shoulders, hips, ankles, hand and head.</p>

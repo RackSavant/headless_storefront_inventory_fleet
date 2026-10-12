@@ -5,6 +5,7 @@ node_modules
 .env.local
 capture/
 public/products/
+public/avatars/
 *service-account*.json
 next-env.d.ts
 *.tsbuildinfo

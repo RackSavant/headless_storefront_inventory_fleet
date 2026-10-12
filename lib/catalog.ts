@@ -1,5 +1,5 @@
 /** Loads inventory, the external catalog and store config from ./data (server only). */
-import { readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { ROLES, SEASONS, STYLES, type Product, type StoreConfig } from "@/lib/types";
@@ -71,12 +71,26 @@ function readJson(file: string): unknown {
   return JSON.parse(readFileSync(path.join(DATA_DIR, file), "utf8"));
 }
 
+const PHOTO_MANIFEST = path.join(process.cwd(), "public", "products", "manifest.json");
+
+/** Points image_url at the resized/touched-up copy for items processed by scripts/process-photos.ts. */
+function withProcessedPhotos(items: Product[]): Product[] {
+  if (!existsSync(PHOTO_MANIFEST)) return items;
+  try {
+    const manifest = JSON.parse(readFileSync(PHOTO_MANIFEST, "utf8")) as Record<string, { full?: string }>;
+    return items.map((p) => (manifest[p.id]?.full ? { ...p, image_url: manifest[p.id].full } : p));
+  } catch {
+    return items;
+  }
+}
+
 /** Re-reads the files when they change, so importing new stock doesn't need a restart. */
 export function loadCatalog() {
   const files = ["inventory.json", "external-catalog.json", "store-config.json"];
-  const key = files.map((f) => statSync(path.join(DATA_DIR, f)).mtimeMs).join(":") + `:r${remoteInventory?.stamp ?? 0}`;
+  const photoStamp = existsSync(PHOTO_MANIFEST) ? statSync(PHOTO_MANIFEST).mtimeMs : 0;
+  const key = files.map((f) => statSync(path.join(DATA_DIR, f)).mtimeMs).join(":") + `:r${remoteInventory?.stamp ?? 0}:p${photoStamp}`;
   if (cache?.key === key) return cache;
-  const inventory = remoteInventory ? remoteInventory.items : (z.array(ProductSchema).parse(readJson(files[0])) as Product[]);
+  const inventory = withProcessedPhotos(remoteInventory ? remoteInventory.items : (z.array(ProductSchema).parse(readJson(files[0])) as Product[]));
   const external = z.array(ProductSchema).parse(readJson(files[1])) as Product[];
   const config = ConfigSchema.parse(readJson(files[2])) as StoreConfig;
   cache = { key, inventory, external, config };
