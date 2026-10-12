@@ -79,12 +79,37 @@ class MongoStore implements Store {
   }
 }
 
+class FirestoreStore implements Store {
+  private db = async () => (await import("@/lib/firebase")).getFirestoreDb();
+
+  async logEvent(e: StoreEvent) {
+    await (await this.db()).collection("store_events").add({ ...e });
+  }
+
+  async listEvents(limit = 5000) {
+    const snap = await (await this.db()).collection("store_events").orderBy("ts", "desc").limit(limit).get();
+    return snap.docs.map((d) => d.data() as StoreEvent).reverse();
+  }
+
+  async getProfile(id: string) {
+    const doc = await (await this.db()).collection("store_profiles").doc(id).get();
+    return doc.exists ? (doc.data() as ShopperProfile) : null;
+  }
+
+  async saveProfile(p: ShopperProfile) {
+    await (await this.db()).collection("store_profiles").doc(p.shopper_id).set(p);
+  }
+}
+
 let store: Store | null = null;
 
+/** STORE_BACKEND=firestore|mongo|file. Default: mongo when MONGODB_URI is set, otherwise local files. */
 export function getStore(): Store {
   if (store) return store;
   const uri = process.env.MONGODB_URI;
-  if (uri) {
+  if (process.env.STORE_BACKEND === "firestore") {
+    store = new FirestoreStore();
+  } else if (uri && process.env.STORE_BACKEND !== "file") {
     const db = new MongoClient(uri).connect().then(async (c) => {
       const d = c.db(process.env.MONGODB_DB || "racksavant_store");
       await d.collection("events").createIndex({ ts: -1 });
