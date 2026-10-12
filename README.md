@@ -114,6 +114,13 @@ npm run catalog:sample
 
 Imports merge by id. Pass `--replace` to start over. Partner clicks are logged, so you can swap the links for affiliate URLs.
 
+## Firebase inventory and Tripo 3D assets
+
+- **Inventory from Firestore:** set `INVENTORY_SOURCE=firestore` plus `FIREBASE_*` (see `.env.example`). `lib/inventory-source.ts` pulls the collection into an in-memory snapshot (refreshed every `INVENTORY_REFRESH_SECONDS`), validates each doc with the same zod schema as the JSON files, skips invalid docs (listed in `/api/catalog` under `inventory_source`), and keeps the last good snapshot or `data/inventory.json` if Firestore fails. Doc id is used when `id` is missing; Timestamps become ISO strings.
+- **Seed it:** `npm run firestore:seed -- [--dry-run] [--owner <id>]` copies `data/inventory.json` into Firestore.
+- **Shopper profiles and events:** `STORE_BACKEND=firestore` stores them in `store_profiles` / `store_events` instead of Mongo or `./.data`.
+- **Photo to 3D:** `npm run tripo:generate -- <product-id> [--image file]` uploads the photo to Tripo, polls the task, saves `public/models/<id>.glb` and sets `model_url` on the product (JSON file and, with Firestore on, the doc). Written against the documented Tripo v2 OpenAPI and tested with a mocked client only; it has not been run with a live key yet.
+
 ## Optional upgrades (env vars, see `.env.example`)
 
 - **World Labs world as the store.** Set `NEXT_PUBLIC_STORE_WORLD_SPZ=/worlds/your-store.spz` (put the file in `public/worlds/`) to render a Marble scan of your real shop behind the fixtures, using Spark like the spatialintelligence repo. Set `NEXT_PUBLIC_STORE_WORLD_SCALE` / `NEXT_PUBLIC_STORE_WORLD_GROUND` from the world's `semantics_metadata`.

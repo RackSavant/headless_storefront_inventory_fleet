@@ -16,7 +16,8 @@
     "reco:demo": "tsx scripts/reco-demo.ts",
     "harness:evolve": "tsx scripts/evolve.ts",
     "photos:fetch": "tsx scripts/fetch-photos.ts",
-    "firestore:seed": "tsx scripts/seed-firestore.ts"
+    "firestore:seed": "tsx scripts/seed-firestore.ts",
+    "tripo:generate": "tsx scripts/tripo-generate.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",
