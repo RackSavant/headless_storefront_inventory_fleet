@@ -4,6 +4,7 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { loadCatalog } from "@/lib/catalog";
+import { refreshCatalog } from "@/lib/inventory-source";
 import { publicProduct } from "@/lib/public";
 
 export const dynamic = "force-dynamic";
@@ -30,6 +31,7 @@ async function arm(pathname: string, init?: RequestInit) {
 }
 
 export async function GET() {
+  await refreshCatalog();
   let status: unknown = null;
   try {
     status = (await arm("/handoff/status")).body;

@@ -15,7 +15,8 @@
     "inventory:import": "tsx scripts/import-inventory.ts",
     "reco:demo": "tsx scripts/reco-demo.ts",
     "harness:evolve": "tsx scripts/evolve.ts",
-    "photos:fetch": "tsx scripts/fetch-photos.ts"
+    "photos:fetch": "tsx scripts/fetch-photos.ts",
+    "firestore:seed": "tsx scripts/seed-firestore.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",
@@ -23,6 +24,7 @@
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
     "@sparkjsdev/spark": "^2.3.1",
+    "firebase-admin": "^14.5.0",
     "mongodb": "^6.21.0",
     "next": "^16.4.0",
     "react": "^19.3.0",

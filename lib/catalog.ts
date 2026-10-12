@@ -55,6 +55,17 @@ const ConfigSchema = z.object({
 const DATA_DIR = path.join(process.cwd(), "data");
 
 let cache: { key: string; inventory: Product[]; external: Product[]; config: StoreConfig } | null = null;
+let remoteInventory: { items: Product[]; stamp: number } | null = null;
+
+/** Replaces the inventory with a snapshot from a remote source (Firestore). Pass null to go back to data/inventory.json. */
+export function setRemoteInventory(items: Product[] | null) {
+  remoteInventory = items ? { items, stamp: Date.now() } : null;
+  cache = null;
+}
+
+export function usingRemoteInventory() {
+  return remoteInventory !== null;
+}
 
 function readJson(file: string): unknown {
   return JSON.parse(readFileSync(path.join(DATA_DIR, file), "utf8"));
@@ -63,9 +74,9 @@ function readJson(file: string): unknown {
 /** Re-reads the files when they change, so importing new stock doesn't need a restart. */
 export function loadCatalog() {
   const files = ["inventory.json", "external-catalog.json", "store-config.json"];
-  const key = files.map((f) => statSync(path.join(DATA_DIR, f)).mtimeMs).join(":");
+  const key = files.map((f) => statSync(path.join(DATA_DIR, f)).mtimeMs).join(":") + `:r${remoteInventory?.stamp ?? 0}`;
   if (cache?.key === key) return cache;
-  const inventory = z.array(ProductSchema).parse(readJson(files[0])) as Product[];
+  const inventory = remoteInventory ? remoteInventory.items : (z.array(ProductSchema).parse(readJson(files[0])) as Product[]);
   const external = z.array(ProductSchema).parse(readJson(files[1])) as Product[];
   const config = ConfigSchema.parse(readJson(files[2])) as StoreConfig;
   cache = { key, inventory, external, config };

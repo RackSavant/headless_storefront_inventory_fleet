@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { allProducts, getProducts } from "@/lib/catalog";
 import { activePolicy } from "@/lib/harness/evolve";
+import { refreshCatalog } from "@/lib/inventory-source";
 import { resolveScoring } from "@/lib/harness/policy";
 import { currentSeason, parseOccasion } from "@/lib/intent";
 import { llmLookBlurbs, llmParseOccasion } from "@/lib/llm";
@@ -34,6 +35,7 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ error: "invalid request" }, { status: 400 });
   const body = parsed.data;
 
+  await refreshCatalog();
   const anchors = getProducts(body.anchor_ids);
   if (!anchors.length) return NextResponse.json({ error: "unknown products" }, { status: 404 });
 

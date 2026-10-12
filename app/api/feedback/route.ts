@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getProducts } from "@/lib/catalog";
+import { refreshCatalog } from "@/lib/inventory-source";
 import { applyFeedback, emptyProfile } from "@/lib/reco/profile";
 import { getStore } from "@/lib/store";
 
@@ -17,6 +18,7 @@ export async function POST(req: Request) {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "invalid request" }, { status: 400 });
   const { shopper_id, product_id, verdict, reason } = parsed.data;
+  await refreshCatalog();
   const [product] = getProducts([product_id]);
   if (!product) return NextResponse.json({ error: "unknown product" }, { status: 404 });
 

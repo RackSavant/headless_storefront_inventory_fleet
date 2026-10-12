@@ -3,5 +3,7 @@ node_modules
 .data
 .env
 .env.local
+capture/
+*service-account*.json
 next-env.d.ts
 *.tsbuildinfo
