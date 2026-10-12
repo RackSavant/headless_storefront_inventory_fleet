@@ -60,7 +60,7 @@ function AvatarFigure({ items, avatar }: { items: Product[]; avatar: AvatarProfi
   }, [key, avatar]);
 
   // Same height as the plain mannequin: head top to feet maps to MANNEQUIN_HEIGHT.
-  const { w, h, x, y, width, height } = useMemo(() => {
+  const { x, y, width, height } = useMemo(() => {
     const cw = cutout.naturalWidth;
     const ch = cutout.naturalHeight;
     const s = MANNEQUIN_HEIGHT / (avatar.bbox.y1 - avatar.bbox.y0);
