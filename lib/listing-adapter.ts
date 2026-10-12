@@ -9,6 +9,9 @@ import type { Product } from "@/lib/types";
 
 type Doc = Record<string, unknown>;
 
+/** Garment types that are sold as women's wear when a listing says nothing about gender. */
+const WOMEN_SUBTYPES = /dress|skirt|blouse|camisole|pump|stiletto|strappy|legging|bodysuit|crop/;
+
 const str = (v: unknown) => (typeof v === "string" ? v.trim() : "");
 
 export type ListingSkip = "not_active" | "no_price" | "no_title" | "no_role";
@@ -39,5 +42,7 @@ export function listingToProduct(docId: string, d: Doc): { product: Product } | 
     sizes: size ? [size] : undefined,
   };
   const product = toProduct(raw, "inventory");
-  return product ? { product } : { skip: "no_role" };
+  if (!product) return { skip: "no_role" };
+  if (product.gender === "unisex" && WOMEN_SUBTYPES.test(product.subtype)) product.gender = "women";
+  return { product };
 }

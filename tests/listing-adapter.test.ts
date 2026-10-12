@@ -32,6 +32,15 @@ describe("listing adapter", () => {
     });
   });
 
+  it("defaults dress-like items to women and keeps explicit gender text", () => {
+    const dress = listingToProduct("d", { ...base, title: "Floral Maxi Dress", category: "Clothing", tags: ["dress"] });
+    const mens = listingToProduct("m", { ...base, title: "Men's Black Dress Shirt", category: "Clothing", tags: ["shirt"] });
+    const boots = listingToProduct("b", base);
+    expect("product" in dress && dress.product.gender).toBe("women");
+    expect("product" in mens && mens.product.gender).toBe("men");
+    expect("product" in boots && boots.product.gender).toBe("unisex");
+  });
+
   it("skips drafts, missing prices/titles and items it cannot classify", () => {
     expect(listingToProduct("a", { ...base, status: "draft" })).toEqual({ skip: "not_active" });
     expect(listingToProduct("a", { ...base, priceUsdc: "" })).toEqual({ skip: "no_price" });
