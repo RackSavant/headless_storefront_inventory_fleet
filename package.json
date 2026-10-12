@@ -17,6 +17,9 @@
     "harness:evolve": "tsx scripts/evolve.ts",
     "photos:fetch": "tsx scripts/fetch-photos.ts",
     "firestore:seed": "tsx scripts/seed-firestore.ts",
+    "firestore:inspect": "tsx scripts/inspect-firestore.ts",
+    "storage:inspect": "tsx scripts/inspect-storage.ts",
+    "inventory:preview": "tsx scripts/preview-inventory.ts",
     "tripo:generate": "tsx scripts/tripo-generate.ts"
   },
   "dependencies": {

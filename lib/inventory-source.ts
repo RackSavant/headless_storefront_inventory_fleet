@@ -9,8 +9,11 @@
  *  FIRESTORE_OWNER_ID                      optional; when set only docs with OWNER_FIELD == id are loaded
  *  FIRESTORE_OWNER_FIELD                   default "owner_id"
  *  INVENTORY_REFRESH_SECONDS               default 30
+ *  INVENTORY_FIRESTORE_SHAPE=product|listings  default product; "listings" maps the RackSavant app's marketplace
+ *                                          listings (active only) through lib/listing-adapter.ts
  */
 import { ProductSchema, setRemoteInventory } from "@/lib/catalog";
+import { listingToProduct } from "@/lib/listing-adapter";
 import type { Product } from "@/lib/types";
 
 export interface RawDoc {
@@ -36,10 +39,16 @@ function plain(value: unknown): unknown {
   return value;
 }
 
-export function parseInventoryDocs(docs: RawDoc[]): ParseResult {
+export function parseInventoryDocs(docs: RawDoc[], shape: "product" | "listings" = "product"): ParseResult {
   const items: Product[] = [];
   const rejected: ParseResult["rejected"] = [];
   for (const d of docs) {
+    if (shape === "listings") {
+      const r = listingToProduct(d.id, plain(d.data) as Record<string, unknown>);
+      if ("product" in r) items.push(r.product);
+      else rejected.push({ id: d.id, error: r.skip });
+      continue;
+    }
     const candidate = { ...(plain(d.data) as Record<string, unknown>), id: (d.data.id as string) || d.id, source: "inventory" };
     const res = ProductSchema.safeParse(candidate);
     if (res.success) items.push(res.data as Product);
@@ -83,10 +92,10 @@ export async function refreshCatalog(force = false): Promise<void> {
   if (inflight) return inflight;
   inflight = (async () => {
     try {
-      const { items, rejected } = parseInventoryDocs(await fetcher());
+      const { items, rejected } = parseInventoryDocs(await fetcher(), process.env.INVENTORY_FIRESTORE_SHAPE === "listings" ? "listings" : "product");
       setRemoteInventory(items);
       Object.assign(sourceStatus, { source: "firestore", count: items.length, rejected, error: null, fetched_at: new Date().toISOString() });
-      if (rejected.length) console.warn(`[inventory] skipped ${rejected.length} invalid Firestore docs`, rejected.slice(0, 5));
+      if (rejected.length) console.warn(`[inventory] skipped ${rejected.length} Firestore docs`, rejected.slice(0, 5));
     } catch (e) {
       sourceStatus.error = e instanceof Error ? e.message : String(e);
       console.error("[inventory] Firestore fetch failed, keeping previous snapshot / JSON fallback:", sourceStatus.error);
