@@ -26,6 +26,20 @@ interface ManifestEntry {
   height: number;
 }
 
+async function download(url: string): Promise<Buffer> {
+  const res = await fetch(url);
+  if (res.ok) return Buffer.from(await res.arrayBuffer());
+  const m = new URL(url).pathname.match(/^\/v0\/b\/([^/]+)\/o\/(.+)$/);
+  if ((res.status === 401 || res.status === 403) && m) {
+    const { getFirestoreDb } = await import("../lib/firebase");
+    await getFirestoreDb();
+    const { getStorage } = await import("firebase-admin/storage");
+    const [buf] = await getStorage().bucket(m[1]).file(decodeURIComponent(m[2])).download();
+    return buf;
+  }
+  throw new Error(`download HTTP ${res.status}`);
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const flag = (n: string) => (args.includes(n) ? args[args.indexOf(n) + 1] : undefined);
@@ -57,9 +71,7 @@ async function main() {
   const worker = async () => {
     for (let p = queue.shift(); p; p = queue.shift()) {
       try {
-        const res = await fetch(p.image_url!);
-        if (!res.ok) throw new Error(`download HTTP ${res.status}`);
-        const out = await processPhoto(Buffer.from(await res.arrayBuffer()), removeBg);
+        const out = await processPhoto(await download(p.image_url!), removeBg);
         const dir = path.join(root, p.id);
         mkdirSync(dir, { recursive: true });
         const files = { full: "full.webp", thumb256: "thumb-256.webp", thumb512: "thumb-512.webp", cutout: "cutout.png", cutout256: "cutout-256.webp" } as const;
