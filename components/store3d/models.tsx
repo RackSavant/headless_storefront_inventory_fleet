@@ -7,6 +7,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
+import { aiAvatarImage } from "@/lib/avatar-ai";
 import { useActiveAvatar, type AvatarProfile } from "@/lib/avatars";
 import { composeTryOn } from "@/lib/tryon";
 import type { Product } from "@/lib/types";
@@ -51,6 +52,14 @@ function AvatarFigure({ items, avatar }: { items: Product[]; avatar: AvatarProfi
       const layers = await Promise.all(items.map(async (p) => ({ product: p, sprite: await frontSprite(p) })));
       if (!alive) return;
       await composeTryOn(canvas, avatar.photo, avatar.anchors, layers, cutout);
+      texture.needsUpdate = true;
+      // Photoreal fit (drape and folds that conform to the body) replaces the 2D one when available.
+      const fitted = await aiAvatarImage(avatar, layers).catch(() => null);
+      if (!alive || !fitted) return;
+      const g = canvas.getContext("2d")!;
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.clearRect(0, 0, canvas.width, canvas.height);
+      g.drawImage(fitted, 0, 0, canvas.width, canvas.height);
       texture.needsUpdate = true;
     })().catch(() => {});
     return () => {

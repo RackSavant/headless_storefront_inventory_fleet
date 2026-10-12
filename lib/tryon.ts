@@ -145,7 +145,7 @@ function lightingFor(photo: HTMLImageElement): number {
   return Math.min(1.08, Math.max(0.82, 0.75 + lum * 0.5));
 }
 
-function drawMapped(ctx: CanvasRenderingContext2D, img: HTMLImageElement, sp: Sprite, origin: Pt, u: Pt, sx: number, sy: number, at = { x: 0, y: 0 }) {
+function drawMapped(ctx: CanvasRenderingContext2D, img: HTMLImageElement, sp: Sprite, origin: Pt, u: Pt, sx: number, sy: number, at = { x: 0, y: 0 }, form = false) {
   const v = { x: -u.y, y: u.x }; // image "down" perpendicular to u
   // sprite px -> model meters (x right, y up)
   const m = (2 * sp.half) / sp.size;
@@ -153,20 +153,68 @@ function drawMapped(ctx: CanvasRenderingContext2D, img: HTMLImageElement, sp: Sp
   // model meters -> image px
   const M = new DOMMatrix([u.x * sx, u.y * sx, -v.x * sy, -v.y * sy, origin.x - (u.x * sx * at.x - v.x * sy * at.y), origin.y - (u.y * sx * at.x - v.y * sy * at.y)]);
   const T = M.multiply(S);
-  ctx.save();
-  ctx.setTransform(T);
   const px = Math.hypot(T.a, T.b) * (sp.size / 100);
-  const draw = () => ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, sp.size, sp.size);
-  // Soft ambient shadow, then a tight contact shadow where cloth meets the body.
+
+  // 1. The garment alone on a scratch canvas, so shading only lands on cloth pixels.
+  const W = ctx.canvas.width;
+  const H = ctx.canvas.height;
+  const tmp = document.createElement("canvas");
+  tmp.width = W;
+  tmp.height = H;
+  const t = tmp.getContext("2d", { willReadFrequently: true })!;
+  t.setTransform(T);
+  t.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, sp.size, sp.size);
+  t.setTransform(1, 0, 0, 1, 0, 0);
+
+  // 2. Form shading: darker toward the silhouette edges, a soft highlight down the middle, heavier at the hem.
+  if (form) {
+    const d = t.getImageData(0, 0, W, H).data;
+    let x0 = W;
+    let y0 = H;
+    let x1 = 0;
+    let y1 = 0;
+    for (let y = 0; y < H; y += 3)
+      for (let x = 0; x < W; x += 3)
+        if (d[(y * W + x) * 4 + 3] > 40) {
+          if (x < x0) x0 = x;
+          if (x > x1) x1 = x;
+          if (y < y0) y0 = y;
+          if (y > y1) y1 = y;
+        }
+    if (x1 > x0 && y1 > y0) {
+      t.globalCompositeOperation = "source-atop";
+      const gx = t.createLinearGradient(x0, 0, x1, 0);
+      gx.addColorStop(0, "rgba(0,0,0,0.34)");
+      gx.addColorStop(0.16, "rgba(0,0,0,0.08)");
+      gx.addColorStop(0.42, "rgba(255,255,255,0.07)");
+      gx.addColorStop(0.58, "rgba(255,255,255,0.03)");
+      gx.addColorStop(0.84, "rgba(0,0,0,0.12)");
+      gx.addColorStop(1, "rgba(0,0,0,0.38)");
+      t.fillStyle = gx;
+      t.fillRect(x0, y0, x1 - x0, y1 - y0);
+      const gy = t.createLinearGradient(0, y0, 0, y1);
+      gy.addColorStop(0, "rgba(0,0,0,0.10)");
+      gy.addColorStop(0.12, "rgba(0,0,0,0)");
+      gy.addColorStop(0.86, "rgba(0,0,0,0)");
+      gy.addColorStop(1, "rgba(0,0,0,0.22)");
+      t.fillStyle = gy;
+      t.fillRect(x0, y0, x1 - x0, y1 - y0);
+      t.globalCompositeOperation = "source-over";
+    }
+  }
+
+  // 3. Soft ambient shadow, then a tight contact shadow where cloth meets the body.
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.filter = `brightness(${light * 0.9}) blur(0.4px)`;
   ctx.shadowColor = "rgba(0,0,0,0.22)";
   ctx.shadowBlur = 16;
   ctx.shadowOffsetY = 5;
-  draw();
+  ctx.drawImage(tmp, 0, 0);
   ctx.shadowColor = "rgba(0,0,0,0.35)";
   ctx.shadowBlur = Math.max(1, px * 0.4);
   ctx.shadowOffsetY = 1;
-  draw();
+  ctx.drawImage(tmp, 0, 0);
   ctx.restore();
 }
 
@@ -206,7 +254,7 @@ export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageEl
       // Garment y=0 is the shoulder seam, which sits ~3 cm above the shoulder joints.
       const sy = Math.min(1.4 * pxPerM, Math.max(0.7 * pxPerM, torsoPx / BODY.torso));
       const origin = { x: shMid.x - (-u.y) * 0.03 * sy, y: shMid.y - u.x * 0.03 * sy };
-      drawMapped(ctx, img, sprite, origin, u, pxPerM * 1.05, sy);
+      drawMapped(ctx, img, sprite, origin, u, pxPerM * 1.05, sy, undefined, true);
     } else if (p.role === "bottom") {
       // Waistband (y=0) sits ~8 cm above the hip joints.
       const legDown = unit({ x: ankleMid.x - hipMid.x, y: ankleMid.y - hipMid.y }, down);
@@ -214,7 +262,7 @@ export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageEl
       const sx = Math.max(pxPerM * 0.9, dist(a.hipL, a.hipR) / BODY.hipJoints) * 0.95;
       const sy = Math.max(0.6 * pxPerM, legPx / (BODY.hipToAnkle + 0.1));
       const origin = { x: hipMid.x - (-hipU.y) * 0.08 * sy, y: hipMid.y - hipU.x * 0.08 * sy };
-      drawMapped(ctx, img, sprite, origin, hipU, sx, sy);
+      drawMapped(ctx, img, sprite, origin, hipU, sx, sy, undefined, true);
     } else if (p.role === "shoes") {
       for (const ank of [a.ankleL, a.ankleR]) {
         // shoe sprite is the front view; its top-of-collar sits at the ankle
