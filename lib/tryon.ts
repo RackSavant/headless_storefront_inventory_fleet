@@ -130,6 +130,21 @@ function loadImage(src: string): Promise<HTMLImageElement> {
  * Draw a sprite so that model point `at` (meters, y up) lands on image point `origin`,
  * with model x along `u` scaled by sx px/m and model -y along the perpendicular scaled by sy px/m.
  */
+let light = 1;
+
+/** Average brightness of the photo (0..1) mapped to a garment brightness multiplier. */
+function lightingFor(photo: HTMLImageElement): number {
+  const c = document.createElement("canvas");
+  c.width = c.height = 16;
+  const g = c.getContext("2d")!;
+  g.drawImage(photo, 0, 0, 16, 16);
+  const d = g.getImageData(0, 0, 16, 16).data;
+  let sum = 0;
+  for (let i = 0; i < d.length; i += 4) sum += (0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255;
+  const lum = sum / 256;
+  return Math.min(1.08, Math.max(0.82, 0.75 + lum * 0.5));
+}
+
 function drawMapped(ctx: CanvasRenderingContext2D, img: HTMLImageElement, sp: Sprite, origin: Pt, u: Pt, sx: number, sy: number, at = { x: 0, y: 0 }) {
   const v = { x: -u.y, y: u.x }; // image "down" perpendicular to u
   // sprite px -> model meters (x right, y up)
@@ -140,10 +155,18 @@ function drawMapped(ctx: CanvasRenderingContext2D, img: HTMLImageElement, sp: Sp
   const T = M.multiply(S);
   ctx.save();
   ctx.setTransform(T);
-  ctx.shadowColor = "rgba(0,0,0,0.28)";
-  ctx.shadowBlur = 12;
-  ctx.shadowOffsetY = 3;
-  ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, sp.size, sp.size);
+  const px = Math.hypot(T.a, T.b) * (sp.size / 100);
+  const draw = () => ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, sp.size, sp.size);
+  // Soft ambient shadow, then a tight contact shadow where cloth meets the body.
+  ctx.filter = `brightness(${light * 0.9}) blur(0.4px)`;
+  ctx.shadowColor = "rgba(0,0,0,0.22)";
+  ctx.shadowBlur = 16;
+  ctx.shadowOffsetY = 5;
+  draw();
+  ctx.shadowColor = "rgba(0,0,0,0.35)";
+  ctx.shadowBlur = Math.max(1, px * 0.4);
+  ctx.shadowOffsetY = 1;
+  draw();
   ctx.restore();
 }
 
@@ -160,6 +183,7 @@ export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageEl
   canvas.height = photo.naturalHeight;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.drawImage(photo, 0, 0);
+  light = lightingFor(photo);
 
   const sh = dist(a.shoulderL, a.shoulderR) || 1;
   const hipMid = mid(a.hipL, a.hipR);

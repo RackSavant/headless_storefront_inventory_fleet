@@ -40,6 +40,46 @@ function findImage(node: unknown, seen = new Set<object>()): { data: string; mim
   return null;
 }
 
+const COVERAGE_RULES =
+  "The subject must remain fully clothed in the output. If the new garments would leave part of the torso or legs uncovered, add a plain, opaque, neutral underlayer (simple base top, shorts or slip). Never make the subject appear more undressed than in the source photo. Nothing sheer that reveals the body.";
+
+const BODY_RULES =
+  "Preserve the person's face, hair, body shape, proportions, height, skin tone and age exactly. Do not slim, smooth or retouch the body or face. Keep the same pose, limb positions, camera angle, framing, background and lighting. Only the clothing changes.";
+
+/** Layering order, innermost first, so the model knows what sits over what. */
+const LAYER_ORDER = ["bottom", "dress", "top", "outerwear", "shoes", "bag", "accessory"];
+
+function buildPrompt(items: Array<{ title: string; role: string }>) {
+  const lines = items.map((i, n) => `  Image ${n + 2} - ${i.role.toUpperCase()}: "${i.title}"`).join("\n");
+  const layering = [...items]
+    .sort((a, b) => LAYER_ORDER.indexOf(a.role) - LAYER_ORDER.indexOf(b.role))
+    .map((i) => `${i.role} (${i.title})`)
+    .join(" -> ");
+  return `You are a fashion retoucher producing one photorealistic virtual try-on image.
+
+Image 1 is the SUBJECT, a real person who wants to see themselves in different clothes.
+Every later image is a product photograph of a garment or accessory:
+${lines}
+
+THE PRODUCT PHOTOS ARE THE SOURCE OF TRUTH. Reproduce exactly what they show: colour, print placement, fabric weave and sheen, hardware, stitching, cut and proportions. Titles are only captions; where a caption and its photo disagree, the photo wins. Do not redesign, recolour or "improve" any item. The customer must recognise the product.
+
+TASK: Swap the subject's current clothing for these items, as one believable photograph. The previous garment in the same category must not show through or layer under the new one.
+Layering, inside to outside: ${layering}.
+
+COVERAGE: ${COVERAGE_RULES}
+
+BODY: ${BODY_RULES}
+
+REALISM:
+- Match fabric drape, weight and wrinkles to how that material really falls on a body in this pose (stiff denim holds shape, silk clings and flows, knits stretch over curves).
+- Fit each piece to the subject's actual body: shoulders, waist, hips and leg length. Hems, sleeves and necklines land where they would on this person.
+- Keep shadows, contact points and occlusion physically correct where cloth meets skin, hair, hands and other layers. Match the scene's light direction and colour temperature on the garments.
+- It must read as a photograph, not a collage: no cut-out edges, halos, floating garments or visible seams.
+- Hands, fingers and footwear stay anatomically correct. No added text, logos or watermarks.
+
+OUTPUT: one full-body image with the same framing and aspect ratio as Image 1, high detail, natural skin texture retained.`;
+}
+
 export async function GET() {
   return NextResponse.json({ enabled: !!process.env.GEMINI_API_KEY, model: MODEL });
 }
@@ -51,12 +91,7 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ error: "invalid request" }, { status: 400 });
   const { photo, items } = parsed.data;
 
-  const prompt = [
-    "Virtual try-on. The first image is a photo of a person. The following images are clothing and accessory products.",
-    `Dress the person in exactly these items: ${items.map((i, n) => `image ${n + 2}: ${i.title} (${i.role})`).join("; ")}.`,
-    "Keep the person's face, body shape, skin tone, hair, pose, background and lighting unchanged. Replace only the clothing they are wearing where the new items go.",
-    "Match each item's color, material and silhouette. Photorealistic result, same framing as the original photo.",
-  ].join(" ");
+  const prompt = buildPrompt(items);
 
   const res = await fetch(ENDPOINT, {
     method: "POST",
