@@ -6,7 +6,7 @@
  * the head is located with the in-browser pose model, cropped, and feathered.
  */
 import { useSyncExternalStore } from "react";
-import { detectAnchors, loadImage } from "@/lib/tryon";
+import { defaultAnchors, detectAnchors, loadImage, type Anchors } from "@/lib/tryon";
 
 export interface AvatarProfile {
   id: number;
@@ -14,6 +14,36 @@ export interface AvatarProfile {
   hair: string;
   /** Feathered face crop with alpha, ready to use as a texture. */
   face: HTMLCanvasElement;
+  /** Full-body photo, same pixel size as `cutout`. */
+  photo: HTMLImageElement;
+  /** The person with the background removed, or null if avatar-N-cutout.png is missing. */
+  cutout: HTMLImageElement | null;
+  /** Pixel bounds of the person in the cutout (head top to feet). */
+  bbox: { x0: number; y0: number; x1: number; y1: number };
+  anchors: Anchors;
+}
+
+/** Bounding box of the non-transparent pixels. */
+function alphaBounds(img: HTMLImageElement): { x0: number; y0: number; x1: number; y1: number } {
+  const c = document.createElement("canvas");
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+  const g = c.getContext("2d", { willReadFrequently: true })!;
+  g.drawImage(img, 0, 0);
+  const d = g.getImageData(0, 0, c.width, c.height).data;
+  let x0 = c.width;
+  let y0 = c.height;
+  let x1 = 0;
+  let y1 = 0;
+  for (let y = 0; y < c.height; y++)
+    for (let x = 0; x < c.width; x++)
+      if (d[(y * c.width + x) * 4 + 3] > 40) {
+        if (x < x0) x0 = x;
+        if (x > x1) x1 = x;
+        if (y < y0) y0 = y;
+        if (y > y1) y1 = y;
+      }
+  return x1 > x0 && y1 > y0 ? { x0, y0, x1, y1 } : { x0: 0, y0: 0, x1: c.width, y1: c.height };
 }
 
 const STORAGE_KEY = "avatar_id";
@@ -43,9 +73,11 @@ async function analyze(id: number): Promise<AvatarProfile> {
 
   let nose = { x: w / 2, y: h * 0.14 };
   let shoulder = w * 0.3;
+  let anchors = defaultAnchors(w, h);
   try {
     const a = await detectAnchors(img, w, h);
     if (a) {
+      anchors = a;
       nose = a.head;
       shoulder = Math.hypot(a.shoulderL.x - a.shoulderR.x, a.shoulderL.y - a.shoulderR.y) || shoulder;
     }
@@ -78,7 +110,9 @@ async function analyze(id: number): Promise<AvatarProfile> {
 
   const skin = medianColor(sctx, nose.x, nose.y + fh * 0.04, fw * 0.07);
   const hair = medianColor(sctx, nose.x, nose.y - fh * 0.62, fw * 0.07);
-  return { id, skin, hair, face };
+  const cutout = await loadImage(`/avatars/avatar-${id}-cutout.png`).catch(() => null);
+  const bbox = cutout ? alphaBounds(cutout) : { x0: 0, y0: 0, x1: w, y1: h };
+  return { id, skin, hair, face, photo: img, cutout, bbox, anchors };
 }
 
 export function loadAvatar(id: number): Promise<AvatarProfile> {

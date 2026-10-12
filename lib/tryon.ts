@@ -177,12 +177,13 @@ export interface TryOnLayer {
 
 const ORDER: Product["role"][] = ["bottom", "shoes", "dress", "top", "outerwear", "bag", "accessory"];
 
-export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageElement, a: Anchors, layers: TryOnLayer[]) {
+export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageElement, a: Anchors, layers: TryOnLayer[], base?: HTMLImageElement) {
   const ctx = canvas.getContext("2d")!;
   canvas.width = photo.naturalWidth;
   canvas.height = photo.naturalHeight;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.drawImage(photo, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(base ?? photo, 0, 0);
   light = lightingFor(photo);
 
   const sh = dist(a.shoulderL, a.shoulderR) || 1;
