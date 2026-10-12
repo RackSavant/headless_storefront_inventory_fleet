@@ -5,10 +5,11 @@
  * Faces +z, feet at y=0, ~1.78 m tall.
  */
 import * as THREE from "three";
+import type { AvatarProfile } from "@/lib/avatars";
 import type { Product } from "@/lib/types";
 import { buildBag, buildProduct, fabricMaterial, fabricOf } from "./meshes";
 
-const SKIN = new THREE.MeshPhysicalMaterial({ color: "#ebe5dc", roughness: 0.5, clearcoat: 0.25, clearcoatRoughness: 0.5 });
+const SKIN_DEFAULT = new THREE.MeshPhysicalMaterial({ color: "#ebe5dc", roughness: 0.5, clearcoat: 0.25, clearcoatRoughness: 0.5 });
 const DEPTH = 0.64; // torso front-to-back vs side-to-side
 
 /** Torso radius (side to side) at height y. */
@@ -90,8 +91,31 @@ const J = {
 const mirror = (v: THREE.Vector3, s: number) => new THREE.Vector3(v.x * s, v.y, v.z);
 const R = { upperArm: [0.05, 0.04], foreArm: [0.038, 0.029], thigh: [0.078, 0.055], shin: [0.052, 0.036] };
 
-export function buildMannequin(barefoot: boolean): THREE.Group {
+/** Hair as a crown plus a back piece, sized just outside the head ellipsoid. */
+function hairFor(color: string): THREE.Group {
+  const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.75, side: THREE.DoubleSide });
   const g = new THREE.Group();
+  const crown = new THREE.Mesh(new THREE.SphereGeometry(0.1035, 40, 20, 0, Math.PI * 2, 0, 1.0), mat);
+  const back = new THREE.Mesh(new THREE.SphereGeometry(0.1035, 40, 24, Math.PI - 0.35, Math.PI + 0.7, 0, 2.05), mat);
+  for (const m of [crown, back]) {
+    m.castShadow = true;
+    g.add(m);
+  }
+  return g;
+}
+
+/** The avatar's photographed face on a front-facing cap of the head, feathered at the edges. */
+function faceFor(avatar: AvatarProfile): THREE.Mesh {
+  const tex = new THREE.CanvasTexture(avatar.face);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+  const mat = new THREE.MeshStandardMaterial({ map: tex, transparent: true, roughness: 0.55, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 });
+  return new THREE.Mesh(new THREE.SphereGeometry(0.1015, 40, 28, Math.PI / 2 - 0.62, 1.24, 0.5, 1.4), mat);
+}
+
+export function buildMannequin(barefoot: boolean, avatar?: AvatarProfile | null): THREE.Group {
+  const g = new THREE.Group();
+  const SKIN = avatar ? new THREE.MeshPhysicalMaterial({ color: avatar.skin, roughness: 0.55, clearcoat: 0.15, clearcoatRoughness: 0.6 }) : SKIN_DEFAULT;
   const torso = new THREE.LatheGeometry(TORSO.map(([y, r]) => new THREE.Vector2(r, y)), 48);
   torso.scale(1, 1, DEPTH);
   g.add(Object.assign(new THREE.Mesh(torso, SKIN), { castShadow: true }));
@@ -118,6 +142,13 @@ export function buildMannequin(barefoot: boolean): THREE.Group {
   const head = ball(new THREE.Vector3(0, 1.69, 0.01), 0.1, SKIN);
   head.scale.set(0.92, 1.18, 1);
   g.add(head);
+  if (avatar) {
+    for (const part of [hairFor(avatar.hair), faceFor(avatar)]) {
+      part.position.copy(head.position);
+      part.scale.copy(head.scale);
+      g.add(part);
+    }
+  }
   return g;
 }
 
@@ -278,7 +309,7 @@ function wornAccessory(p: Product): THREE.Object3D | null {
 }
 
 /** Dress the mannequin. Async because shoes may be real models (e.g. the FBX stiletto). */
-export async function buildWornOutfit(items: Product[]): Promise<THREE.Group> {
+export async function buildWornOutfit(items: Product[], avatar?: AvatarProfile | null): Promise<THREE.Group> {
   const by = (role: Product["role"]) => items.find((p) => p.role === role);
   const shoes = by("shoes");
   const top = by("top");
@@ -289,7 +320,7 @@ export async function buildWornOutfit(items: Product[]): Promise<THREE.Group> {
   const acc = by("accessory");
 
   const g = new THREE.Group();
-  g.add(buildMannequin(!shoes));
+  g.add(buildMannequin(!shoes, avatar));
   if (acc?.subtype === "socks") g.add(wornAccessory(acc)!);
   if (bottom && !dress) g.add(wornBottom(bottom));
   if (dress) g.add(wornDress(dress));

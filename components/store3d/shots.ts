@@ -9,6 +9,7 @@
 import { useEffect, useState } from "react";
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
+import { getActiveAvatar } from "@/lib/avatars";
 import type { Product } from "@/lib/types";
 import { buildMannequin } from "./mannequin";
 import { buildProduct } from "./meshes";
@@ -138,7 +139,7 @@ export function modelPhoto(width = 720, height = 1080): Promise<string> {
 function renderModel(width: number, height: number): string {
   const { renderer, scene } = setup(Math.max(width, height));
   renderer.setSize(width, height, false);
-  const body = buildMannequin(true);
+  const body = buildMannequin(true, getActiveAvatar());
   scene.add(body);
   const cam = new THREE.PerspectiveCamera(30, width / height, 0.1, 20);
   cam.position.set(0, 0.95, 4.1);

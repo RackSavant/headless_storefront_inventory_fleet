@@ -7,6 +7,7 @@ import { api, getShopperId, usd, type CatalogResponse, type InventoryBundle, typ
 import { genderCompatible } from "@/lib/reco/compat";
 import type { Gender, Look, Product } from "@/lib/types";
 import { buildSections } from "./store3d/layout";
+import AvatarPicker from "./ui/AvatarPicker";
 import LookCard, { SourceBadge } from "./ui/LookCard";
 import MixMatch, { wear } from "./ui/MixMatch";
 import { useProductShot } from "./store3d/shots";
@@ -269,6 +270,7 @@ export default function StoreApp() {
           <MapIntro sections={sections} onEnter={enterSection} occasion={occasion} />
         ) : view === "fitting" ? (
           <div className="space-y-4">
+            <AvatarPicker />
             <MixMatch
               outfit={outfit}
               catalog={allProducts.filter(visible)}

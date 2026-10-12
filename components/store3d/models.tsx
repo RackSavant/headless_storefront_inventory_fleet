@@ -6,6 +6,7 @@
  */
 import { useEffect, useState } from "react";
 import type * as THREE from "three";
+import { useActiveAvatar } from "@/lib/avatars";
 import type { Product } from "@/lib/types";
 import { buildWornOutfit } from "./mannequin";
 import { buildProcedural, buildProduct } from "./meshes";
@@ -27,10 +28,11 @@ export function ProductModel({ product }: { product: Product }) {
 
 export function WornOutfit({ items }: { items: Product[] }) {
   const [obj, setObj] = useState<THREE.Object3D | null>(null);
-  const key = items.map((p) => p.id).sort().join(",");
+  const avatar = useActiveAvatar();
+  const key = items.map((p) => p.id).sort().join(",") + `|${avatar?.id ?? 0}`;
   useEffect(() => {
     let alive = true;
-    buildWornOutfit(items).then((o) => alive && setObj(o));
+    buildWornOutfit(items, avatar).then((o) => alive && setObj(o));
     return () => {
       alive = false;
     };
