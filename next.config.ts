@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   // mount makes them log "synchronously unmount a root" errors. Harmless, but noisy.
   reactStrictMode: false,
   transpilePackages: ["three"],
+  serverExternalPackages: ["sharp", "@imgly/background-removal-node", "onnxruntime-node"],
   allowedDevOrigins: ["127.0.0.1", "localhost"],
 };
 

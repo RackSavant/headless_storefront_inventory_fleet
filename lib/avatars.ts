@@ -24,7 +24,7 @@ export interface AvatarProfile {
 }
 
 /** Bounding box of the non-transparent pixels. */
-function alphaBounds(img: HTMLImageElement): { x0: number; y0: number; x1: number; y1: number } {
+export function alphaBounds(img: HTMLImageElement): { x0: number; y0: number; x1: number; y1: number } {
   const c = document.createElement("canvas");
   c.width = img.naturalWidth;
   c.height = img.naturalHeight;

@@ -7,7 +7,7 @@
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { aiAvatarImage } from "@/lib/avatar-ai";
+import { aiAvatarFit } from "@/lib/avatar-fit";
 import { useActiveAvatar, type AvatarProfile } from "@/lib/avatars";
 import { composeTryOn } from "@/lib/tryon";
 import type { Product } from "@/lib/types";
@@ -34,48 +34,60 @@ export function ProductModel({ product }: { product: Product }) {
 }
 
 /** The whole person from their photo, dressed in the outfit, standing where the mannequin would. */
+type FigureSource = { source: HTMLImageElement | HTMLCanvasElement; w: number; h: number; bbox: { x0: number; y0: number; x1: number; y1: number } };
+
 function AvatarFigure({ items, avatar }: { items: Product[]; avatar: AvatarProfile }) {
-  const cutout = avatar.cutout!;
-  const canvas = useMemo(() => document.createElement("canvas"), []);
-  const texture = useMemo(() => {
-    const t = new THREE.CanvasTexture(canvas);
-    t.colorSpace = THREE.SRGBColorSpace;
-    t.anisotropy = 8;
-    return t;
-  }, [canvas]);
+  const bare = useMemo<FigureSource>(() => ({ source: avatar.cutout!, w: avatar.cutout!.naturalWidth, h: avatar.cutout!.naturalHeight, bbox: avatar.bbox }), [avatar]);
+  const [fig, setFig] = useState<FigureSource>(bare);
+  const [busy, setBusy] = useState(false);
   const group = useRef<THREE.Group>(null);
   const key = items.map((p) => p.id).sort().join(",");
 
   useEffect(() => {
     let alive = true;
+    if (!items.length) {
+      setFig(bare);
+      setBusy(false);
+      return;
+    }
+    setBusy(true);
     (async () => {
+      // Photoreal fit from the product photos: cloth drapes and conforms to the body.
+      const fit = await aiAvatarFit(avatar, items).catch(() => null);
+      if (!alive) return;
+      if (fit) {
+        setFig({ source: fit.image, w: fit.image.naturalWidth, h: fit.image.naturalHeight, bbox: fit.bbox });
+        return;
+      }
+      // No model available: fall back to the 2D composite on the cutout.
       const layers = await Promise.all(items.map(async (p) => ({ product: p, sprite: await frontSprite(p) })));
       if (!alive) return;
-      await composeTryOn(canvas, avatar.photo, avatar.anchors, layers, cutout);
-      texture.needsUpdate = true;
-      // Photoreal fit (drape and folds that conform to the body) replaces the 2D one when available.
-      const fitted = await aiAvatarImage(avatar, layers).catch(() => null);
-      if (!alive || !fitted) return;
-      const g = canvas.getContext("2d")!;
-      g.setTransform(1, 0, 0, 1, 0, 0);
-      g.clearRect(0, 0, canvas.width, canvas.height);
-      g.drawImage(fitted, 0, 0, canvas.width, canvas.height);
-      texture.needsUpdate = true;
-    })().catch(() => {});
+      const canvas = document.createElement("canvas");
+      await composeTryOn(canvas, avatar.photo, avatar.anchors, layers, avatar.cutout!);
+      if (alive) setFig({ source: canvas, w: canvas.width, h: canvas.height, bbox: avatar.bbox });
+    })()
+      .catch(() => {})
+      .finally(() => alive && setBusy(false));
     return () => {
       alive = false;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, avatar]);
 
-  // Same height as the plain mannequin: head top to feet maps to MANNEQUIN_HEIGHT.
+  const texture = useMemo(() => {
+    const t = fig.source instanceof HTMLCanvasElement ? new THREE.CanvasTexture(fig.source) : new THREE.Texture(fig.source);
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = 8;
+    t.needsUpdate = true;
+    return t;
+  }, [fig]);
+
+  // Same height as the plain mannequin: head top to feet maps to MANNEQUIN_HEIGHT, whatever the image's aspect.
   const { x, y, width, height } = useMemo(() => {
-    const cw = cutout.naturalWidth;
-    const ch = cutout.naturalHeight;
-    const s = MANNEQUIN_HEIGHT / (avatar.bbox.y1 - avatar.bbox.y0);
-    const bx = (avatar.bbox.x0 + avatar.bbox.x1) / 2;
-    return { x: (cw / 2 - bx) * s, y: (avatar.bbox.y1 - ch / 2) * s, width: cw * s, height: ch * s };
-  }, [avatar, cutout]);
+    const s = MANNEQUIN_HEIGHT / (fig.bbox.y1 - fig.bbox.y0);
+    const bx = (fig.bbox.x0 + fig.bbox.x1) / 2;
+    return { x: (fig.w / 2 - bx) * s, y: (fig.bbox.y1 - fig.h / 2) * s, width: fig.w * s, height: fig.h * s };
+  }, [fig]);
 
   // Turn about the vertical axis to face the camera, like a standee.
   useFrame(({ camera }) => {
@@ -90,7 +102,7 @@ function AvatarFigure({ items, avatar }: { items: Product[]; avatar: AvatarProfi
     <group ref={group}>
       <mesh position={[x, y, 0]} renderOrder={2}>
         <planeGeometry args={[width, height]} />
-        <meshBasicMaterial map={texture} transparent alphaTest={0.02} side={THREE.DoubleSide} toneMapped={false} />
+        <meshBasicMaterial map={texture} transparent opacity={busy ? 0.7 : 1} alphaTest={0.02} side={THREE.DoubleSide} toneMapped={false} />
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} scale={[1, 0.55, 1]}>
         <circleGeometry args={[0.38, 32]} />

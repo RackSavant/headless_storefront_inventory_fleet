@@ -1,8 +1,9 @@
 /**
- * Photoreal try-on with Google's Gemini image model ("Nano Banana"), same
- * Interactions API the spatialintelligence repo uses. Optional: needs
- * GEMINI_API_KEY. The shopper's photo is only sent here when they press the
- * AI button; the 2D try-on runs entirely in the browser.
+ * Photoreal try-on with Google's Gemini image model ("Nano Banana") via generateContent:
+ * parts are [prompt, person photo, garment product photos] in that order. Optional: needs
+ * GEMINI_API_KEY. The shopper's photo is only sent here when they press the AI button;
+ * the 2D try-on runs entirely in the browser. With `cutout: true` the result comes back
+ * with its background removed (for the standing figure in the 3D store).
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
@@ -10,8 +11,8 @@ import { z } from "zod";
 export const dynamic = "force-dynamic";
 export const maxDuration = 120;
 
-const ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions";
 const MODEL = process.env.GEMINI_IMAGE_MODEL || "gemini-3-pro-image";
+const endpoint = () => `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
 const DataUrl = z.string().regex(/^data:image\/(png|jpeg|webp);base64,/).max(12_000_000);
 const Body = z.object({
@@ -20,11 +21,12 @@ const Body = z.object({
     .array(z.object({ title: z.string().max(120), role: z.string().max(20), image: DataUrl }))
     .min(1)
     .max(6),
+  cutout: z.boolean().optional(),
 });
 
 function split(dataUrl: string) {
   const [head, data] = dataUrl.split(",", 2);
-  return { mime_type: head.slice(5, head.indexOf(";")), data };
+  return { inlineData: { mimeType: head.slice(5, head.indexOf(";")), data } };
 }
 
 function findImage(node: unknown, seen = new Set<object>()): { data: string; mime: string } | null {
@@ -89,16 +91,16 @@ export async function POST(req: Request) {
   if (!key) return NextResponse.json({ error: "Set GEMINI_API_KEY to enable AI try-on" }, { status: 501 });
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "invalid request" }, { status: 400 });
-  const { photo, items } = parsed.data;
+  const { photo, items, cutout } = parsed.data;
 
   const prompt = buildPrompt(items);
 
-  const res = await fetch(ENDPOINT, {
+  const res = await fetch(endpoint(), {
     method: "POST",
     headers: { "x-goog-api-key": key, "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: MODEL,
-      input: [{ type: "text", text: prompt }, { type: "image", ...split(photo) }, ...items.map((i) => ({ type: "image", ...split(i.image) }))],
+      contents: [{ role: "user", parts: [{ text: prompt }, split(photo), ...items.map((i) => split(i.image))] }],
+      generationConfig: { temperature: 0.4 },
     }),
   });
   if (!res.ok) {
@@ -109,7 +111,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: `Gemini ${res.status}: ${text.slice(0, 300)}` }, { status: 502 });
   }
   const json = await res.json();
-  const img = findImage((json as Record<string, unknown>).output_image) ?? findImage(json);
+  const img = findImage(json);
   if (!img) return NextResponse.json({ error: "The model returned no image (it may have declined the request)." }, { status: 502 });
+  if (cutout) {
+    try {
+      const { cleanMatte, imglyRemover } = await import("@/lib/photos");
+      const removeBg = await imglyRemover();
+      const png = await cleanMatte(await removeBg(Buffer.from(img.data, "base64")));
+      return NextResponse.json({ image: `data:image/png;base64,${png.toString("base64")}` });
+    } catch (e) {
+      return NextResponse.json({ error: `Background removal failed: ${e instanceof Error ? e.message : "unknown"}` }, { status: 500 });
+    }
+  }
   return NextResponse.json({ image: `data:${img.mime};base64,${img.data}` });
 }
