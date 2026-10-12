@@ -1,13 +1,14 @@
 /**
  * Turns an inventory product photo into a GLB with Tripo and attaches it to the product.
- *   npm run tripo:generate -- <product-id> [--image path/to/photo.jpg] [--face-limit 20000]
+ *   npm run tripo:generate -- --balance
+ *   npm run tripo:generate -- <product-id> [--image path/to/photo.jpg] [--quality standard|detailed]
  * Image defaults to the product's image_url under public/. Output: public/models/<product-id>.glb.
  * INVENTORY_SOURCE=firestore also updates the Firestore doc; otherwise data/inventory.json is updated.
- * Needs TRIPO_API_KEY in .env. Keep GLBs small for phones (face-limit 20000 is a starting point).
+ * Needs TRIPO_API_KEY in .env (Tripo v3 API). Each generation spends credits; run --balance first.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { imageToGlb } from "../lib/tripo";
+import { getBalance, imageToGlb } from "../lib/tripo";
 
 try {
   process.loadEnvFile(".env");
@@ -17,8 +18,12 @@ try {
 
 async function main() {
   const args = process.argv.slice(2);
-  const id = args.find((a) => !a.startsWith("--") && args[args.indexOf(a) - 1] !== "--image" && args[args.indexOf(a) - 1] !== "--face-limit");
-  if (!id) throw new Error("usage: npm run tripo:generate -- <product-id> [--image file] [--face-limit n]");
+  if (args.includes("--balance")) {
+    console.log(JSON.stringify(await getBalance(), null, 2));
+    return;
+  }
+  const id = args.find((a) => !a.startsWith("--") && args[args.indexOf(a) - 1] !== "--image" && args[args.indexOf(a) - 1] !== "--quality");
+  if (!id) throw new Error("usage: npm run tripo:generate -- <product-id> [--image file] [--quality standard|detailed] | --balance");
   const flag = (name: string) => (args.includes(name) ? args[args.indexOf(name) + 1] : undefined);
 
   const invPath = path.join(process.cwd(), "data", "inventory.json");
@@ -32,7 +37,7 @@ async function main() {
   const imagePath = imageArg ? path.resolve(imageArg) : path.join(process.cwd(), "public", imageRel);
 
   console.log(`Tripo: ${id} <- ${imagePath}`);
-  const glb = await imageToGlb({ bytes: readFileSync(imagePath), filename: path.basename(imagePath) }, {}, { faceLimit: Number(flag("--face-limit") ?? 20000) });
+  const glb = await imageToGlb({ bytes: readFileSync(imagePath), filename: path.basename(imagePath) }, {}, { textureQuality: flag("--quality") === "detailed" ? "detailed" : "standard" });
 
   mkdirSync(path.join(process.cwd(), "public", "models"), { recursive: true });
   const out = path.join(process.cwd(), "public", "models", `${id}.glb`);

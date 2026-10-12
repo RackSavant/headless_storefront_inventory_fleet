@@ -16,14 +16,17 @@
     "reco:demo": "tsx scripts/reco-demo.ts",
     "harness:evolve": "tsx scripts/evolve.ts",
     "photos:fetch": "tsx scripts/fetch-photos.ts",
+    "photos:process": "tsx scripts/process-photos.ts",
     "firestore:seed": "tsx scripts/seed-firestore.ts",
     "firestore:inspect": "tsx scripts/inspect-firestore.ts",
     "storage:inspect": "tsx scripts/inspect-storage.ts",
     "inventory:preview": "tsx scripts/preview-inventory.ts",
+    "dwg:inspect": "tsx scripts/inspect-dwg.ts",
     "tripo:generate": "tsx scripts/tripo-generate.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",
+    "@imgly/background-removal-node": "^1.4.5",
     "@mediapipe/tasks-vision": "^1.1.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.1",
@@ -33,10 +36,12 @@
     "next": "^16.4.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "sharp": "^0.35.5",
     "three": "^0.185.1",
     "zod": "^4.6.6"
   },
   "devDependencies": {
+    "@mlightcad/libredwg-web": "^0.7.17",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",

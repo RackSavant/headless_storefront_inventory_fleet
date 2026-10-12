@@ -1,47 +1,49 @@
 import { describe, expect, it } from "vitest";
-import { extractModelUrl, imageToGlb, imageType } from "@/lib/tripo";
+import { createImageToModelTask, extractModelUrl, getBalance, imageToGlb, mimeFor } from "@/lib/tripo";
 
 const ok = (data: unknown) => new Response(JSON.stringify({ code: 0, data }), { status: 200 });
+const deps = (fake: unknown) => ({ fetch: fake as typeof fetch, apiKey: "k", baseUrl: "https://t.test/v3", sleep: async () => {} });
 
-describe("tripo client", () => {
+describe("tripo v3 client", () => {
   it("runs upload -> task -> poll -> download in order", async () => {
     const calls: string[] = [];
     let polls = 0;
-    const fake = (async (url: string, init?: RequestInit) => {
+    const fake = async (url: string, init?: RequestInit) => {
       calls.push(`${init?.method ?? "GET"} ${url.replace("https://t.test", "")}`);
-      if (url.endsWith("/upload/sts")) return ok({ image_token: "tok1" });
-      if (url.endsWith("/task") && init?.method === "POST") {
-        expect(JSON.parse(init.body as string)).toMatchObject({ type: "image_to_model", file: { type: "png", file_token: "tok1" }, pbr: true });
-        return ok({ task_id: "t1" });
+      if (url.endsWith("/v3/files")) return ok({ file_token: "file_1" });
+      if (url.endsWith("/generation/image-to-model")) {
+        expect(JSON.parse(init!.body as string)).toMatchObject({ input: "file_1", model: "v3.1-20260211", texture: true, pbr: true });
+        return ok({ task_id: "task_1" });
       }
-      if (url.endsWith("/task/t1")) return ok(++polls < 2 ? { status: "running" } : { status: "success", output: { pbr_model: "https://t.test/m.glb" } });
-      if (url === "https://t.test/m.glb") return new Response(new Uint8Array([1, 2, 3]));
+      if (url.endsWith("/tasks/task_1")) return ok(++polls < 2 ? { status: "running", progress: 40 } : { status: "success", output: { model_url: "https://cdn.test/m.glb" } });
+      if (url === "https://cdn.test/m.glb") return new Response(new Uint8Array([1, 2, 3]));
       throw new Error("unexpected " + url);
-    }) as unknown as typeof fetch;
-
-    const glb = await imageToGlb({ bytes: new Uint8Array([9]), filename: "boot.png" }, { fetch: fake, apiKey: "k", baseUrl: "https://t.test", sleep: async () => {} });
+    };
+    const glb = await imageToGlb({ bytes: new Uint8Array([9]), filename: "boot.png" }, deps(fake));
     expect([...glb]).toEqual([1, 2, 3]);
-    expect(calls).toEqual(["POST /upload/sts", "POST /task", "GET /task/t1", "GET /task/t1", "GET /m.glb"]);
+    expect(calls).toEqual(["POST /v3/files", "POST /v3/generation/image-to-model", "GET /v3/tasks/task_1", "GET /v3/tasks/task_1", "GET https://cdn.test/m.glb"]);
   });
 
-  it("fails clearly on a failed task and on a missing key", async () => {
-    const fake = (async (url: string, init?: RequestInit) => {
-      if (url.endsWith("/upload/sts")) return ok({ image_token: "tok1" });
-      if (init?.method === "POST") return ok({ task_id: "t2" });
-      return ok({ status: "failed" });
-    }) as unknown as typeof fetch;
-    await expect(imageToGlb({ bytes: new Uint8Array([1]), filename: "a.jpg" }, { fetch: fake, apiKey: "k", baseUrl: "https://t.test", sleep: async () => {} })).rejects.toThrow(/failed/);
+  it("surfaces API errors with message and suggestion (e.g. insufficient credits)", async () => {
+    const fake = async () => new Response(JSON.stringify({ code: 2010, message: "Insufficient credits", suggestion: "Please top up your account" }), { status: 403 });
+    await expect(createImageToModelTask("file_1", {}, deps(fake))).rejects.toThrow(/2010.*Insufficient credits.*top up/);
+  });
+
+  it("fails on failed tasks, reads balance and requires a key", async () => {
+    const failed = async (url: string) => (url.endsWith("/files") ? ok({ file_token: "f" }) : url.includes("/generation/") ? ok({ task_id: "t" }) : ok({ status: "failed" }));
+    await expect(imageToGlb({ bytes: new Uint8Array([1]), filename: "a.jpg" }, deps(failed))).rejects.toThrow(/failed/);
+    expect(await getBalance(deps(async () => ok({ balance: 12 })))).toEqual({ balance: 12 });
     const prev = process.env.TRIPO_API_KEY;
     delete process.env.TRIPO_API_KEY;
-    await expect(imageToGlb({ bytes: new Uint8Array([1]), filename: "a.jpg" }, { fetch: fake })).rejects.toThrow(/TRIPO_API_KEY/);
+    await expect(getBalance({ fetch: failed as unknown as typeof fetch })).rejects.toThrow(/TRIPO_API_KEY/);
     if (prev) process.env.TRIPO_API_KEY = prev;
   });
 
-  it("extracts model urls from string or object outputs and maps image types", () => {
-    expect(extractModelUrl({ model: { url: "u" } })).toBe("u");
-    expect(extractModelUrl({ pbr_model: "p", model: "m" })).toBe("p");
+  it("extracts model urls and maps mime types", () => {
+    expect(extractModelUrl({ model_url: "u" })).toBe("u");
+    expect(extractModelUrl({ pbr_model: { url: "p" } })).toBe("p");
     expect(extractModelUrl({})).toBeNull();
-    expect(imageType("a.JPEG")).toBe("jpg");
-    expect(imageType("a.webp")).toBe("webp");
+    expect(mimeFor("a.JPEG")).toBe("image/jpeg");
+    expect(mimeFor("a.webp")).toBe("image/webp");
   });
 });

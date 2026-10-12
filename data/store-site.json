@@ -1,0 +1,13 @@
+{
+  "source": "4596 Mission drawing document A1-A2.dwg (sheet: Existing partial floor plan at primary entrance; printed dimension strings only, read from a PDF-imported drawing)",
+  "unit": "Unit 1",
+  "status": "existing conditions, pre-renovation; the drawing has NO full interior floor plan",
+  "entrance": {
+    "primary_door": { "width_in": 36, "height_in": 84 },
+    "security_gate_door": { "width_in": 37, "height_in": 93 },
+    "inner_security_door": { "width_in": 36, "height_in": 84 },
+    "vestibule_dimension_strings_ft_in": ["5'-4\"", "6'-3\"", "3'-1\"", "3'-0\"", "3'-2\"", "3'-3\"", "8'-6\""],
+    "features": ["storefront window", "built-in cabinet", "non-compliant sloped walkway (to be fixed)", "non-compliant landing (to be fixed)", "non-compliant door threshold (to be removed)"]
+  },
+  "needed_for_full_3d_store": ["interior width x depth", "ceiling height", "column locations", "cash wrap position", "fitting room positions", "window wall and door positions on the facade"]
+}
