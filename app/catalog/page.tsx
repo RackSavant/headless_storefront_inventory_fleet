@@ -23,7 +23,7 @@ function Card({ p, cutout }: { p: Product; cutout: boolean }) {
         <span>
           <span className="block font-medium text-stone-900">{p.title}</span>
           <span className="text-stone-500">
-            {usd(p.price_cents)} · {p.source === "inventory" ? "in store" : "partner"} · {cutout ? "cut-out" : p.image_url ? "photo" : p.model_url ? "3D scan" : "3D render"}
+            {usd(p.price_cents, p.currency)} · {p.source === "inventory" ? "in store" : "partner"} · {cutout ? "cut-out" : p.image_url ? "photo" : p.model_url ? "3D scan" : "3D render"}
           </span>
           {!cutout && p.image_credit && (
             <a href={p.image_credit.source_url ?? undefined} target="_blank" rel="noopener noreferrer" className="block truncate text-[10px] text-stone-400 hover:underline" title={p.image_credit.text}>

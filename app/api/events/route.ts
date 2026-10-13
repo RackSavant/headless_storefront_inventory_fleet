@@ -11,6 +11,7 @@ const Body = z.object({
   product_ids: z.array(z.string()).max(20).optional(),
   look_id: z.string().max(200).optional(),
   value_cents: z.number().int().nonnegative().optional(),
+  currency: z.enum(["USD", "USDC"]).optional(),
 });
 
 export async function POST(req: Request) {

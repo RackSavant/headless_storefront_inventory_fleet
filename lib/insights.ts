@@ -9,6 +9,7 @@ import { colorFamily } from "@/lib/color";
 import { daysInStock, isSlowMover, stockPressure } from "@/lib/reco/merch";
 import { buildLooks } from "@/lib/reco/outfit";
 import type { Product, StoreEvent } from "@/lib/types";
+import { moneyTotals } from "./money";
 
 export interface DemandRow {
   key: string;
@@ -110,6 +111,7 @@ export function computeInsights(events: StoreEvent[], now = new Date()) {
     color: p.color,
     quantity: p.quantity ?? 0,
     price_cents: p.price_cents,
+    currency: p.currency,
     cost_cents: p.cost_cents ?? 0,
     days_in_stock: daysInStock(p, now),
     pressure: Math.round(stockPressure(p, config, now) * 100) / 100,
@@ -125,6 +127,9 @@ export function computeInsights(events: StoreEvent[], now = new Date()) {
     store_name: config.store_name,
     config,
     totals: {
+      retail_by_currency: moneyTotals(stock.map((p) => ({ currency: p.currency, price_cents: p.quantity * p.price_cents }))),
+      cost_by_currency: moneyTotals(stock.map((p) => ({ currency: p.currency, price_cents: p.quantity * p.cost_cents }))),
+      slow_by_currency: moneyTotals(stock.filter((p) => p.slow_mover).map((p) => ({ currency: p.currency, price_cents: p.quantity * p.price_cents }))),
       skus: inventory.length,
       units: stock.reduce((s, p) => s + p.quantity, 0),
       retail_value_cents: stock.reduce((s, p) => s + p.quantity * p.price_cents, 0),
@@ -142,6 +147,7 @@ export function computeInsights(events: StoreEvent[], now = new Date()) {
       add_to_cart: count("add_to_cart"),
       checkouts: count("checkout"),
       revenue_cents: revenue,
+      revenue_by_currency: moneyTotals(events.filter((e) => e.type === "checkout").map((e) => ({ currency: e.currency ?? "USD", price_cents: e.value_cents ?? 0 }))),
     },
     stock: stock.sort((a, b) => b.pressure - a.pressure),
     demand: demandRows.slice(0, 20).map((r) => ({ ...r, examples: r.example_ids.map((id) => byId.get(id)?.title ?? id) })),

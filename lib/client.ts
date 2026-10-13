@@ -2,8 +2,7 @@
 
 import type { Bundle, Look, Product, ScoringPolicy, ShopperContext, ShopperProfile } from "@/lib/types";
 
-export const usd = (cents: number) =>
-  `$${(cents / 100).toLocaleString("en-US", { minimumFractionDigits: cents % 100 ? 2 : 0, maximumFractionDigits: 2 })}`;
+export { formatMoney as usd, formatTotals } from "./money";
 
 export function getShopperId(): string {
   try {

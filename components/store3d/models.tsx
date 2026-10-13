@@ -8,21 +8,28 @@ import { useEffect, useState } from "react";
 import type * as THREE from "three";
 import type { Product } from "@/lib/types";
 import { buildWornOutfit } from "./mannequin";
-import { buildProcedural, buildProduct } from "./meshes";
+import { buildProcedural, buildProduct, disposeProduct } from "./meshes";
 
 /** Display model for a product on a fixture (hanging garments include a hanger). */
 export function ProductModel({ product }: { product: Product }) {
   // Procedural geometry is instant; a real model file swaps in when it has loaded.
-  const [obj, setObj] = useState<THREE.Object3D>(() => buildProcedural(product));
+  const [obj, setObj] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
-    if (!product.model_url) return;
     let alive = true;
-    buildProduct(product).then((o) => alive && setObj(o));
+    let current: THREE.Object3D = buildProcedural(product);
+    setObj(current);
+    if (product.model_url) buildProduct(product).then((object) => {
+      if (!alive) { disposeProduct(object); return; }
+      disposeProduct(current);
+      current = object;
+      setObj(object);
+    });
     return () => {
       alive = false;
+      disposeProduct(current);
     };
   }, [product]);
-  return <primitive object={obj} />;
+  return obj ? <primitive object={obj} /> : null;
 }
 
 export function WornOutfit({ items }: { items: Product[] }) {

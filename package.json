@@ -13,6 +13,7 @@
     "catalog:shopify": "tsx scripts/import-shopify.ts",
     "catalog:csv": "tsx scripts/import-csv.ts",
     "inventory:import": "tsx scripts/import-inventory.ts",
+    "inventory:firebase": "tsx scripts/import-firebase.ts",
     "reco:demo": "tsx scripts/reco-demo.ts",
     "harness:evolve": "tsx scripts/evolve.ts",
     "photos:fetch": "tsx scripts/fetch-photos.ts"

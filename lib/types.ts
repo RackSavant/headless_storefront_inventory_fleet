@@ -36,7 +36,7 @@ export interface Product {
   formality: number;
   seasons: Season[];
   price_cents: number;
-  currency: "USD";
+  currency: "USD" | "USDC";
   image_url?: string;
   /** Required attribution for openly licensed photos (see scripts/fetch-photos.ts). */
   image_credit?: {
@@ -122,6 +122,7 @@ export interface Look {
 }
 
 export interface Bundle {
+  currency?: Product["currency"];
   product_ids: string[];
   list_cents: number;
   price_cents: number;
@@ -164,6 +165,7 @@ export interface StoreEvent {
   look_id?: string;
   reason?: string;
   value_cents?: number;
+  currency?: Product["currency"];
   ts: string;
 }
 

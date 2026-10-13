@@ -1,5 +1,5 @@
 /** Loads inventory, the external catalog and store config from ./data (server only). */
-import { readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { ROLES, SEASONS, STYLES, type Product, type StoreConfig } from "@/lib/types";
@@ -17,7 +17,7 @@ const ProductSchema = z.object({
   formality: z.number().min(1).max(5),
   seasons: z.array(z.enum(SEASONS)).min(1),
   price_cents: z.number().int().nonnegative(),
-  currency: z.literal("USD"),
+  currency: z.enum(["USD", "USDC"]),
   image_url: z.string().optional(),
   image_credit: z
     .object({
@@ -62,8 +62,10 @@ function readJson(file: string): unknown {
 
 /** Re-reads the files when they change, so importing new stock doesn't need a restart. */
 export function loadCatalog() {
-  const files = ["inventory.json", "external-catalog.json", "store-config.json"];
-  const key = files.map((f) => statSync(path.join(DATA_DIR, f)).mtimeMs).join(":");
+  const snapshot = path.join("..", ".data", "firebase-inventory.json");
+  const inventoryFile = process.env.NODE_ENV !== "test" && existsSync(path.join(DATA_DIR, snapshot)) ? snapshot : "inventory.json";
+  const files = [inventoryFile, "external-catalog.json", "store-config.json"];
+  const key = files.map((f) => `${f}:${statSync(path.join(DATA_DIR, f)).mtimeMs}`).join(":");
   if (cache?.key === key) return cache;
   const inventory = z.array(ProductSchema).parse(readJson(files[0])) as Product[];
   const external = z.array(ProductSchema).parse(readJson(files[1])) as Product[];

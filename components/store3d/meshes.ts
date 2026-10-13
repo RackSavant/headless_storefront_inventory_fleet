@@ -12,6 +12,7 @@
  */
 import * as THREE from "three";
 import type { Product } from "@/lib/types";
+import { clothGeometry, drapeDetail } from "./cloth";
 
 /* ================================================================== */
 /* Fabric textures + materials                                         */
@@ -128,7 +129,7 @@ export function fabricOf(p: Product, part: "main" | "sole" = "main"): Fabric {
 const matCache = new Map<string, THREE.Material>();
 
 export function fabricMaterial(color: string, fabric: Fabric, opts: { repeat?: number; side?: THREE.Side } = {}): THREE.Material {
-  const key = `${color}|${fabric}|${opts.repeat ?? 1}|${opts.side ?? 0}`;
+  const key = `${color}|${fabric}|${opts.repeat ?? 6}|${opts.side ?? 0}`;
   const hit = matCache.get(key);
   if (hit) return hit;
   const tex = fabricTexture(fabric);
@@ -143,10 +144,10 @@ export function fabricMaterial(color: string, fabric: Fabric, opts: { repeat?: n
   let m: THREE.Material;
   switch (fabric) {
     case "leather":
-      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.5, clearcoat: 0.12, clearcoatRoughness: 0.45, envMapIntensity: 0.55, map, bumpMap: map, bumpScale: 0.6 });
+      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.5, clearcoat: 0.12, clearcoatRoughness: 0.45, envMapIntensity: 0.55, map, bumpMap: map, bumpScale: 0.0012 });
       break;
     case "suede":
-      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.95, sheen: 1, sheenRoughness: 0.6, sheenColor: new THREE.Color(color).lerp(new THREE.Color("#ffffff"), 0.35), map, bumpMap: map, bumpScale: 0.3 });
+      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.95, sheen: 1, sheenRoughness: 0.6, sheenColor: new THREE.Color(color).lerp(new THREE.Color("#ffffff"), 0.35), map, bumpMap: map, bumpScale: 0.0008 });
       break;
     case "satin":
       // Sheen tinted by the fabric's own color: a white sheen washes saturated satins out to pastel.
@@ -159,10 +160,10 @@ export function fabricMaterial(color: string, fabric: Fabric, opts: { repeat?: n
       m = new THREE.MeshStandardMaterial({ ...base, roughness: 0.75 });
       break;
     case "nylon":
-      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.45, clearcoat: 0.2, map, bumpMap: map, bumpScale: 0.2 });
+      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: 0.45, clearcoat: 0.2, map, bumpMap: map, bumpScale: 0.0005 });
       break;
     default:
-      m = new THREE.MeshStandardMaterial({ ...base, roughness: fabric === "wool" || fabric === "knit" ? 0.95 : 0.85, map, bumpMap: map, bumpScale: 0.8 });
+      m = new THREE.MeshPhysicalMaterial({ ...base, roughness: fabric === "wool" || fabric === "knit" ? 0.95 : 0.85, sheen: 0.25, sheenRoughness: 0.85, sheenColor: new THREE.Color(color), map, bumpMap: map, bumpScale: fabric === "knit" ? 0.002 : 0.0008 });
   }
   matCache.set(key, m);
   return m;
@@ -717,26 +718,20 @@ function garmentShape(p: Product): { shape: THREE.Shape; height: number; shoulde
 
 export function buildGarment(p: Product, opts: { hanger?: boolean } = {}): THREE.Group {
   const g = new THREE.Group();
-  const { shape, height } = garmentShape(p);
+  const { shape, height, shoulder } = garmentShape(p);
   const k = garmentKind(p);
   const fab = fabricOf(p);
   const puffy = /puffer/.test(p.subtype);
-  const geo = new THREE.ExtrudeGeometry(shape, {
-    depth: puffy ? 0.05 : 0.02,
-    bevelEnabled: true,
-    bevelThickness: puffy ? 0.03 : 0.014,
-    bevelSize: puffy ? 0.02 : 0.012,
-    bevelSegments: 4,
-    curveSegments: 14,
-  });
-  geo.translate(0, 0, -0.01);
-  const mat = fabricMaterial(p.color.hex, fab, { repeat: fab === "denim" ? 14 : fab === "knit" ? 18 : 10 });
+  const drape = { height, shoulder, puffy, softness: /satin|knit|cotton/.test(fab) ? 1 : 0.55 };
+  const geo = clothGeometry(shape, drape);
+  const mat = fabricMaterial(p.color.hex, fab, { repeat: fab === "denim" ? 14 : fab === "knit" ? 18 : 10, side: THREE.DoubleSide });
   const top = opts.hanger === false ? 0 : -0.1;
   const body = mesh(geo, mat);
   body.position.y = top;
   g.add(body);
   const zf = 0.026 + (puffy ? 0.03 : 0); // front surface
   const detail = (o: THREE.Object3D) => {
+    if (o.position.z >= 0) drapeDetail(o, drape, zf);
     o.position.y += top;
     g.add(o);
   };
@@ -745,7 +740,7 @@ export function buildGarment(p: Product, opts: { hanger?: boolean } = {}): THREE
 
   // Front opening / placket / buttons
   if (k === "jacket" || k === "coat" || /oxford-shirt|shirt-dress|cardigan|linen-shirt/.test(p.subtype)) {
-    const line = mesh(new THREE.BoxGeometry(0.006, height * 0.97, 0.004), darker);
+    const line = mesh(new THREE.BoxGeometry(0.006, height * 0.97, 0.004, 1, 32, 1), darker);
     line.position.set(0, -height / 2 - 0.05, zf);
     detail(line);
     if (!/bomber|puffer|fleece|leather-jacket/.test(p.subtype)) {
@@ -758,7 +753,7 @@ export function buildGarment(p: Product, opts: { hanger?: boolean } = {}): THREE
         detail(b);
       }
     } else {
-      const zip = mesh(new THREE.BoxGeometry(0.008, height * 0.95, 0.006), fabricMaterial("#b9b5ad", "metal"));
+      const zip = mesh(new THREE.BoxGeometry(0.008, height * 0.95, 0.006, 1, 32, 1), fabricMaterial("#b9b5ad", "metal"));
       zip.position.set(0, -height / 2 - 0.05, zf + 0.002);
       detail(zip);
     }
@@ -1069,10 +1064,16 @@ function loadModel(url: string, size: number, textureUrl?: string): Promise<THRE
 /* ================================================================== */
 
 export function buildProcedural(p: Product, opts: { hanger?: boolean } = {}): THREE.Group {
-  if (p.role === "shoes") return buildShoe(p);
-  if (p.role === "bag") return buildBag(p);
-  if (p.role === "accessory") return buildAccessory(p);
-  return buildGarment(p, opts);
+  const object = p.role === "shoes" ? buildShoe(p) : p.role === "bag" ? buildBag(p) : p.role === "accessory" ? buildAccessory(p) : buildGarment(p, opts);
+  object.userData.procedural = true;
+  return object;
+}
+
+export function disposeProduct(object: THREE.Object3D) {
+  if (!object.userData.procedural) return;
+  object.traverse((child) => {
+    if (child instanceof THREE.Mesh) child.geometry.dispose();
+  });
 }
 
 /** Real model when the product has one, procedural otherwise. Shoes face +z (toe forward). */

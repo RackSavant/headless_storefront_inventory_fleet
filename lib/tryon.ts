@@ -64,12 +64,16 @@ async function getLandmarker(): Promise<Landmarker> {
   landmarker ??= (async () => {
     const { FilesetResolver, PoseLandmarker } = await import("@mediapipe/tasks-vision");
     const files = await FilesetResolver.forVisionTasks(WASM);
-    return (await PoseLandmarker.createFromOptions(files, {
-      baseOptions: { modelAssetPath: MODEL, delegate: "GPU" },
+    const create = (delegate: "GPU" | "CPU") => PoseLandmarker.createFromOptions(files, {
+      baseOptions: { modelAssetPath: MODEL, delegate },
       runningMode: "IMAGE",
       numPoses: 1,
-    })) as unknown as Landmarker;
-  })();
+    });
+    return (await create("GPU").catch(() => create("CPU"))) as unknown as Landmarker;
+  })().catch((error) => {
+    landmarker = null;
+    throw error;
+  });
   return landmarker;
 }
 
@@ -77,7 +81,10 @@ async function getLandmarker(): Promise<Landmarker> {
 export async function detectAnchors(img: HTMLImageElement | HTMLCanvasElement, w: number, h: number): Promise<Anchors | null> {
   const lm = await getLandmarker();
   const pose = lm.detect(img).landmarks[0];
-  if (!pose) return null;
+  if (!pose || pose.length < 29 || w <= 0 || h <= 0) return null;
+  if ([0, 11, 12, 16, 23, 24, 25, 26, 27, 28].some((i) => !Number.isFinite(pose[i].x) || !Number.isFinite(pose[i].y))) return null;
+  if ([11, 12, 23, 24].some((i) => (pose[i].visibility ?? 1) < 0.5)) return null;
+  if (Math.hypot(pose[11].x - pose[12].x, pose[11].y - pose[12].y) < 0.02) return null;
   const P = (i: number): Pt => ({ x: pose[i].x * w, y: pose[i].y * h });
   // MediaPipe's "left" is the person's left = image right for a front-facing photo.
   const a: Anchors = {
@@ -154,7 +161,10 @@ export interface TryOnLayer {
 
 const ORDER: Product["role"][] = ["bottom", "shoes", "dress", "top", "outerwear", "bag", "accessory"];
 
-export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageElement, a: Anchors, layers: TryOnLayer[]) {
+export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageElement, a: Anchors, layers: TryOnLayer[], signal?: AbortSignal) {
+  const sorted = [...layers].sort((x, y) => ORDER.indexOf(x.product.role) - ORDER.indexOf(y.product.role));
+  const images = await Promise.all(sorted.map(({ sprite }) => loadImage(sprite.url)));
+  if (signal?.aborted) return;
   const ctx = canvas.getContext("2d")!;
   canvas.width = photo.naturalWidth;
   canvas.height = photo.naturalHeight;
@@ -173,10 +183,9 @@ export async function composeTryOn(canvas: HTMLCanvasElement, photo: HTMLImageEl
   const pxPerM = sh / BODY.shoulderJoints;
   const torsoPx = dist(shMid, hipMid);
   const legPx = dist(hipMid, ankleMid);
-  const sorted = [...layers].sort((x, y) => ORDER.indexOf(x.product.role) - ORDER.indexOf(y.product.role));
 
-  for (const { product: p, sprite } of sorted) {
-    const img = await loadImage(sprite.url);
+  for (const [index, { product: p, sprite }] of sorted.entries()) {
+    const img = images[index];
     if (p.role === "top" || p.role === "outerwear" || p.role === "dress") {
       // Garment y=0 is the shoulder seam, which sits ~3 cm above the shoulder joints.
       const sy = Math.min(1.4 * pxPerM, Math.max(0.7 * pxPerM, torsoPx / BODY.torso));
@@ -236,6 +245,19 @@ export async function downscale(file: Blob, max = 1280): Promise<string> {
   } finally {
     URL.revokeObjectURL(url);
   }
+}
+
+export async function productPhotoData(url: string): Promise<string> {
+  const image = await loadImage(url);
+  const scale = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+  canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  return canvas.toDataURL("image/jpeg", 0.94);
 }
 
 export { loadImage };

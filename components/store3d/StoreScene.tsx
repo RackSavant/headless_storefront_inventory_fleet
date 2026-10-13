@@ -4,6 +4,7 @@ import { CameraControls, ContactShadows, Html, RoundedBox } from "@react-three/d
 import { Canvas, useThree, type ThreeEvent } from "@react-three/fiber";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import type { Product } from "@/lib/types";
 import { FLOOR, MAP_CAMERA, type PlacedItem, type Section } from "./layout";
 import { ProductModel, WornOutfit } from "./models";
@@ -28,8 +29,9 @@ function usePortal() {
 }
 const WALL = "#f3eee6";
 
-function usd(c: number) {
-  return `$${Math.round(c / 100)}`;
+function usd(c: number, currency: Product["currency"]) {
+  const value = (c / 100).toLocaleString("en-US", { maximumFractionDigits: 2 });
+  return currency === "USDC" ? `${value} USDC` : `$${value}`;
 }
 
 /** Screen space covered by UI: header on top, then a right column (desktop) or bottom sheet (mobile). */
@@ -320,7 +322,7 @@ function HoverTip({ hover }: { hover: Hover | null }) {
       <div className={`whitespace-nowrap rounded-lg bg-stone-900/90 px-2.5 py-1.5 text-xs text-white shadow-lg ${hover ? "" : "hidden"}`}>
         <div className="font-medium">{hover?.product.title}</div>
         <div className="text-stone-300">
-          {hover ? usd(hover.product.price_cents) : ""}
+          {hover ? usd(hover.product.price_cents, hover.product.currency) : ""}
           {hover?.partner ? " · partner store" : ""}
         </div>
       </div>
@@ -398,6 +400,24 @@ function Checkout() {
   );
 }
 
+function BoutiqueEnvironment() {
+  const { gl, scene } = useThree();
+  useEffect(() => {
+    const generator = new THREE.PMREMGenerator(gl);
+    const room = new RoomEnvironment();
+    const target = generator.fromScene(room, 0.04);
+    const previous = scene.environment;
+    scene.environment = target.texture;
+    room.dispose();
+    generator.dispose();
+    return () => {
+      scene.environment = previous;
+      target.dispose();
+    };
+  }, [gl, scene]);
+  return null;
+}
+
 export default function StoreScene(props: StoreSceneProps) {
   const { sections, view, selectedId, outfit, onEnterSection, onSelectItem, splatUrl } = props;
   const isMap = view === "map";
@@ -410,7 +430,9 @@ export default function StoreScene(props: StoreSceneProps) {
     <div ref={overlay as React.RefObject<HTMLDivElement>} className="pointer-events-none absolute inset-0 z-10 [&>*]:pointer-events-auto" />
     <Canvas shadows dpr={[1, 2]} camera={{ fov: 45, position: MAP_CAMERA.position, near: 0.05, far: 200 }}>
       <color attach="background" args={["#ebe4d8"]} />
-      <hemisphereLight args={["#fffaf2", "#b9a68f", 1.1]} />
+      <BoutiqueEnvironment />
+      <hemisphereLight args={["#fffaf2", "#b9a68f", 0.55]} />
+      <directionalLight position={[-6, 5, -4]} color="#f5e5d1" intensity={0.7} />
       <directionalLight
         position={[6, 12, 8]}
         intensity={1.6}

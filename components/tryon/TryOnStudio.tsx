@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { frontSprite, modelPhoto } from "@/components/store3d/shots";
 import Swatch from "@/components/ui/Swatch";
-import { ANCHOR_LABELS, composeTryOn, defaultAnchors, detectAnchors, downscale, loadImage, type Anchors, type TryOnLayer } from "@/lib/tryon";
+import { ANCHOR_LABELS, composeTryOn, defaultAnchors, detectAnchors, downscale, loadImage, productPhotoData, type Anchors, type TryOnLayer } from "@/lib/tryon";
+import { prepareTryOnReferences } from "@/lib/tryon-reference";
 import type { Product } from "@/lib/types";
 
 type Status = "idle" | "detecting" | "ready" | "no-pose" | "error";
@@ -21,6 +22,15 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
   const video = useRef<HTMLVideoElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const drag = useRef<keyof Anchors | null>(null);
+  const aiRequest = useRef<AbortController | null>(null);
+  const [referenceWarning, setReferenceWarning] = useState<string | null>(null);
+
+  useEffect(() => {
+    aiRequest.current?.abort();
+    setAi((s) => ({ ...s, image: null, error: null, loading: false }));
+    setReferenceWarning(null);
+    return () => aiRequest.current?.abort();
+  }, [photo, items]);
 
   useEffect(() => {
     fetch("/api/tryon")
@@ -32,7 +42,10 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
   // Garment cut-outs for this outfit.
   useEffect(() => {
     let alive = true;
-    Promise.all(items.map(async (p) => ({ product: p, sprite: await frontSprite(p) }))).then((l) => alive && setLayers(l));
+    setLayers([]);
+    Promise.all(items.map(async (p) => ({ product: p, sprite: await frontSprite(p) })))
+      .then((l) => alive && setLayers(l))
+      .catch(() => alive && setStatus("error"));
     return () => {
       alive = false;
     };
@@ -42,6 +55,9 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
   useEffect(() => {
     if (!photo) return;
     let alive = true;
+    setImg(null);
+    setAnchors(null);
+    setStatus("detecting");
     (async () => {
       const im = await loadImage(photo);
       if (!alive) return;
@@ -60,7 +76,7 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
         setStatus("no-pose");
         setShowPoints(true);
       }
-    })();
+    })().catch(() => alive && setStatus("error"));
     return () => {
       alive = false;
     };
@@ -69,17 +85,28 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
   // Re-composite whenever the body points or garments change.
   useEffect(() => {
     if (!img || !anchors || !canvas.current) return;
+    const controller = new AbortController();
+    const target = canvas.current;
     const id = requestAnimationFrame(() => {
-      composeTryOn(canvas.current!, img, anchors, layers).catch(() => setStatus("error"));
+      composeTryOn(target, img, anchors, layers, controller.signal).catch(() => {
+        if (!controller.signal.aborted) setStatus("error");
+      });
     });
-    return () => cancelAnimationFrame(id);
-  }, [img, anchors, layers]);
+    return () => {
+      controller.abort();
+      cancelAnimationFrame(id);
+    };
+  }, [img, anchors, layers, ai.image, camera]);
 
   useEffect(() => () => camera?.getTracks().forEach((t) => t.stop()), [camera]);
 
   const onFile = async (f: File | undefined) => {
     if (!f) return;
-    setPhoto(await downscale(f));
+    try {
+      setPhoto(await downscale(f));
+    } catch {
+      setStatus("error");
+    }
   };
 
   const startCamera = async () => {
@@ -121,19 +148,26 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
   );
 
   const runAi = async () => {
-    if (!photo) return;
+    if (!photo || ai.loading) return;
+    aiRequest.current?.abort();
+    const controller = new AbortController();
+    aiRequest.current = controller;
     setAi((s) => ({ ...s, loading: true, error: null }));
     try {
+      const references = await prepareTryOnReferences(items, productPhotoData, async (p) => (await frontSprite(p)).url);
+      if (controller.signal.aborted) return;
+      setReferenceWarning(references.some((r) => r.reference === "approximation") ? "Some items have no verified product photo. Their appearance is approximate." : null);
       const res = await fetch("/api/tryon", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ photo, items: layers.map((l) => ({ title: l.product.title, role: l.product.role, image: l.sprite.url })) }),
+        body: JSON.stringify({ photo, items: references }),
+        signal: controller.signal,
       });
       const d = await res.json();
-      if (!res.ok) throw new Error(d.error ?? "failed");
-      setAi((s) => ({ ...s, loading: false, image: d.image }));
+      if (!res.ok) throw new Error(d.error ?? "Try-on failed");
+      if (!controller.signal.aborted) setAi((s) => ({ ...s, loading: false, image: d.image }));
     } catch (e) {
-      setAi((s) => ({ ...s, loading: false, error: e instanceof Error ? e.message : "failed" }));
+      if (!controller.signal.aborted) setAi((s) => ({ ...s, loading: false, error: e instanceof Error ? e.message : "Try-on failed" }));
     }
   };
 
@@ -201,6 +235,7 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
             <div>
               <h2 className="text-base font-semibold">Try it on you</h2>
               <p className="text-xs text-stone-500">Your photo stays in this browser{ai.enabled ? " unless you use AI try-on" : ""}.</p>
+              <p className="mt-1 text-xs text-stone-500">The 2D preview uses approximate garment shapes. It does not predict size or physical fit.</p>
             </div>
             <button onClick={onClose} className="rounded-md px-2 py-1 text-sm text-stone-500 hover:bg-stone-100">
               Close
@@ -248,8 +283,9 @@ export default function TryOnStudio({ items, onClose }: { items: Product[]; onCl
             <h3 className="text-xs font-medium uppercase tracking-wide text-stone-500">Photoreal (AI)</h3>
             {ai.enabled ? (
               <>
-                <p className="text-xs text-stone-600">Sends your photo and these items to Google&apos;s Gemini image model to render you wearing them.</p>
-                <button onClick={runAi} disabled={!photo || ai.loading || !layers.length} className="w-full rounded-lg border border-violet-300 px-3 py-2 text-xs font-medium text-violet-800 disabled:opacity-40">
+                <p className="text-xs text-stone-600">Uses actual product photos when available. Clicking below sends your photo and item references to Google&apos;s Gemini image model. This is a style visualization, not a size or fit guarantee.</p>
+                {referenceWarning && <p className="rounded-lg bg-amber-50 p-2 text-xs text-amber-900">{referenceWarning}</p>}
+                <button onClick={runAi} disabled={!photo || ai.loading || !items.length || items.length > 6} className="w-full rounded-lg border border-violet-300 px-3 py-2 text-xs font-medium text-violet-800 disabled:opacity-40">
                   {ai.loading ? "Rendering (up to a minute)…" : ai.image ? "Render again" : "Make it photoreal"}
                 </button>
                 {ai.image && (

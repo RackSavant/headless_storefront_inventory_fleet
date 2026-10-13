@@ -44,7 +44,7 @@ function floorPrice(p: Product, cfg: StoreConfig): number {
 /** Price the in-store part of a look. Needs at least two inventory items to be a bundle. */
 export function priceBundle(items: Product[], cfg: StoreConfig, now: Date): Bundle | null {
   const inv = items.filter((p) => p.source === "inventory" && (p.quantity ?? 0) > 0);
-  if (inv.length < 2) return null;
+  if (inv.length < 2 || new Set(inv.map((p) => p.currency)).size !== 1) return null;
 
   const tiers = Object.keys(cfg.bundle_discounts).map(Number).sort((a, b) => a - b);
   const tier = tiers.filter((t) => t <= inv.length).pop();
@@ -55,9 +55,10 @@ export function priceBundle(items: Product[], cfg: StoreConfig, now: Date): Bund
   const list = inv.reduce((s, p) => s + p.price_cents, 0);
   // Apply the discount per item, but never below each item's margin floor.
   const price = inv.reduce((s, p) => s + Math.max(floorPrice(p, cfg), Math.round(p.price_cents * (1 - pct / 100))), 0);
-  const effective = Math.round(((list - price) / list) * 100);
+  const effective = list > 0 ? Math.round(((list - price) / list) * 100) : 0;
 
   return {
+    currency: inv[0].currency,
     product_ids: inv.map((p) => p.id),
     list_cents: list,
     price_cents: price,

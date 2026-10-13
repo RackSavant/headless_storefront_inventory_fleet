@@ -51,7 +51,7 @@ export default function LookCard({
               </div>
               <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-stone-500">
                 <SourceBadge product={product} />
-                <span className="tabular-nums">{usd(product.price_cents)}</span>
+                <span className="tabular-nums">{usd(product.price_cents, product.currency)}</span>
                 {product.retailer && <span className="truncate">· {product.retailer}</span>}
               </div>
               {reasons.length > 0 && reasons[0] !== "your pick" && <div className="mt-0.5 line-clamp-2 text-[11px] text-stone-500">{reasons.join(" · ")}</div>}
@@ -79,8 +79,8 @@ export default function LookCard({
         )}
         {look.bundle ? (
           <button onClick={() => onAddBundle(look)} className="rounded-lg bg-orange-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-orange-800">
-            Add {look.bundle.product_ids.length} in-store pieces · {usd(look.bundle.price_cents)}{" "}
-            <span className="text-orange-200 line-through">{usd(look.bundle.list_cents)}</span>
+            Add {look.bundle.product_ids.length} in-store pieces · {usd(look.bundle.price_cents, look.bundle.currency)}{" "}
+            <span className="text-orange-200 line-through">{usd(look.bundle.list_cents, look.bundle.currency)}</span>
           </button>
         ) : (
           inStore.length === 1 && <span className="text-[11px] text-stone-500">Add one more in-store piece to unlock a bundle discount</span>

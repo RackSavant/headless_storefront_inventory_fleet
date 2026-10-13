@@ -27,24 +27,27 @@ export interface Section {
   size: [number, number];
   tint: string;
   items: PlacedItem[];
+  products: Product[];
   camera: { position: V3; target: V3 };
 }
 
-export const FLOOR = { w: 18.4, d: 13.6 };
+export const FLOOR = { w: 24.4, d: 13.6 };
 export const MAP_CAMERA = { position: [0, 21, 6.5] as V3, target: [0, 0, 0.2] as V3 };
 
 const SLOT_W = 5.6;
 const SLOT_D = 4.6;
 // Back row then front row. B (back center) is reserved for the fitting room.
 const SLOTS: Record<string, [number, number]> = {
-  A: [-6, -4],
-  B: [0, -4],
-  C: [6, -4],
-  D: [-6, 1.2],
-  E: [0, 1.2],
-  F: [6, 1.2],
+  A: [-9, -4],
+  B: [-3, -4],
+  C: [3, -4],
+  D: [-9, 1.2],
+  E: [-3, 1.2],
+  F: [3, 1.2],
+  G: [9, -4],
+  H: [9, 1.2],
 };
-const SLOT_ORDER = ["A", "D", "E", "F", "C"];
+const SLOT_ORDER = ["A", "D", "E", "F", "C", "G", "H"];
 
 const ROLE_INFO: Record<Role, { name: string; kind: FixtureKind; tint: string }> = {
   shoes: { name: "Shoe Wall", kind: "shelves", tint: "#e9dcc9" },
@@ -145,6 +148,7 @@ export function buildSections(inventory: Product[], external: Product[], protect
     size: [SLOT_W, SLOT_D],
     tint: "#f1e4d6",
     items: [],
+    products: [],
     camera: cameraFor("fitting", fx, fz),
   });
 
@@ -155,7 +159,8 @@ export function buildSections(inventory: Product[], external: Product[], protect
     if (!slot) break;
     const [cx, cz] = SLOTS[slot];
     const info = ROLE_INFO[role];
-    const items = stocked.get(role)!;
+    const pool = stocked.get(role)!;
+    const items = [...pool.filter((p) => priority.includes(p.id)), ...varietyOrder(pool.filter((p) => !priority.includes(p.id)))];
     sections.push({
       id: `own-${role}`,
       name: info.name,
@@ -167,6 +172,7 @@ export function buildSections(inventory: Product[], external: Product[], protect
       size: [SLOT_W, SLOT_D],
       tint: info.tint,
       items: place(info.kind, items, cx, cz),
+      products: items,
       camera: cameraFor(info.kind, cx, cz),
     });
   }
@@ -201,6 +207,7 @@ export function buildSections(inventory: Product[], external: Product[], protect
       size: [SLOT_W, SLOT_D],
       tint: "#e6e1f0",
       items: place("racks", ordered, cx, cz),
+      products: ordered,
       camera: cameraFor("racks", cx, cz),
     });
   }

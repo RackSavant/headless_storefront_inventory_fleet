@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { usd } from "@/lib/client";
+import { usd, formatTotals } from "@/lib/client";
 import type { computeInsights } from "@/lib/insights";
 
 type Insights = ReturnType<typeof computeInsights>;
@@ -50,9 +50,9 @@ export default function OwnerPage() {
 
       <section className="grid grid-cols-2 gap-3 md:grid-cols-4">
         <Stat label="Units in stock" value={String(totals.units)} note={`${totals.skus} SKUs`} />
-        <Stat label="Stock at retail" value={usd(totals.retail_value_cents)} note={`${usd(totals.cost_value_cents)} at cost`} />
-        <Stat label="Slow movers" value={String(totals.slow_movers)} note={`${usd(totals.slow_mover_value_cents)} at retail, boosted in bundles`} />
-        <Stat label="Revenue (demo checkouts)" value={usd(funnel.revenue_cents)} note={`${funnel.checkouts} orders · ${funnel.bundle_adds} bundles added`} />
+        <Stat label="Stock at retail" value={formatTotals(totals.retail_by_currency)} note={`${formatTotals(totals.cost_by_currency)} recorded cost; missing costs are excluded`} />
+        <Stat label="Slow movers" value={String(totals.slow_movers)} note={`${formatTotals(totals.slow_by_currency)} at retail, boosted in bundles`} />
+        <Stat label="Revenue (demo checkouts)" value={formatTotals(funnel.revenue_by_currency)} note={`${funnel.checkouts} orders · ${funnel.bundle_adds} bundles added`} />
       </section>
 
       <section className="rounded-2xl border border-stone-200 bg-white p-4">
@@ -142,7 +142,7 @@ export default function OwnerPage() {
                       <span className="font-medium">{s.title}</span>
                       {s.slow_mover && <span className="rounded bg-amber-100 px-1 text-[10px] font-medium text-amber-800">SLOW</span>}
                     </div>
-                    <div className="text-[11px] text-stone-400">{s.sku} · {usd(s.price_cents)}</div>
+                    <div className="text-[11px] text-stone-400">{s.sku} · {usd(s.price_cents, s.currency)}</div>
                   </td>
                   <td className="py-2 pr-3">
                     <div className="h-1.5 w-24 rounded-full bg-stone-100">

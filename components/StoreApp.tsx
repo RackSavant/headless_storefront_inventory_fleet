@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { api, getShopperId, usd, type CatalogResponse, type InventoryBundle, type LooksResponse } from "@/lib/client";
+import { api, getShopperId, usd, formatTotals, type CatalogResponse, type InventoryBundle, type LooksResponse } from "@/lib/client";
 import { genderCompatible } from "@/lib/reco/compat";
 import type { Gender, Look, Product } from "@/lib/types";
 import { buildSections } from "./store3d/layout";
@@ -61,8 +61,8 @@ export default function StoreApp() {
 
   // Partner racks restock to show what the current recommendations reach for.
   const priority = useMemo(
-    () => (looks ? looks.looks.flatMap((l) => l.items.map((i) => i.product.id)) : []),
-    [looks],
+    () => [...(selected ? [selected.id] : []), ...(looks ? looks.looks.flatMap((l) => l.items.map((i) => i.product.id)) : [])],
+    [looks, selected],
   );
   const sections = useMemo(
     () =>
@@ -109,7 +109,7 @@ export default function StoreApp() {
     (p: Product) => {
       setSelected(p);
       setDislikeFor(null);
-      const home = sections.find((s) => s.items.some((i) => i.product.id === p.id));
+      const home = sections.find((s) => s.products.some((item) => item.id === p.id));
       if (home && view !== "fitting") setView(home.id);
       api.event({ type: "view_item", shopper_id: shopperId, product_id: p.id });
       fetchLooks([p]);
@@ -142,7 +142,7 @@ export default function StoreApp() {
   const addBundle = (title: string, items: Product[], price: number, list: number, lookId?: string) => {
     setCart((c) => [...c, { id: `b_${Date.now()}`, kind: "bundle", title, items, price_cents: price, list_cents: list }]);
     api.event({ type: "bundle_add", shopper_id: shopperId, product_ids: items.map((p) => p.id), look_id: lookId, value_cents: price });
-    setToast(`Bundle added · you save ${usd(list - price)}`);
+    setToast(`Bundle added · you save ${usd(list - price, items[0]?.currency)}`);
   };
 
   const addLookBundle = (look: Look) => {
@@ -178,13 +178,19 @@ export default function StoreApp() {
     else setToast(occasionInput ? "Pick something you like and we'll style it for that" : "Occasion cleared");
   };
 
-  const cartTotal = cart.reduce((s, l) => s + (l.kind === "item" ? l.product.price_cents : l.price_cents), 0);
+  const cartPrices = cart.map((l) => l.kind === "item" ? l.product : { price_cents: l.price_cents, currency: l.items[0]?.currency ?? "USD" as const });
+  const cartTotal = formatTotals(cartPrices);
   const checkout = () => {
+    if (new Set(cartPrices.map((p) => p.currency)).size > 1) {
+      setToast("Check out USD and USDC items separately; no exchange rate is assumed.");
+      return;
+    }
     api.event({
       type: "checkout",
       shopper_id: shopperId,
       product_ids: cart.flatMap((l) => (l.kind === "item" ? [l.product.id] : l.items.map((p) => p.id))),
-      value_cents: cartTotal,
+      value_cents: cartPrices.reduce((sum, p) => sum + p.price_cents, 0),
+      currency: cartPrices[0]?.currency ?? "USD",
     });
     setCart([]);
     setCartOpen(false);
@@ -313,7 +319,7 @@ export default function StoreApp() {
             />
           </div>
         ) : current ? (
-          <SectionList section={current} onInspect={inspect} />
+          <SectionList key={current.id} section={current} onInspect={inspect} />
         ) : null}
       </aside>
 
@@ -336,14 +342,14 @@ export default function StoreApp() {
                         <div className="flex items-center gap-2.5">
                           <Swatch product={l.product} size={36} />
                           <div className="min-w-0 flex-1 truncate text-sm">{l.product.title}</div>
-                          <span className="text-sm tabular-nums">{usd(l.product.price_cents)}</span>
+                          <span className="text-sm tabular-nums">{usd(l.product.price_cents, l.product.currency)}</span>
                         </div>
                       ) : (
                         <div>
                           <div className="mb-2 flex items-baseline justify-between text-sm">
                             <span className="font-medium text-orange-800">{l.title}</span>
                             <span className="tabular-nums">
-                              {usd(l.price_cents)} <span className="text-xs text-stone-400 line-through">{usd(l.list_cents)}</span>
+                              {usd(l.price_cents, l.items[0]?.currency)} <span className="text-xs text-stone-400 line-through">{usd(l.list_cents, l.items[0]?.currency)}</span>
                             </span>
                           </div>
                           <div className="flex flex-wrap gap-1.5">
@@ -359,7 +365,7 @@ export default function StoreApp() {
                 </ul>
                 <div className="mt-4 flex items-center justify-between border-t border-stone-200 pt-3">
                   <span className="text-sm">Total</span>
-                  <span className="text-base font-semibold tabular-nums">{usd(cartTotal)}</span>
+                  <span className="text-base font-semibold tabular-nums">{cartTotal}</span>
                 </div>
                 <button onClick={checkout} className="mt-3 w-full rounded-xl bg-stone-900 py-2.5 text-sm font-medium text-white">Checkout (demo)</button>
               </>
@@ -414,6 +420,9 @@ function MapIntro({ sections, onEnter, occasion }: { sections: ReturnType<typeof
 }
 
 function SectionList({ section, onInspect }: { section: ReturnType<typeof buildSections>[number]; onInspect: (p: Product) => void }) {
+  const [query, setQuery] = useState("");
+  const [limit, setLimit] = useState(24);
+  const products = section.products.filter((p) => `${p.title} ${p.brand ?? ""} ${p.color.name} ${p.sizes?.join(" ") ?? ""}`.toLowerCase().includes(query.toLowerCase().trim()));
   return (
     <div className="space-y-3">
       <div>
@@ -422,15 +431,17 @@ function SectionList({ section, onInspect }: { section: ReturnType<typeof buildS
           {section.partner ? `${section.subtitle} from partner stores, to complete outfits` : section.subtitle}. Tap an item in the store or below.
         </p>
       </div>
+      <input type="search" value={query} onChange={(e) => { setQuery(e.target.value); setLimit(24); }} aria-label={`Search ${section.name}`} placeholder="Find a piece, color, brand or size" className="w-full rounded-xl border border-stone-200 bg-white px-3 py-2 text-sm outline-none focus:border-stone-500" />
+      <p className="text-[11px] text-stone-500">{products.length} pieces · select any item to bring it onto the display</p>
       <ul className="grid grid-cols-1 gap-1.5">
-        {section.items.map(({ product }) => (
+        {products.slice(0, limit).map((product) => (
           <li key={product.id}>
             <button onClick={() => onInspect(product)} className="flex w-full items-center gap-2.5 rounded-xl border border-stone-200 bg-white p-2 text-left hover:border-stone-400">
               <Swatch product={product} size={38} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[13px] font-medium">{product.title}</span>
                 <span className="text-[11px] text-stone-500">
-                  {usd(product.price_cents)}
+                  {usd(product.price_cents, product.currency)}
                   {product.source === "inventory" && (product.quantity ?? 0) <= 3 ? ` · only ${product.quantity} left` : ""}
                 </span>
               </span>
@@ -438,6 +449,8 @@ function SectionList({ section, onInspect }: { section: ReturnType<typeof buildS
           </li>
         ))}
       </ul>
+      {!products.length && <p className="py-4 text-sm text-stone-500">No pieces match that search.</p>}
+      {products.length > limit && <button onClick={() => setLimit((n) => n + 24)} className="w-full rounded-xl border border-stone-300 py-2 text-xs font-medium">Show more pieces ({products.length - limit} remaining)</button>}
     </div>
   );
 }
@@ -473,7 +486,7 @@ function ItemDetail({
           <h2 className="text-base font-semibold leading-tight">{product.title}</h2>
           <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-stone-600">
             <SourceBadge product={product} />
-            <span className="font-semibold tabular-nums text-stone-900">{usd(product.price_cents)}</span>
+            <span className="font-semibold tabular-nums text-stone-900">{usd(product.price_cents, product.currency)}</span>
             <span>· {product.color.name}</span>
           </div>
           {!compact && (
@@ -539,7 +552,7 @@ function ProductHero({ product }: { product: Product }) {
       <div className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-b from-white to-stone-100">
         {shot ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={shot} alt={product.title} className={`h-full w-full ${product.image_url ? "object-cover" : "object-contain"}`} />
+          <img src={shot} alt={product.title} className="h-full w-full object-contain p-2" />
         ) : (
           <Swatch product={product} size={96} />
         )}
@@ -547,7 +560,7 @@ function ProductHero({ product }: { product: Product }) {
       {credit ? (
         <PhotoCredit credit={credit} />
       ) : (
-        !product.image_url && <p className="mt-1 text-[10px] text-stone-400">{product.model_url ? "3D scan" : "3D render"}</p>
+        <p className="mt-1.5 text-[10px] leading-relaxed text-stone-500">{product.image_url ? "Product photo" : "Rendered preview"} · {product.model_url ? "3D asset available" : "The rack model is an approximate silhouette, not a scan of this item."}</p>
       )}
     </div>
   );
@@ -625,7 +638,7 @@ function Recommendations({
         <p className="text-[11px] text-stone-500">
           For <span className="font-medium text-stone-700">{ctx.occasion}</span>
           {ctx.season ? ` · ${ctx.season}` : ""}
-          {ctx.budget_cents ? ` · under ${usd(ctx.budget_cents)}` : ""}
+          {ctx.budget_cents ? ` · ${usd(ctx.budget_cents)} USD budget (USDC looks are not converted or budget-checked)` : ""}
           {res.parsed_by === "llm" ? " · read by Claude" : ""}
         </p>
       )}
@@ -646,12 +659,12 @@ function Recommendations({
                   <li key={p.id} className="flex items-center gap-2 text-[13px]">
                     <Swatch product={p} size={28} />
                     <button onClick={() => onInspect(p)} className="min-w-0 flex-1 truncate text-left hover:underline">{p.title}</button>
-                    <span className="text-[11px] tabular-nums text-stone-500">{usd(p.price_cents)}</span>
+                    <span className="text-[11px] tabular-nums text-stone-500">{usd(p.price_cents, p.currency)}</span>
                   </li>
                 ))}
               </ul>
               <button onClick={() => onAddInvBundle(b)} className="rounded-lg bg-orange-700 px-3 py-1.5 text-xs font-medium text-white hover:bg-orange-800">
-                Add bundle · {usd(b.price_cents)} <span className="text-orange-200 line-through">{usd(b.list_cents)}</span>
+                Add bundle · {usd(b.price_cents, b.currency)} <span className="text-orange-200 line-through">{usd(b.list_cents, b.currency)}</span>
               </button>
             </div>
           ))}

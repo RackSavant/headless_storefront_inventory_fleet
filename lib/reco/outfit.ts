@@ -161,7 +161,7 @@ function scoreLook(items: Product[], anchors: Set<string>, input: BuildLooksInpu
     .filter((p) => !anchors.has(p.id))
     .reduce((s, p) => s + boostFor(p, input, now), 0);
   let budget = 0;
-  if (ctx.budget_cents) {
+  if (ctx.budget_cents && items.every((p) => p.currency === "USD")) {
     const total = items.reduce((s, p) => s + p.price_cents, 0);
     if (total > ctx.budget_cents) budget = -0.15 - 0.6 * Math.min(1, (total - ctx.budget_cents) / ctx.budget_cents);
   }

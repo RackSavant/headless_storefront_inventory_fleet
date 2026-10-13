@@ -109,7 +109,7 @@ export default function RobotPage() {
                 <div className="min-w-0 flex-1">
                   <div className="truncate font-medium">{it.product.title}</div>
                   <div className="text-xs text-stone-500">
-                    {it.product.color.name} · {usd(it.product.price_cents)}
+                    {it.product.color.name} · {usd(it.product.price_cents, it.product.currency)}
                   </div>
                   <button
                     disabled={!s.online || running}

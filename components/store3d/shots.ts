@@ -11,7 +11,7 @@ import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import type { Product } from "@/lib/types";
 import { buildMannequin } from "./mannequin";
-import { buildProduct } from "./meshes";
+import { buildProduct, disposeProduct } from "./meshes";
 
 export type ShotView = "hero" | "front";
 
@@ -85,12 +85,13 @@ async function render(p: Product, view: ShotView, size: number): Promise<Sprite>
   renderer.render(scene, camera);
   const url = renderer.domElement.toDataURL("image/png");
   scene.remove(holder);
+  disposeProduct(obj);
   return { url, size, center: { x: center.x, y: center.y }, half };
 }
 
 /** Product image URL: the real photo when the product has one, otherwise a rendered shot. */
 function rendered(p: Product, view: ShotView, size: number): Promise<Sprite> {
-  const key = `${p.id}|${view}|${size}`;
+  const key = JSON.stringify([p.id, p.role, p.subtype, p.title, p.color, p.model_url, p.model_texture_url, p.model_rotation_y, view, size]);
   let hit = cache.get(key);
   if (!hit) {
     // Serialize renders so a grid of cards doesn't stall the main thread at once.

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { usd } from "@/lib/client";
+import { usd, formatTotals } from "@/lib/client";
 import { genderCompatible, pairScore } from "@/lib/reco/compat";
 import type { Gender, Product, Role, ScoringPolicy } from "@/lib/types";
 import { SourceBadge } from "./LookCard";
@@ -81,7 +81,7 @@ export default function MixMatch({
   }, [outfit, catalog, anchorGender, dressMode, scoring]);
 
   const match = outfitMatch(outfit, scoring);
-  const total = outfit.reduce((s, p) => s + p.price_cents, 0);
+  const total = formatTotals(outfit);
 
   const step = (role: Role, dir: 1 | -1) => {
     const list = ranked[role];
@@ -156,7 +156,7 @@ export default function MixMatch({
                     <div className="text-[10px] uppercase tracking-wide text-stone-400">{LABEL[role]}</div>
                     <div className="truncate text-[13px] font-medium text-stone-900">{cur.title}</div>
                     <div className="flex items-center gap-1.5 text-[11px] text-stone-500">
-                      <SourceBadge product={cur} /> {usd(cur.price_cents)}
+                      <SourceBadge product={cur} /> {usd(cur.price_cents, cur.currency)}
                     </div>
                   </div>
                 </button>
@@ -181,7 +181,7 @@ export default function MixMatch({
 
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs text-stone-500">
-          Outfit total <span className="font-semibold tabular-nums text-stone-900">{usd(total)}</span>
+          Outfit total <span className="font-semibold tabular-nums text-stone-900">{total}</span>
         </span>
         <button
           onClick={onStyleMe}

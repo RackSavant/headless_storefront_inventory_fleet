@@ -50,8 +50,20 @@ function shell(y0: number, y1: number, ease: number, mat: THREE.Material, flare?
     if (flare && y < flare.from) r += ((flare.from - y) / (flare.from - y0)) * flare.to;
     pts.push(new THREE.Vector2(r, y));
   }
-  const geo = new THREE.LatheGeometry(pts, 48);
+  const geo = new THREE.LatheGeometry(pts, 64);
+  const positions = geo.getAttribute("position");
+  for (let i = 0; i < positions.count; i++) {
+    const x = positions.getX(i);
+    const y = positions.getY(i);
+    const z = positions.getZ(i);
+    const angle = Math.atan2(x, z);
+    const t = (y1 - y) / (y1 - y0);
+    const release = Math.sin(Math.PI * t * 0.85) ** 2;
+    const fold = (0.003 + (flare ? 0.009 * t : ease * 0.12)) * release * (1 + Math.sin(angle * 12 + t * 3));
+    positions.setXYZ(i, x + Math.sin(angle) * fold, y, z + Math.cos(angle) * fold);
+  }
   geo.scale(1, 1, DEPTH);
+  geo.computeVertexNormals();
   const m = new THREE.Mesh(geo, mat);
   m.castShadow = true;
   m.receiveShadow = true;
